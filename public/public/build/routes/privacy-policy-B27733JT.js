@@ -1,0 +1,1 @@
+import{b as e}from"/build/_shared/chunk-GDLBX7ER.js";import{c as t}from"/build/_shared/chunk-Q3IECNXJ.js";var c=t(e());function o(){return(0,c.jsx)("section",{className:"text-white"})}export{o as default};

@@ -1,0 +1,1 @@
+import{b as e}from"/build/_shared/chunk-GDLBX7ER.js";import{c as t}from"/build/_shared/chunk-Q3IECNXJ.js";var n=t(e()),r=o=>{let{text:u,type:p}=o;return(0,n.jsx)("button",{type:p,className:"bg-white text-button-green text-xl px-3 py-2 rounded-half w-full",children:u})},s=r;export{s as a};
