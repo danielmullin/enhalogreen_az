@@ -77,7 +77,7 @@ export async function retrieve(uuid: string) {
   });
   // console.log(response);
   const data = await response.json();
-  // console.log(data);
+  console.log(data);
   const transaction = data.find((transaction) => transaction.transactionId == uuid);
 
   const offsetProducts = await offsetProductList();
