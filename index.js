@@ -273,7 +273,7 @@ function Header(props) {
 var infinity_green_default = "/build/_assets/infinity_green-ZMFQTTRC.png";
 
 // app/styles/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-2TFZJMHN.css";
+var tailwind_default = "/build/_assets/tailwind-EVLLT2LN.css";
 
 // app/styles/styles.css
 var styles_default = "/build/_assets/styles-G542KLJ7.css";
@@ -419,7 +419,7 @@ var import_jsx_runtime5 = require("react/jsx-runtime"), loader2 = async ({ param
       productUuid: transaction2.productId.id,
       sequence: i,
       transactionUuid: transaction2.transactionId,
-      units: transaction2.product.units
+      units: transaction2.productId.units
     });
   return {
     transaction: transaction2,
@@ -445,7 +445,7 @@ function AccountTransaction() {
           transaction2.quantity
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("img", { src: qrcodes_default, className: "mb-2" }) })
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("a", { href: `/qrcodes?productName=${transaction2.productId.name}&productUuid=${transaction2.productId.id}&quantity=${transaction2.quantity}&transactionUuid=${transaction2.transactionId}&units=${transaction2.product.units}`, download: `/qrcodes?productName=${transaction2.productId.name}&productUuid=${transaction2.productId.productUuid}&quantity=${transaction2.quantity}&transactionUuid=${transaction2.uuid}&units=${transaction2.product.units}`, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("img", { src: qrcodes_default, className: "mb-2" }) }) })
     ] }),
     /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("section", { children: transactionProducts.map((transactionProduct) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex justify-between items-center sm:text-2xl", children: [
       /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: transactionProduct.name }),
@@ -1385,11 +1385,44 @@ function Account() {
   ] });
 }
 
+// app/routes/qrcodes.tsx
+var qrcodes_exports = {};
+__export(qrcodes_exports, {
+  loader: () => loader11
+});
+
+// app/helpers/qrcode.ts
+var import_qrcode2 = __toESM(require("qrcode"));
+function qrcode(url) {
+  return import_qrcode2.default.toBuffer(url);
+}
+
+// app/routes/qrcodes.tsx
+var import_jszip = __toESM(require("jszip")), loader11 = async ({ request }) => {
+  let baseUrl = String(process.env.BASE_URL), urlParams = new URL(request.url), zip = new import_jszip.default(), quantity = Number(urlParams.searchParams.get("quantity")), productUuid = String(urlParams.searchParams.get("productUuid")), transactionUuid = String(urlParams.searchParams.get("transactionUuid")), units = String(urlParams.searchParams.get("units"));
+  zip.file("", transactionUuid);
+  for (let i = 1; i < quantity + 1; i++) {
+    let data = btoa(JSON.stringify({
+      sequence: i,
+      transactionUuid,
+      units,
+      productUuid
+    })), url = `${baseUrl}qrcodes/products/${data}`, image = await qrcode(url);
+    zip.file(`${transactionUuid}_${i}_${quantity}.png`, image);
+  }
+  return new Response(await zip.generateAsync({ type: "uint8array" }), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/zip"
+    }
+  });
+};
+
 // app/routes/_index.tsx
 var index_exports = {};
 __export(index_exports, {
   default: () => Index,
-  loader: () => loader11
+  loader: () => loader12
 });
 
 // app/images/intro_accelerating.jpg
@@ -1438,7 +1471,7 @@ var stabiliti_default = "/build/_assets/stabiliti-ONIBOMMK.gif";
 var regeneration_earth_default = "/build/_assets/regeneration_earth-HPNTHLFI.gif";
 
 // app/routes/_index.tsx
-var import_jsx_runtime23 = require("react/jsx-runtime"), loader11 = async ({ params, request }) => [];
+var import_jsx_runtime23 = require("react/jsx-runtime"), loader12 = async ({ params, request }) => [];
 function Index() {
   return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(import_jsx_runtime23.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: enhalo_forest_default, className: "absolute h-[100vh] -z-20 top-0 object-cover sm:w-full " }),
@@ -1593,17 +1626,9 @@ function Index() {
 // app/routes/qrcode.tsx
 var qrcode_exports = {};
 __export(qrcode_exports, {
-  loader: () => loader12
+  loader: () => loader13
 });
-
-// app/helpers/qrcode.ts
-var import_qrcode2 = __toESM(require("qrcode"));
-function qrcode(url) {
-  return import_qrcode2.default.toBuffer(url);
-}
-
-// app/routes/qrcode.tsx
-var loader12 = async ({ request }) => {
+var loader13 = async ({ request }) => {
   let baseUrl = String(process.env.BASE_URL), urlParams = new URL(request.url), transactionProduct = {
     sequence: Number(urlParams.searchParams.get("sequence")),
     transactionUuid: String(urlParams.searchParams.get("transactionUuid")),
@@ -1621,10 +1646,10 @@ var loader12 = async ({ request }) => {
 };
 
 // server-entry-module:@remix-run/dev/server-build
-var route18 = __toESM(require_login());
+var route19 = __toESM(require_login());
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-DVE3ZZYY.js", imports: ["/build/_shared/chunk-6L2EXQIA.js", "/build/_shared/chunk-GDLBX7ER.js", "/build/_shared/chunk-Q3IECNXJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-6DQMKHGJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-3WYQ6JNI.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account": { id: "routes/account", parentId: "root", path: "account", index: void 0, caseSensitive: void 0, module: "/build/routes/account-JX2E57R3.js", imports: ["/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account-update": { id: "routes/account-update", parentId: "root", path: "account-update", index: void 0, caseSensitive: void 0, module: "/build/routes/account-update-LMFPDNC6.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/accounts_.$contactUuid.transactions": { id: "routes/accounts_.$contactUuid.transactions", parentId: "root", path: "accounts/:contactUuid/transactions", index: void 0, caseSensitive: void 0, module: "/build/routes/accounts_.$contactUuid.transactions-5Y5Q2BNQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/accounts_.$contactUuid.transactions_.$transactionUuid": { id: "routes/accounts_.$contactUuid.transactions_.$transactionUuid", parentId: "root", path: "accounts/:contactUuid/transactions/:transactionUuid", index: void 0, caseSensitive: void 0, module: "/build/routes/accounts_.$contactUuid.transactions_.$transactionUuid-GEHYAOGY.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.$transactionUuid": { id: "routes/cart.$transactionUuid", parentId: "root", path: "cart/:transactionUuid", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.$transactionUuid-IJJRRDWU.js", imports: ["/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.error": { id: "routes/cart.error", parentId: "root", path: "cart/error", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.error-IWHNPKZ4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.success": { id: "routes/cart.success", parentId: "root", path: "cart/success", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.success-IWW6AU3O.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact-us": { id: "routes/contact-us", parentId: "root", path: "contact-us", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-us-7HIA3QL6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/fAkePI.$action": { id: "routes/fAkePI.$action", parentId: "root", path: "fAkePI/:action", index: void 0, caseSensitive: void 0, module: "/build/routes/fAkePI.$action-YN5UYWEV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-VFO7F24P.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/offset-products": { id: "routes/offset-products", parentId: "root", path: "offset-products", index: void 0, caseSensitive: void 0, module: "/build/routes/offset-products-AF7GBVXC.js", imports: ["/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/offset-products-transaction": { id: "routes/offset-products-transaction", parentId: "root", path: "offset-products-transaction", index: void 0, caseSensitive: void 0, module: "/build/routes/offset-products-transaction-UVG533GA.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/privacy-policy": { id: "routes/privacy-policy", parentId: "root", path: "privacy-policy", index: void 0, caseSensitive: void 0, module: "/build/routes/privacy-policy-B27733JT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/projects": { id: "routes/projects", parentId: "root", path: "projects", index: void 0, caseSensitive: void 0, module: "/build/routes/projects-YOIDAHUQ.js", imports: ["/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcode": { id: "routes/qrcode", parentId: "root", path: "qrcode", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcode-V75SBLLL.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes.products.$data": { id: "routes/qrcodes.products.$data", parentId: "root", path: "qrcodes/products/:data", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes.products.$data-3D77MIRJ.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes.transactions.$uuid": { id: "routes/qrcodes.transactions.$uuid", parentId: "root", path: "qrcodes/transactions/:uuid", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes.transactions.$uuid-3NORBZFN.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, version: "1c887ebf", hmr: void 0, url: "/build/manifest-1C887EBF.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-DVE3ZZYY.js", imports: ["/build/_shared/chunk-6L2EXQIA.js", "/build/_shared/chunk-GDLBX7ER.js", "/build/_shared/chunk-Q3IECNXJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-H4NKI4Z4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-3WYQ6JNI.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account": { id: "routes/account", parentId: "root", path: "account", index: void 0, caseSensitive: void 0, module: "/build/routes/account-JX2E57R3.js", imports: ["/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account-update": { id: "routes/account-update", parentId: "root", path: "account-update", index: void 0, caseSensitive: void 0, module: "/build/routes/account-update-LMFPDNC6.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/accounts_.$contactUuid.transactions": { id: "routes/accounts_.$contactUuid.transactions", parentId: "root", path: "accounts/:contactUuid/transactions", index: void 0, caseSensitive: void 0, module: "/build/routes/accounts_.$contactUuid.transactions-5Y5Q2BNQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/accounts_.$contactUuid.transactions_.$transactionUuid": { id: "routes/accounts_.$contactUuid.transactions_.$transactionUuid", parentId: "root", path: "accounts/:contactUuid/transactions/:transactionUuid", index: void 0, caseSensitive: void 0, module: "/build/routes/accounts_.$contactUuid.transactions_.$transactionUuid-DET2NPYZ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.$transactionUuid": { id: "routes/cart.$transactionUuid", parentId: "root", path: "cart/:transactionUuid", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.$transactionUuid-IJJRRDWU.js", imports: ["/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.error": { id: "routes/cart.error", parentId: "root", path: "cart/error", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.error-IWHNPKZ4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.success": { id: "routes/cart.success", parentId: "root", path: "cart/success", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.success-IWW6AU3O.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact-us": { id: "routes/contact-us", parentId: "root", path: "contact-us", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-us-7HIA3QL6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/fAkePI.$action": { id: "routes/fAkePI.$action", parentId: "root", path: "fAkePI/:action", index: void 0, caseSensitive: void 0, module: "/build/routes/fAkePI.$action-YN5UYWEV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-VFO7F24P.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/offset-products": { id: "routes/offset-products", parentId: "root", path: "offset-products", index: void 0, caseSensitive: void 0, module: "/build/routes/offset-products-AF7GBVXC.js", imports: ["/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/offset-products-transaction": { id: "routes/offset-products-transaction", parentId: "root", path: "offset-products-transaction", index: void 0, caseSensitive: void 0, module: "/build/routes/offset-products-transaction-UVG533GA.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/privacy-policy": { id: "routes/privacy-policy", parentId: "root", path: "privacy-policy", index: void 0, caseSensitive: void 0, module: "/build/routes/privacy-policy-B27733JT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/projects": { id: "routes/projects", parentId: "root", path: "projects", index: void 0, caseSensitive: void 0, module: "/build/routes/projects-YOIDAHUQ.js", imports: ["/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcode": { id: "routes/qrcode", parentId: "root", path: "qrcode", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcode-V75SBLLL.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes": { id: "routes/qrcodes", parentId: "root", path: "qrcodes", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes-E5GQHVW3.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes.products.$data": { id: "routes/qrcodes.products.$data", parentId: "routes/qrcodes", path: "products/:data", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes.products.$data-3D77MIRJ.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes.transactions.$uuid": { id: "routes/qrcodes.transactions.$uuid", parentId: "routes/qrcodes", path: "transactions/:uuid", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes.transactions.$uuid-3NORBZFN.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, version: "cb28db8d", hmr: void 0, url: "/build/manifest-CB28DB8D.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, v2_errorBoundary: !0, v2_headers: !0, v2_meta: !0, v2_normalizeFormMethod: !0, v2_routeConvention: !0 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -1662,16 +1687,16 @@ var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postc
   },
   "routes/qrcodes.transactions.$uuid": {
     id: "routes/qrcodes.transactions.$uuid",
-    parentId: "root",
-    path: "qrcodes/transactions/:uuid",
+    parentId: "routes/qrcodes",
+    path: "transactions/:uuid",
     index: void 0,
     caseSensitive: void 0,
     module: route4
   },
   "routes/qrcodes.products.$data": {
     id: "routes/qrcodes.products.$data",
-    parentId: "root",
-    path: "qrcodes/products/:data",
+    parentId: "routes/qrcodes",
+    path: "products/:data",
     index: void 0,
     caseSensitive: void 0,
     module: qrcodes_products_data_exports
@@ -1756,6 +1781,14 @@ var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postc
     caseSensitive: void 0,
     module: account_exports
   },
+  "routes/qrcodes": {
+    id: "routes/qrcodes",
+    parentId: "root",
+    path: "qrcodes",
+    index: void 0,
+    caseSensitive: void 0,
+    module: qrcodes_exports
+  },
   "routes/_index": {
     id: "routes/_index",
     parentId: "root",
@@ -1778,7 +1811,7 @@ var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postc
     path: "login",
     index: void 0,
     caseSensitive: void 0,
-    module: route18
+    module: route19
   }
 };
 // Annotate the CommonJS export names for ESM import in node:

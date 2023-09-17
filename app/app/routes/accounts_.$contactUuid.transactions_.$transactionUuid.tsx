@@ -23,7 +23,7 @@ console.log(transaction)
 			productUuid: transaction.productId.id,
 			sequence: i,
 			transactionUuid: transaction.transactionId,
-			units: transaction.product.units,
+			units: transaction.productId.units,
 		});
 	}
 
@@ -45,7 +45,9 @@ export default function AccountTransaction() {
 					<p>{transaction.product.name} {transaction.quantity}</p>
 				</div>
 				<div>
-					<img src={qrcodes} className="mb-2"></img>
+					<a href={`/qrcodes?productName=${transaction.productId.name}&productUuid=${transaction.productId.id}&quantity=${transaction.quantity}&transactionUuid=${transaction.transactionId}&units=${transaction.product.units}`} download={`/qrcodes?productName=${transaction.productId.name}&productUuid=${transaction.productId.productUuid}&quantity=${transaction.quantity}&transactionUuid=${transaction.uuid}&units=${transaction.product.units}`}>
+						<img src={qrcodes} className="mb-2" />
+					</a>
 				</div>
 			</div>
 			<section>
