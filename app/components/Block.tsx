@@ -1,47 +1,28 @@
-import * as React from 'react';
-import { useState, useEffect } from 'react';
-
+import { FetcherWithComponents, Form, useFetcher } from "@remix-run/react";
 
 export interface BlockProps {
-  endAllocation: boolean;
-  opacity: number
-  startAllocation: boolean;
-  beginAllocation: number;
+  allocation: string;
+  opacity: number;
+  units: number;
 }
 
 const Block = (props: BlockProps) => {
-    const {beginAllocation, endAllocation, opacity, startAllocation,} = props;
-    const opacityClass = opacity
-
-  // const {allocated, blockDetail, complete, detail, opacity, uuid} = props,
-  //   [blockData, setBlockData] = useState({ allocated : false, completed : false, invoiceCurrency : '', invoiceValue : 0,  what3Words : '', uuid : ''});    
-  //     let usage = "block notAllocatedOrCompleted"
-  //     if(allocated) {
-  //       usage = 'block allocatedCompleted'
-  //     }
-  //     if(allocated && !complete) {
-  //       usage = 'block notCompleted'
-  //     }
-
-  // const handleBlockOnclick = (e) => {
-  //   if(allocated) {
-  //     e.preventDefault();
-  //     blockDetail(uuid);
-  //   }
-  // }  
-  //endallocation true
+  const { allocation, opacity, units } = props;
+  const opacityClass = opacity;
   return (
-
-    <div className={!endAllocation && !startAllocation  ? 
-      `bg-block-green w-4 h-4 m-2 opacity-${opacityClass}`
-      : 
-        startAllocation ? 
-        `bg-block-gold w-4 h-4 m-2 opacity-${opacityClass}`
-        : 
-          `bg-block-grey w-4 h-4 m-2 opacity-${opacityClass}` 
-      }>
-    </div>
-  )
-}
+    <>
+      {"green" == allocation ? (
+        <div className={`bg-block-green w-3u h-3u m-2 opacity-${opacityClass}`}></div>
+      ) : "gold" == allocation ? (
+        <Form method="post">
+          <button type="submit" className={`bg-block-gold w-${units}u h-${units}u m-2 opacity-${opacityClass} flex`}></button>
+          <input id="blockDetailShow" name="blockDetailShow" type="hidden" value="true" />
+        </Form>
+      ) : (
+        <div className={`bg-block-grey w-${units}u h-${units}u m-2 opacity-${opacityClass}`}></div>
+      )}
+    </>
+  );
+};
 
 export default Block;

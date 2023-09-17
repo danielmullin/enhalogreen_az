@@ -1,39 +1,54 @@
-import Block from './Block';
+import Block from "./Block";
+import BlockDetail from "./BlockDetail";
 
 export interface ProductVisualisationProps {
+  blockShow: boolean;
   error: boolean;
+  name: string;
+  quantity: number;
   sequence: number;
-  units: number;
   total: number;
+  units: number;
 }
 
 const ProductVisualisation = (props: ProductVisualisationProps): React.ReactElement => {
-  const { sequence, total, units} = props;
-  const beginAllocation = Number(sequence - 1 ) * Number(units);
+  const { blockShow, error, name, quantity, sequence, units } = props;
   let opacity = 100;
-  
+
+  // (opacity = 2 * (units / 5)), (opacity = 3 * (units / 5)), (opacity = 4 * (units / 5)), (opacity = 5 * (units / 5));
+
   return (
     <>
-      <div className="{error? null: ' hidden'}">An Error has occurred</div>
-      <div className='flex flex-wrap px-8'>
-        {Array.from ({ length: 100 }, (_, index) => (
-          // (index > 200) ? opacity = 50
-          // :
-          (index + 1 <= (beginAllocation)) ?
-          //less than begin, green
-          <Block endAllocation={false} opacity={opacity} startAllocation={false} beginAllocation={beginAllocation}></Block> 
-          :
-          //in between begin + units, gold
-            ((index + 1) <= Number(beginAllocation) + Number(units)) ?
-            <Block endAllocation={false} opacity={opacity} startAllocation={true} beginAllocation={beginAllocation}></Block> 
-            : 
+      <div className={"flex flex-wrap px-8"}>
+        {Array.from({ length: 1000 / units }, (_, index) =>
+          // index + 1 < sequence && index < 5 ? (
+          //   //less than begin, green
+          //   <>
+          //     <Block allocation={"green"} opacity={30} units={units}></Block>
+          //   </>
+          // ) :
+          index + 1 < sequence ? (
+            //less than begin, green
+            <>
+              <Block allocation={"green"} opacity={opacity} units={units}></Block>
+            </>
+          ) : //in between begin + units, gold
+          index + 1 == sequence ? (
+            <>
+              <Block allocation={"gold"} opacity={opacity} units={units}></Block>
+            </>
+          ) : (
             //above begin+units
-              <Block endAllocation={true} opacity={opacity} startAllocation={false} beginAllocation={beginAllocation}></Block> 
-        ))}
+            <>
+              <Block allocation={"grey"} opacity={opacity} units={units}></Block>
+            </>
+          )
+        )}
+        {blockShow ? <BlockDetail name={name} quantity={quantity} sequence={sequence} units={units} /> : null}
       </div>
     </>
-    );
-  };
+  );
+};
 
 export default ProductVisualisation;
 
