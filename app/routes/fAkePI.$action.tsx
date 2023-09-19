@@ -3,6 +3,8 @@ import { json, LoaderArgs } from '@remix-run/node';
 export async function loader({ params, request }: LoaderArgs) {
 	const url = new URL(request.url);
 	const transactionUuid = url.searchParams.get('transactionUuid') ?? null;
+	const productUuid = url.searchParams.get('productUuid') ?? null;
+
 	const response = {
 		OffsetProduct: [
 			{
@@ -169,8 +171,8 @@ export async function loader({ params, request }: LoaderArgs) {
 			console.log('post');
 			break;
 		case 'POST':
-			console.log('post');
-			break;
+			let responseKeyPost: string = String('Transaction');
+			return json(response[responseKeyPost]);
 	}
 	return json({ message: 'Method not allowed', ok: true }, 405);
 }

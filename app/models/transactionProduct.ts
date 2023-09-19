@@ -103,6 +103,7 @@ export async function retrieve(uuid: string): Promise<TransactionProduct> {
     },
   });
   const data = await response.json();
+  console.log(data)
 
   const product = data.find((product) => product.productid == uuid);
   // console.log(product);

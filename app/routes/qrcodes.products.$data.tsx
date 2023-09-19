@@ -10,9 +10,9 @@ export const loader = async ({ params }: LoaderArgs) => {
   const data = await JSON.parse(atob(params.data));
   const product: TransactionProduct = await retrieve(data.productUuid);
   const transaction = await retrieveTransaction(data.transactionUuid);
-  console.log(transaction);
-  console.log(product);
-  console.log(data);
+  // console.log(transaction);
+  // console.log(product);
+  // console.log(data);
 
   const name: string = product.name;
   const quantity: number = transaction.quantity;

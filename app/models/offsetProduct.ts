@@ -8,7 +8,7 @@ export interface OffsetProduct {
 }
 
 export async function list() {
-	console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`)
+	// console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`)
 	// @todo error handling
 	const response = await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`, {
 		method: 'GET',

@@ -4,6 +4,10 @@ import { getUserUuid, requireUserToken } from '~/session.server';
 import { Contact } from '~/models/contact.model';
 import { create } from '~/models/transaction';
 import validateEmailAddress from '~/helpers/validateEmailAddress';
+import validateNumberOfProducts from '~/helpers/validateNumberOfProducts';
+import validateUuid from '~/helpers/validateUuid';
+
+
 
 
 export async function action({ params, request }: ActionArgs) {
@@ -26,14 +30,15 @@ export async function action({ params, request }: ActionArgs) {
         if(!validateEmailAddress(emailAddress)) {
           return json({ error: 'Invalid Email Address', errorInput: '', status: 422 }, 422);
         }
-        if(numberOfProducts < 1) {
+        if(!validateNumberOfProducts(numberOfProducts)) {
           return json({ error: 'Number of products must be greater than 0', errorInput: '', status: 422 }, 422);
         }
-        if(!productUuid) {
+        if(!validateUuid(productUuid)) {
           return json({ error: 'Please select a product', errorInput: '', status: 422 }, 422);
         }
         let transaction = await create(contact, numberOfProducts, productUuid);
-          return redirect(`/cart/${transaction.uuid}`)
+        // console.log(transaction.transactionId)
+          return redirect(`/cart/${transaction.transactionId}`)
         } 
       catch (error) {
         return json({ error: error.message, ok: false }, 500);

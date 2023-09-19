@@ -900,6 +900,10 @@ video {
   background-color: rgb(255 0 0 / var(--tw-bg-opacity));
 }
 
+.bg-gray-50\/50 {
+  background-color: rgb(249 250 251 / 0.5);
+}
+
 .bg-intro-about {
   --tw-bg-opacity: 1;
   background-color: rgb(126 168 173 / var(--tw-bg-opacity));

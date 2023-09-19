@@ -2,6 +2,8 @@ import Cta from '../components/Cta';
 import { useLoaderData } from '@remix-run/react';
 import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
 import { retrieve } from '~/models/transaction';
+import { retrieve as subProjectRetrieve } from '../models/subProject';
+
 
 const ButtonWrapper = ({ showSpinner }) => {
 	const [{ isPending }] = usePayPalScriptReducer();
@@ -63,10 +65,19 @@ orderID: data.orderID,
 });
 }
 export const loader = async ({ params, request }) => {
+  // console.log(params);
+  // console.log('lsdafjlkjdsalkjfdsflAJDLSKKDLSJAJLKFDSLFJKS;ADjk')
   const transaction = await retrieve(params.transactionUuid);
+  const subProject = await subProjectRetrieve(transaction.project.id);
+
+  // console.log(transaction)
+  // console.log('here')
+  // console.log(subProject)
+
 
   return ({
-transaction
+    subProject,
+    transaction
   });
 };
 
@@ -75,9 +86,10 @@ transaction
 export default function Cart() {
   
   const content  = require('app/content/cart.json');
-  const { transaction } = useLoaderData<typeof loader>();
+  const { subProject, transaction} = useLoaderData<typeof loader>();
 
-  console.log(transaction)
+  // console.log(transaction)
+  //So number of (ceil((products x units) / 1000)x tonne cost
 
   return (
 <div className="bg-background-teal text-light-black min-h-screen">
@@ -91,15 +103,15 @@ export default function Cart() {
   <div className='flex mb-6'>
 <p className=' w-1/3'>{transaction.product.name}</p>
 <p className=' w-1/3 text-center'>x</p>
-<p className=' w-1/3 text-right'>{transaction.products}</p>
+<p className=' w-1/3 text-right'>{transaction.quantity}</p>
   </div>
   <div className='flex bg-white bg-opacity-50 py-4 mb-24 rounded-md'>
-<p className=' w-full text-center'>{transaction.tonnes} tonnes of carbon</p>
+<p className=' w-full text-center'>{transaction.totalCarbon} tonnes of carbon</p>
   </div>
   <div className='my-8 border-b-2 border-green-underline'></div>
   <div className='flex justify-between'>
 <p>Total cost</p>
-<p>£{transaction.cost}</p>
+<p>£{((transaction.quantity * transaction.product.units) / 1000) * subProject.tonCost.value}</p>
   </div>
 </section>
 <section className='w-3/5 mx-auto mb-8 flex justify-center sm:max-w-screen-lg sm:mx-auto'>

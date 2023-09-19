@@ -273,14 +273,14 @@ function Header(props) {
 var infinity_green_default = "/build/_assets/infinity_green-ZMFQTTRC.png";
 
 // app/styles/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-EVLLT2LN.css";
+var tailwind_default = "/build/_assets/tailwind-S6XL4JUK.css";
 
 // app/styles/styles.css
 var styles_default = "/build/_assets/styles-G542KLJ7.css";
 
 // app/root.tsx
 var import_jsx_runtime4 = require("react/jsx-runtime"), links = () => [
-  { rel: "icon", href: "/_static/favicon.ico" },
+  // { rel: 'icon', href: '/_static/favicon.ico' },
   { rel: "stylesheet", href: tailwind_default },
   { rel: "stylesheet", href: styles_default },
   ...import_css_bundle.cssBundleHref ? [{ rel: "stylesheet", href: import_css_bundle.cssBundleHref }] : []
@@ -292,19 +292,6 @@ function App() {
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("meta", { charSet: "utf-8" }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("meta", { name: "viewport", content: "width=device-width, initial-scale=1.0" }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(import_react4.Meta, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "apple-touch-icon", sizes: "57x57", href: "/apple-icon-57x57.png" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "apple-touch-icon", sizes: "60x60", href: "/apple-icon-60x60.png" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "apple-touch-icon", sizes: "72x72", href: "/apple-icon-72x72.png" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "apple-touch-icon", sizes: "76x76", href: "/apple-icon-76x76.png" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "apple-touch-icon", sizes: "114x114", href: "/apple-icon-114x114.png" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "apple-touch-icon", sizes: "120x120", href: "/apple-icon-120x120.png" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "apple-touch-icon", sizes: "144x144", href: "/apple-icon-144x144.png" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "apple-touch-icon", sizes: "152x152", href: "/apple-icon-152x152.png" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-icon-180x180.png" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "icon", type: "image/png", sizes: "192x192", href: "/android-icon-192x192.png" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "icon", type: "image/png", sizes: "32x32", href: "/favicon-32x32.png" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "icon", type: "image/png", sizes: "96x96", href: "/favicon-96x96.png" }),
-      /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "icon", type: "image/png", sizes: "16x16", href: "/favicon-16x16.png" }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("link", { rel: "manifest", href: "/manifest.json" }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("meta", { name: "msapplication-TileColor", content: "#ffffff" }),
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("meta", { name: "msapplication-TileImage", content: "/ms-icon-144x144.png" }),
@@ -340,9 +327,12 @@ var api = {
   protocol: process.env.API_PROTOCOL
 };
 
+// app/models/transaction.ts
+var import_node2 = require("@remix-run/node");
+
 // app/models/offsetProduct.ts
 async function list() {
-  return console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`), (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`, {
+  return (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`, {
     method: "GET",
     headers: {
       "Content-type": "application/json; charset=UTF-8"
@@ -354,6 +344,21 @@ async function list() {
   }));
 }
 
+// app/helpers/validateEmailAddress.ts
+function validateEmailAddress(emailAddress) {
+  return !!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailAddress);
+}
+
+// app/helpers/validateNumberOfProducts.ts
+function validateNumberOfProducts(numberOfProducts) {
+  return !!(Number.isInteger(numberOfProducts) && numberOfProducts > 0);
+}
+
+// app/helpers/validateUuid.ts
+function validateUuid(uuid2) {
+  return !!/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(uuid2);
+}
+
 // app/models/transaction.ts
 async function create(contact, products, productUuid) {
   let transaction2 = {
@@ -361,22 +366,17 @@ async function create(contact, products, productUuid) {
     products,
     productUuid
   };
-  return {
-    contact: {
-      emailAddress: "email@danielmullin.com",
-      contactId: "82f853b8-69d6-402f-98d4-e5219e75fd0a"
-    },
-    // amount: 1000, // new_amount this was costß
-    // hard codedcurrency: 'GBP',
-    // projectId: '82f853b8-69d6-402f-98d4-e5219e75fd0a' // tbc
-    products: 100,
-    productId: "82f853b8-69d6-402f-98d4-e5219e75fd0a",
-    secret: "1234567890987654321",
-    transactionId: "82f853b8-69d6-402f-98d4-e5219e75fd0a"
-  };
+  return validateEmailAddress(contact.emailAddress) ? validateNumberOfProducts(products) ? validateUuid(productUuid) ? (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction/?api_key=${api.key}`, {
+    //NEEDS TO BE METHOD POST HERE, BUT THE $ACTION IN FAKE API ISNT WORKING
+    method: "GET",
+    // body: JSON.stringify(transaction),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  })).json()).find((Itransaction) => Itransaction.productId.id == transaction2.productUuid) : (0, import_node2.json)({ error: "Please select a product", errorInput: "", status: 422 }, 422) : (0, import_node2.json)({ error: "Number of products must be greater than 0", errorInput: "", status: 422 }, 422) : (0, import_node2.json)({ error: "Invalid Email Address", errorInput: "", status: 422 }, 422);
 }
 async function list2(accountUuid) {
-  return console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=qkdb8rPAQglW6bOt56DJ1sDs0Q-zWfbeN-bvK4Py0Ia1AzFucAaJIw==`), (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=qkdb8rPAQglW6bOt56DJ1sDs0Q-zWfbeN-bvK4Py0Ia1AzFucAaJIw==`, {
+  return (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=qkdb8rPAQglW6bOt56DJ1sDs0Q-zWfbeN-bvK4Py0Ia1AzFucAaJIw==`, {
     method: "GET",
     headers: {
       "Content-type": "application/json; charset=UTF-8"
@@ -391,14 +391,12 @@ async function list2(accountUuid) {
   }));
 }
 async function retrieve(uuid2) {
-  let data = await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=${api.key}`, {
+  let transaction2 = (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=${api.key}`, {
     method: "GET",
     headers: {
       "Content-type": "application/json; charset=UTF-8"
     }
-  })).json();
-  console.log(data);
-  let transaction2 = data.find((transaction3) => transaction3.transactionId == uuid2), offsetProducts = await list();
+  })).json()).find((transaction3) => transaction3.transactionId == uuid2), offsetProducts = await list();
   return transaction2.product = offsetProducts.find((product) => product.uuid === transaction2.productId.id), transaction2;
 }
 
@@ -494,14 +492,7 @@ var offset_products_transaction_exports = {};
 __export(offset_products_transaction_exports, {
   action: () => action
 });
-var import_node2 = require("@remix-run/node"), import_node3 = require("@remix-run/node");
-
-// app/helpers/validateEmailAddress.ts
-function validateEmailAddress(emailAddress) {
-  return !!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(emailAddress);
-}
-
-// app/routes/offset-products-transaction.tsx
+var import_node3 = require("@remix-run/node"), import_node4 = require("@remix-run/node");
 async function action({ params, request }) {
   let data = await request.formData(), contactUuid = String(data.get("contactUuid")), emailAddress = String(data.get("emailAddress")), numberOfProducts = Number(data.get("numberOfProducts")), productUuid = String(data.get("productUuid")), contact = {
     emailAddress,
@@ -511,18 +502,18 @@ async function action({ params, request }) {
     case "POST":
       try {
         if (!validateEmailAddress(emailAddress))
-          return (0, import_node3.json)({ error: "Invalid Email Address", errorInput: "", status: 422 }, 422);
-        if (numberOfProducts < 1)
-          return (0, import_node3.json)({ error: "Number of products must be greater than 0", errorInput: "", status: 422 }, 422);
-        if (!productUuid)
-          return (0, import_node3.json)({ error: "Please select a product", errorInput: "", status: 422 }, 422);
+          return (0, import_node4.json)({ error: "Invalid Email Address", errorInput: "", status: 422 }, 422);
+        if (!validateNumberOfProducts(numberOfProducts))
+          return (0, import_node4.json)({ error: "Number of products must be greater than 0", errorInput: "", status: 422 }, 422);
+        if (!validateUuid(productUuid))
+          return (0, import_node4.json)({ error: "Please select a product", errorInput: "", status: 422 }, 422);
         let transaction2 = await create(contact, numberOfProducts, productUuid);
-        return (0, import_node2.redirect)(`/cart/${transaction2.uuid}`);
+        return (0, import_node3.redirect)(`/cart/${transaction2.transactionId}`);
       } catch (error) {
-        return (0, import_node3.json)({ error: error.message, ok: !1 }, 500);
+        return (0, import_node4.json)({ error: error.message, ok: !1 }, 500);
       }
   }
-  return (0, import_node3.json)({ message: "Method not allowed", ok: !0 }, 405);
+  return (0, import_node4.json)({ message: "Method not allowed", ok: !0 }, 405);
 }
 
 // server-entry-module:@remix-run/dev/server-build
@@ -539,12 +530,13 @@ var import_react10 = require("@remix-run/react"), import_react11 = require("@rem
 
 // app/models/transactionProduct.ts
 async function retrieve2(uuid2) {
-  return (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`, {
+  let data = await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`, {
     method: "GET",
     headers: {
       "Content-type": "application/json; charset=UTF-8"
     }
-  })).json()).find((product2) => product2.productid == uuid2);
+  })).json();
+  return console.log(data), data.find((product2) => product2.productid == uuid2);
 }
 
 // app/components/Block.tsx
@@ -622,9 +614,7 @@ var enhalo_forest_default = "/build/_assets/enhalo_forest-RA5WC6SF.jpg";
 
 // app/routes/qrcodes.products.$data.tsx
 var import_jsx_runtime12 = require("react/jsx-runtime"), loader4 = async ({ params }) => {
-  let data = await JSON.parse(atob(params.data)), product = await retrieve2(data.productUuid), transaction2 = await retrieve(data.transactionUuid);
-  console.log(transaction2), console.log(product), console.log(data);
-  let name = product.name, quantity = transaction2.quantity, sequence = data.sequence, units = data.units;
+  let data = await JSON.parse(atob(params.data)), product = await retrieve2(data.productUuid), transaction2 = await retrieve(data.transactionUuid), name = product.name, quantity = transaction2.quantity, sequence = data.sequence, units = data.units;
   return {
     error: transaction2.product.units != product.offsetunits,
     name,
@@ -663,6 +653,33 @@ var import_react12 = require("@remix-run/react"), import_jsx_runtime13 = require
 
 // app/routes/cart.$transactionUuid.tsx
 var import_react13 = require("@remix-run/react"), import_react_paypal_js = require("@paypal/react-paypal-js");
+
+// app/models/subProject.ts
+async function list3() {
+  return (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Project?code=$https://carbonregistrytransaction.azurewebsites.net/api/Project?code=nnEJyQ7YYeS6Bo--53PhK1T5KJW3gOL-wHGKxfL3gmcvAzFuPAEKBQ==`, {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  })).json()).map((item) => ({
+    name: String(item.name),
+    tonCost: {
+      value: Number(item.toncost.value)
+    },
+    uuid: String(item.subprojectid)
+  }));
+}
+async function retrieve3(subProjectId) {
+  return {
+    tonCost: {
+      value: 50
+    },
+    name: "MVP Project",
+    subProjectId: "68d9e429-3cae-4e09-ab90-cc40cc54142c"
+  };
+}
+
+// app/routes/cart.$transactionUuid.tsx
 var import_jsx_runtime14 = require("react/jsx-runtime"), ButtonWrapper = ({ showSpinner }) => {
   let [{ isPending }] = (0, import_react_paypal_js.usePayPalScriptReducer)();
   return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(import_jsx_runtime14.Fragment, { children: [
@@ -710,21 +727,25 @@ function onApprove(data) {
   }).then((response) => response.json()).then((orderData) => {
   });
 }
-var loader5 = async ({ params, request }) => ({
-  transaction: await retrieve(params.transactionUuid)
-});
+var loader5 = async ({ params, request }) => {
+  let transaction2 = await retrieve(params.transactionUuid);
+  return {
+    subProject: await retrieve3(transaction2.project.id),
+    transaction: transaction2
+  };
+};
 function Cart() {
-  let content = require_cart(), { transaction: transaction2 } = (0, import_react13.useLoaderData)();
-  return console.log(transaction2), /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "bg-background-teal text-light-black min-h-screen", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "px-8 sm:max-w-screen-lg sm:mx-auto", children: [
+  let content = require_cart(), { subProject, transaction: transaction2 } = (0, import_react13.useLoaderData)();
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "bg-background-teal text-light-black min-h-screen", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "px-8 sm:max-w-screen-lg sm:mx-auto", children: [
     /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("section", { className: "mb-4 sm:max-w-screen-lg sm:mx-auto", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "pt-20", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h1", { className: "text-3xl leading-none mb-6 sm:mb-8", children: content.h1 }) }) }),
     /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("section", { className: "bg-white bg-opacity-20 rounded-xl px-8 py-8 mb-8 sm:max-w-screen-lg sm:mx-auto text-xl", children: [
       /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "flex mb-6", children: [
         /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: " w-1/3", children: transaction2.product.name }),
         /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: " w-1/3 text-center", children: "x" }),
-        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: " w-1/3 text-right", children: transaction2.products })
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: " w-1/3 text-right", children: transaction2.quantity })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "flex bg-white bg-opacity-50 py-4 mb-24 rounded-md", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("p", { className: " w-full text-center", children: [
-        transaction2.tonnes,
+        transaction2.totalCarbon,
         " tonnes of carbon"
       ] }) }),
       /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "my-8 border-b-2 border-green-underline" }),
@@ -732,7 +753,7 @@ function Cart() {
         /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { children: "Total cost" }),
         /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("p", { children: [
           "\xA3",
-          transaction2.cost
+          transaction2.quantity * transaction2.product.units / 1e3 * subProject.tonCost.value
         ] })
       ] })
     ] }),
@@ -749,40 +770,8 @@ __export(offset_products_exports, {
 });
 var import_react15 = require("@remix-run/react");
 
-// app/models/subProject.ts
-async function list3() {
-  return console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/Project?code=${api.key}`), (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Project?code=$https://carbonregistrytransaction.azurewebsites.net/api/Project?code=nnEJyQ7YYeS6Bo--53PhK1T5KJW3gOL-wHGKxfL3gmcvAzFuPAEKBQ==`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  })).json()).map((item) => ({
-    name: String(item.name),
-    tonCost: {
-      value: Number(item.toncost.value)
-    },
-    uuid: String(item.subprojectid)
-  }));
-}
-async function retrieve3(subProjectId) {
-  return {
-    tonCost: {
-      value: 50
-    },
-    name: "MVP Project",
-    subProjectId: "68d9e429-3cae-4e09-ab90-cc40cc54142c"
-  };
-}
-
 // app/components/OffsetProductsForm.tsx
 var import_react14 = require("@remix-run/react");
-
-// app/helpers/validateNumberOfProducts.ts
-function validateNumberOfProducts(numberOfProducts) {
-  return !!(Number.isInteger(numberOfProducts) && numberOfProducts > 0);
-}
-
-// app/components/OffsetProductsForm.tsx
 var import_jsx_runtime15 = require("react/jsx-runtime");
 function OffsetProducts(props) {
   let fetcher = (0, import_react14.useFetcher)(), { contact, content, offsetProducts, subProject } = props, errors = {
@@ -878,7 +867,7 @@ var account_update_exports = {};
 __export(account_update_exports, {
   action: () => action3
 });
-var import_node4 = require("@remix-run/node");
+var import_node5 = require("@remix-run/node");
 
 // app/models/account.model.ts
 async function retrieve4(uuid2, username, password) {
@@ -894,7 +883,7 @@ async function retrieve4(uuid2, username, password) {
       username: "enhalogreen",
       uuid: "9f7bde77-4bce-4694-960c-60aed6b33000"
     };
-  let json5 = await (await fetch(`${api.protocol}://${api.base}${api.port}/accounts/?username=${username}&password=${password}`, {
+  let json6 = await (await fetch(`${api.protocol}://${api.base}${api.port}/accounts/?username=${username}&password=${password}`, {
     method: "GET",
     body: JSON.stringify(account),
     headers: {
@@ -925,10 +914,10 @@ async function action3({ params, request }) {
         let patch = await update(emailAddress, uuid2);
         return 200;
       } catch (error) {
-        return console.log("error"), (0, import_node4.json)({ message: error.message, ok: !1 }, 500);
+        return console.log("error"), (0, import_node5.json)({ message: error.message, ok: !1 }, 500);
       }
   }
-  return (0, import_node4.json)({ message: "Method not allowed", ok: !0 }, 405);
+  return (0, import_node5.json)({ message: "Method not allowed", ok: !0 }, 405);
 }
 
 // app/routes/fAkePI.$action.tsx
@@ -936,9 +925,9 @@ var fAkePI_action_exports = {};
 __export(fAkePI_action_exports, {
   loader: () => loader7
 });
-var import_node5 = require("@remix-run/node");
+var import_node6 = require("@remix-run/node");
 async function loader7({ params, request }) {
-  let transactionUuid = new URL(request.url).searchParams.get("transactionUuid") ?? null, response = {
+  let url = new URL(request.url), transactionUuid = url.searchParams.get("transactionUuid") ?? null, productUuid = url.searchParams.get("productUuid") ?? null, response = {
     OffsetProduct: [
       {
         productid: "7b434493-fe3f-ee11-bdf3-000d3ad4d529",
@@ -1096,15 +1085,15 @@ async function loader7({ params, request }) {
   switch (request.method) {
     case "GET":
       let responseKey = String(params.action);
-      return params.action === "Transaction" && transactionUuid !== null && (responseKey = `Transaction${transactionUuid}`), (0, import_node5.json)(response[responseKey]);
+      return params.action === "Transaction" && transactionUuid !== null && (responseKey = `Transaction${transactionUuid}`), (0, import_node6.json)(response[responseKey]);
     case "PATCH":
       console.log("post");
       break;
     case "POST":
-      console.log("post");
-      break;
+      let responseKeyPost = String("Transaction");
+      return (0, import_node6.json)(response[responseKeyPost]);
   }
-  return (0, import_node5.json)({ message: "Method not allowed", ok: !0 }, 405);
+  return (0, import_node6.json)({ message: "Method not allowed", ok: !0 }, 405);
 }
 
 // app/routes/privacy-policy.tsx
@@ -1320,48 +1309,48 @@ function AccountForm(props) {
           optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
             "input",
             {
-              className: (fetcher.state === "submitting", "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none"),
+              className: fetcher.state === "submitting" ? "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" : "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none text-black",
               name: "emailAddress",
               type: "text",
               defaultValue: optimisticEmailAddress
             }
-          ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { children: optimisticEmailAddress })
+          ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "pt-4 pl-2 mb-2", children: optimisticEmailAddress })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "w-47.5 mr-[5%] mb-8", children: [
           /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("label", { children: "First name" }),
           optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
             "input",
             {
-              className: (fetcher.state === "submitting", "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none"),
+              className: (fetcher.state === "submitting", "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none"),
               name: "firstName",
               type: "text",
               defaultValue: optimisticFirstName
             }
-          ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { children: optimisticFirstName })
+          ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "pt-4 pl-2 mb-2", children: optimisticFirstName })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "w-47.5 mb-8", children: [
           /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("label", { children: "Last name" }),
           optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
             "input",
             {
-              className: (fetcher.state === "submitting", "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none"),
+              className: (fetcher.state === "submitting", "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none"),
               name: "lastName",
               type: "text",
               defaultValue: optimisticLastName
             }
-          ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { children: optimisticLastName })
+          ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "pt-4 pl-2 mb-2", children: optimisticLastName })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "mb-8", children: [
           /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("label", { children: "Phone number" }),
           optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
             "input",
             {
-              className: (fetcher.state === "submitting", "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none"),
+              className: (fetcher.state === "submitting", "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none"),
               name: "phoneNumber",
               type: "text",
               defaultValue: optimisticPhoneNumber
             }
-          ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { children: optimisticPhoneNumber })
+          ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "pt-4 pl-2 mb-2", children: optimisticPhoneNumber })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "w-full" }),
         /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "w-full flex justify-center sm:h-14", children: optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "w-1/2", children: [
@@ -1379,8 +1368,8 @@ var import_jsx_runtime22 = require("react/jsx-runtime"), loader10 = async ({ par
 });
 function Account() {
   let { account: account2 } = (0, import_react20.useLoaderData)(), content = require_account();
-  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("section", { className: "text-white bg-background-teal min-h-screen", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "pt-20 px-8 mb-8", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h1", { className: "text-3xl mb-6", children: content.h1 }) }),
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "px-8 sm:max-w-screen-lg sm:mx-auto", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h1", { className: "mb-8 text-3xl leading-none ", children: content.h1 }),
     /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(AccountForm, { account: account2 }) })
   ] });
 }
@@ -1648,8 +1637,21 @@ var loader13 = async ({ request }) => {
 // server-entry-module:@remix-run/dev/server-build
 var route19 = __toESM(require_login());
 
+// app/routes/$.tsx
+var __exports = {};
+__export(__exports, {
+  default: () => PostRoute
+});
+var import_jsx_runtime24 = require("react/jsx-runtime");
+function PostRoute() {
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: enhalo_forest_default, className: "absolute h-[100vh] -z-20 top-0 object-cover sm:w-full " }),
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-white px-8", children: "We are sorry the page you are looking for does not exist" })
+  ] });
+}
+
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-DVE3ZZYY.js", imports: ["/build/_shared/chunk-6L2EXQIA.js", "/build/_shared/chunk-GDLBX7ER.js", "/build/_shared/chunk-Q3IECNXJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-MVSJWLQJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-3WYQ6JNI.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account": { id: "routes/account", parentId: "root", path: "account", index: void 0, caseSensitive: void 0, module: "/build/routes/account-JX2E57R3.js", imports: ["/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account-update": { id: "routes/account-update", parentId: "root", path: "account-update", index: void 0, caseSensitive: void 0, module: "/build/routes/account-update-LMFPDNC6.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/accounts_.$contactUuid.transactions": { id: "routes/accounts_.$contactUuid.transactions", parentId: "root", path: "accounts/:contactUuid/transactions", index: void 0, caseSensitive: void 0, module: "/build/routes/accounts_.$contactUuid.transactions-5Y5Q2BNQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/accounts_.$contactUuid.transactions_.$transactionUuid": { id: "routes/accounts_.$contactUuid.transactions_.$transactionUuid", parentId: "root", path: "accounts/:contactUuid/transactions/:transactionUuid", index: void 0, caseSensitive: void 0, module: "/build/routes/accounts_.$contactUuid.transactions_.$transactionUuid-DET2NPYZ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.$transactionUuid": { id: "routes/cart.$transactionUuid", parentId: "root", path: "cart/:transactionUuid", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.$transactionUuid-IJJRRDWU.js", imports: ["/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.error": { id: "routes/cart.error", parentId: "root", path: "cart/error", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.error-IWHNPKZ4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.success": { id: "routes/cart.success", parentId: "root", path: "cart/success", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.success-IWW6AU3O.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact-us": { id: "routes/contact-us", parentId: "root", path: "contact-us", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-us-7HIA3QL6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/fAkePI.$action": { id: "routes/fAkePI.$action", parentId: "root", path: "fAkePI/:action", index: void 0, caseSensitive: void 0, module: "/build/routes/fAkePI.$action-YN5UYWEV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-VFO7F24P.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/offset-products": { id: "routes/offset-products", parentId: "root", path: "offset-products", index: void 0, caseSensitive: void 0, module: "/build/routes/offset-products-AF7GBVXC.js", imports: ["/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/offset-products-transaction": { id: "routes/offset-products-transaction", parentId: "root", path: "offset-products-transaction", index: void 0, caseSensitive: void 0, module: "/build/routes/offset-products-transaction-UVG533GA.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/privacy-policy": { id: "routes/privacy-policy", parentId: "root", path: "privacy-policy", index: void 0, caseSensitive: void 0, module: "/build/routes/privacy-policy-B27733JT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/projects": { id: "routes/projects", parentId: "root", path: "projects", index: void 0, caseSensitive: void 0, module: "/build/routes/projects-YOIDAHUQ.js", imports: ["/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcode": { id: "routes/qrcode", parentId: "root", path: "qrcode", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcode-V75SBLLL.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes": { id: "routes/qrcodes", parentId: "root", path: "qrcodes", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes-E5GQHVW3.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes.products.$data": { id: "routes/qrcodes.products.$data", parentId: "routes/qrcodes", path: "products/:data", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes.products.$data-3D77MIRJ.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes.transactions.$uuid": { id: "routes/qrcodes.transactions.$uuid", parentId: "routes/qrcodes", path: "transactions/:uuid", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes.transactions.$uuid-3NORBZFN.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, version: "3db2f6d7", hmr: void 0, url: "/build/manifest-3DB2F6D7.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-DVE3ZZYY.js", imports: ["/build/_shared/chunk-6L2EXQIA.js", "/build/_shared/chunk-GDLBX7ER.js", "/build/_shared/chunk-Q3IECNXJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-6BHNCRFO.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-MZDJSLZB.js", imports: ["/build/_shared/chunk-2ELPQVOV.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-3WYQ6JNI.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account": { id: "routes/account", parentId: "root", path: "account", index: void 0, caseSensitive: void 0, module: "/build/routes/account-BO32H25N.js", imports: ["/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account-update": { id: "routes/account-update", parentId: "root", path: "account-update", index: void 0, caseSensitive: void 0, module: "/build/routes/account-update-LMFPDNC6.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/accounts_.$contactUuid.transactions": { id: "routes/accounts_.$contactUuid.transactions", parentId: "root", path: "accounts/:contactUuid/transactions", index: void 0, caseSensitive: void 0, module: "/build/routes/accounts_.$contactUuid.transactions-5Y5Q2BNQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/accounts_.$contactUuid.transactions_.$transactionUuid": { id: "routes/accounts_.$contactUuid.transactions_.$transactionUuid", parentId: "root", path: "accounts/:contactUuid/transactions/:transactionUuid", index: void 0, caseSensitive: void 0, module: "/build/routes/accounts_.$contactUuid.transactions_.$transactionUuid-DET2NPYZ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.$transactionUuid": { id: "routes/cart.$transactionUuid", parentId: "root", path: "cart/:transactionUuid", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.$transactionUuid-NFSZL4JM.js", imports: ["/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.error": { id: "routes/cart.error", parentId: "root", path: "cart/error", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.error-IWHNPKZ4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.success": { id: "routes/cart.success", parentId: "root", path: "cart/success", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.success-IWW6AU3O.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact-us": { id: "routes/contact-us", parentId: "root", path: "contact-us", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-us-7HIA3QL6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/fAkePI.$action": { id: "routes/fAkePI.$action", parentId: "root", path: "fAkePI/:action", index: void 0, caseSensitive: void 0, module: "/build/routes/fAkePI.$action-YN5UYWEV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-VFO7F24P.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/offset-products": { id: "routes/offset-products", parentId: "root", path: "offset-products", index: void 0, caseSensitive: void 0, module: "/build/routes/offset-products-AF7GBVXC.js", imports: ["/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/offset-products-transaction": { id: "routes/offset-products-transaction", parentId: "root", path: "offset-products-transaction", index: void 0, caseSensitive: void 0, module: "/build/routes/offset-products-transaction-UVG533GA.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/privacy-policy": { id: "routes/privacy-policy", parentId: "root", path: "privacy-policy", index: void 0, caseSensitive: void 0, module: "/build/routes/privacy-policy-B27733JT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/projects": { id: "routes/projects", parentId: "root", path: "projects", index: void 0, caseSensitive: void 0, module: "/build/routes/projects-YOIDAHUQ.js", imports: ["/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcode": { id: "routes/qrcode", parentId: "root", path: "qrcode", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcode-V75SBLLL.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes": { id: "routes/qrcodes", parentId: "root", path: "qrcodes", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes-E5GQHVW3.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes.products.$data": { id: "routes/qrcodes.products.$data", parentId: "routes/qrcodes", path: "products/:data", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes.products.$data-PHQBYJFE.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes.transactions.$uuid": { id: "routes/qrcodes.transactions.$uuid", parentId: "routes/qrcodes", path: "transactions/:uuid", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes.transactions.$uuid-3NORBZFN.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, version: "3e41e3c1", hmr: void 0, url: "/build/manifest-3E41E3C1.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, v2_errorBoundary: !0, v2_headers: !0, v2_meta: !0, v2_normalizeFormMethod: !0, v2_routeConvention: !0 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -1812,6 +1814,14 @@ var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postc
     index: void 0,
     caseSensitive: void 0,
     module: route19
+  },
+  "routes/$": {
+    id: "routes/$",
+    parentId: "root",
+    path: "*",
+    index: void 0,
+    caseSensitive: void 0,
+    module: __exports
   }
 };
 // Annotate the CommonJS export names for ESM import in node:

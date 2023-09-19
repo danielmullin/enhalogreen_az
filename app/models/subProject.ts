@@ -9,7 +9,7 @@ export interface SubProject {
 }
 	
 export async function list(): Promise<SubProject[]> {
-	console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/Project?code=${api.key}`)
+	// console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/Project?code=${api.key}`)
 	// @todo error handling
 	const response = await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Project?code=$https://carbonregistrytransaction.azurewebsites.net/api/Project?code=nnEJyQ7YYeS6Bo--53PhK1T5KJW3gOL-wHGKxfL3gmcvAzFuPAEKBQ==`, {
 		method: 'GET',

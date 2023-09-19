@@ -39,11 +39,11 @@ if(fetcher.formData) {
         {optimisticEdit ?
           <input
             className={ (fetcher.state === 'submitting' ) ?
-            "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none":
-            "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" }              
+            "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none":
+            "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none text-black" }              
             name="emailAddress" type="text" defaultValue={optimisticEmailAddress} />
           : 
-          <div>
+          <div className='pt-4 pl-2 mb-2'>
             {optimisticEmailAddress}
           </div>
         } 
@@ -53,11 +53,11 @@ if(fetcher.formData) {
         {optimisticEdit ?
           <input
             className={ (fetcher.state === 'submitting' ) ?
-            "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none":
-            "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" }              
+            "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none":
+            "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" }              
             name="firstName" type="text" defaultValue={optimisticFirstName} />
           : 
-          <div>
+          <div className='pt-4 pl-2 mb-2'>
             {optimisticFirstName}
           </div>
         } 
@@ -67,11 +67,11 @@ if(fetcher.formData) {
         {optimisticEdit ?
           <input
             className={ (fetcher.state === 'submitting' ) ?
-            "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none":
-            "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" }              
+            "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none":
+            "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" }              
             name="lastName" type="text" defaultValue={optimisticLastName} />
           : 
-          <div>
+          <div className='pt-4 pl-2 mb-2'>
             {optimisticLastName}
           </div>
         } 
@@ -81,11 +81,11 @@ if(fetcher.formData) {
         {optimisticEdit ?
           <input
             className={ (fetcher.state === 'submitting' ) ?
-            "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none":
-            "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" }              
+            "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none":
+            "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" }              
             name="phoneNumber" type="text" defaultValue={optimisticPhoneNumber} />
           : 
-          <div>
+          <div className='pt-4 pl-2 mb-2'>
             {optimisticPhoneNumber}
           </div>
         } 
