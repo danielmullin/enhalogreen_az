@@ -2,7 +2,7 @@ import { Link, useMatches } from '@remix-run/react';
 
 export default function Footer(): JSX.Element
 {
-  return <footer className="bg-black text-base text-white fixed bottom-0 w-full">
+  return <footer className="bg-black text-base text-white fixed bottom-0 w-full hidden">
     <div className='max-w-960 m-auto flex-wrap justify-between sm:flex'>
         <div className="py-8">
             <ul id="id" className="flex px-4">

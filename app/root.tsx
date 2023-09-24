@@ -32,7 +32,7 @@ export const loader: LoaderFunction = async ({ request }) => {
 export default function App() {
 	const matches = useMatches();
 	const { id } = matches[matches.length - 1];
-  const isIndex = (['routes/_index']).includes(id)
+  const isIndex = (['routes/_index, routes/contact-us']).includes(id)
   return (
     <html lang="en" className="relative overflow-x-hidden">
       <head>

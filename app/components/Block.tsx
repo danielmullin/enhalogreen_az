@@ -12,7 +12,7 @@ const Block = (props: BlockProps) => {
   return (
     <>
       {"green" == allocation ? (
-        <div className={`bg-block-green w-3u h-3u m-2 opacity-${opacityClass}`}></div>
+        <div className={`bg-block-green w-${units}u h-${units}u m-2 opacity-${opacityClass}`}></div>
       ) : "gold" == allocation ? (
         <Form method="post">
           <button type="submit" className={`bg-block-gold w-${units}u h-${units}u m-2 opacity-${opacityClass} flex`}></button>

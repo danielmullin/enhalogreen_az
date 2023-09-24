@@ -23,7 +23,7 @@ console.log(transaction)
 			productUuid: transaction.productId.id,
 			sequence: i,
 			transactionUuid: transaction.transactionId,
-			units: transaction.productId.units,
+			units: transaction.product.units,
 		});
 	}
 
@@ -39,13 +39,13 @@ export default function AccountTransaction() {
 	return (
 		<div className="px-8 sm:max-w-screen-lg sm:mx-auto">
 			<h1 className="text-3xl leading-none">{transaction.project.name} {transaction.quantity} {transaction.product.name}</h1>
-			<div  className="pt-2 flex justify-between">
+			<div className="flex justify-between">
 				<div>
 					<p>{transaction.project.name}</p>
 					<p>{transaction.product.name} {transaction.quantity}</p>
 				</div>
 				<div>
-					<a href={`/qrcodes?productName=${transaction.productId.name}&productUuid=${transaction.productId.id}&quantity=${transaction.quantity}&transactionUuid=${transaction.transactionId}&units=${transaction.product.units}`} download={`/qrcodes?productName=${transaction.productId.name}&productUuid=${transaction.productId.productUuid}&quantity=${transaction.quantity}&transactionUuid=${transaction.uuid}&units=${transaction.product.units}`}>
+					<a href={`/qrcodes?productName=${transaction.productId.name}&productUuid=${transaction.productId.id}&quantity=${transaction.quantity}&transactionUuid=${transaction.transactionId}&units=${transaction.product.units}`} download={`/qrcodes?productName=${transaction.productId.name}&productUuid=${transaction.productId.id}&quantity=${transaction.quantity}&transactionUuid=${transaction.transactionId}&units=${transaction.product.units}`}>
 						<img src={qrcodes} className="mb-2" />
 					</a>
 				</div>

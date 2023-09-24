@@ -19,7 +19,7 @@ export default function Header(props: HeaderProps): JSX.Element {
       </div>
     </div>
   );
-  if (["routes/projects", "routes/account", "routes/cart", "routes/contact-us", "routes/offset-products", "routes/accounts.$contactId", "routes/accounts_.$contactId.transactions", "routes/accounts_.$contactId.transactions_.$transactionId"].includes(routeId)) {
+  if (["routes/projects", "routes/account", "routes/cart", "routes/offset-products", "routes/accounts.$contactId", "routes/accounts_.$contactId.transactions", "routes/accounts_.$contactId.transactions_.$transactionId"].includes(routeId)) {
     headerClass = "bg-image";
   }
   if (["routes/qrcodes/products"].includes(routeId)) {

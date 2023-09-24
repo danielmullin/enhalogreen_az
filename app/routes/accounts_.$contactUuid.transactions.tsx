@@ -20,11 +20,20 @@ export default function AccountTransactions() {
 
   return (
     <div className="px-8 sm:max-w-screen-lg sm:mx-auto">
-      <h1 className="mb-8 text-3xl leading-none">{content.h1}</h1>
+      <h1 className="text-3xl leading-none">{content.h1}</h1>
+      <div className="h-[108px]">
+        <p>{content.pLorem[0]}</p>
+          <p>{content.pLorem[1]}</p>
+
+        </div>
       <section>
         {transactions.map((transaction: any) => {
-          return <AccountTransaction contactUuid={contactUuid} key={transaction.uuid} name={transaction.name} uuid={transaction.uuid} />;
-        })}
+
+          return (
+          <div className="flex justify-between items-center sm:text-2xl">
+          <AccountTransaction contactUuid={contactUuid} key={transaction.uuid} name={transaction.name} uuid={transaction.uuid} /> 
+          </div>
+        )})}
       </section>
     </div>
   );

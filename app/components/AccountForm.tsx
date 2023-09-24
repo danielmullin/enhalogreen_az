@@ -15,7 +15,7 @@ let optimisticEmailAddress: string = account.contact.emailAddress;
 let optimisticFirstName: string = account.contact.firstName;
 let optimisticLastName: string = account.contact.lastName;
 let optimisticPhoneNumber: string = account.contact.phoneNumber;
-let optimisticEdit = false;
+let optimisticEdit = true;
 
 if(fetcher.formData) {
   optimisticEmailAddress = String(fetcher.formData.get('emailAddress'));
@@ -29,12 +29,12 @@ if(fetcher.formData) {
     <>
     <fetcher.Form 
       action="/account-update"
-      className="w-full flex flex-wrap px-8 sm:max-w-screen-lg sm:mx-auto text-light-black "
+      className="w-full flex flex-wrap sm:mx-auto sm:items-end text-light-black "
       method="post"
       onSubmit={(e) => { if(optimisticEdit == true) fetcher.submit(e.currentTarget, { replace: true }) } }
     >
       <input name="accountUuid" type="hidden" defaultValue={account.uuid} />
-      <div className='mb-8'>
+      <div className='mb-8 w-full'>
         <label>Email Address</label>
         {optimisticEdit ?
           <input
@@ -76,7 +76,7 @@ if(fetcher.formData) {
           </div>
         } 
       </div>
-      <div className='mb-8'>
+      <div className='mb-8 w-full'>
       <label>Phone number</label>
         {optimisticEdit ?
           <input

@@ -2,7 +2,7 @@ import { useLoaderData } from "@remix-run/react";
 import { list, SubProject } from "../models/subProject";
 import Cta from "../components/Cta";
 
-export const loader = async ({ request }) => {
+export const loader = async ({ }) => {
   const subProjects = await list();
 
   return {
