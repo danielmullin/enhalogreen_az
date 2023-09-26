@@ -20,8 +20,8 @@ export default function Account() {
 	const content = require('app/content/account.json');
 
 	return (
-		<div className='px-8 sm:max-w-screen-sm sm:mx-auto'>
-			<h1 className='mb-8 text-3xl leading-none '>{content.h1}</h1>
+		<div className="px-8 sm:mx-auto sm:max-w-screen-sm">
+			<h1 className="mb-8 text-3xl leading-none ">{content.h1}</h1>
 			<div>
 				<AccountForm account={account} />
 			</div>

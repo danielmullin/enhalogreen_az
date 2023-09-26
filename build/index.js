@@ -42,6 +42,10 @@ var require_account_transactions = __commonJS({
       p: [
         "EnhaloGreen develops and shares digital tools that deliver agility and credibility to carbon initiatives, and build confidence in the carbon ecosystem.",
         "Our complete carbon solution gives users anywhere in the world \u2013 from governments and corporates to landowners, charities and individuals \u2013 transparency, accountability and compliance."
+      ],
+      pLorem: [
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam lacus.",
+        "Lorem ipsum dolor sit amet,"
       ]
     };
   }
@@ -61,6 +65,18 @@ var require_cart = __commonJS({
       h1: "Order details",
       p: [
         ""
+      ]
+    };
+  }
+});
+
+// app/content/contact-us-success.json
+var require_contact_us_success = __commonJS({
+  "app/content/contact-us-success.json"(exports, module2) {
+    module2.exports = {
+      h1: "Thank you",
+      p: [
+        "We have recieved your request"
       ]
     };
   }
@@ -93,6 +109,19 @@ var require_cart_success = __commonJS({
 var require_cart_error = __commonJS({
   "app/routes/cart.error.tsx"() {
     "use strict";
+  }
+});
+
+// app/content/contact-us.json
+var require_contact_us = __commonJS({
+  "app/content/contact-us.json"(exports, module2) {
+    module2.exports = {
+      cta: {
+        submit: "Submit"
+      },
+      h1: "Let\u2019s build a carbon ecosystem",
+      p: "Join us to build a credible, secure and transparent carbon ecosystem. Whether you are planning a project, seeking to verify carbon capture or looking for certified carbon credits, we can help \u2013 and together we can bring trust to carbon markets and help them fulfil their world-saving potential."
+    };
   }
 });
 
@@ -238,7 +267,7 @@ var import_css_bundle = __toESM(require_dist()), import_react4 = require("@remix
 // app/components/Footer.tsx
 var import_react2 = require("@remix-run/react"), import_jsx_runtime2 = require("react/jsx-runtime");
 function Footer() {
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("footer", { className: "bg-black text-base text-white fixed bottom-0 w-full", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "max-w-960 m-auto flex-wrap justify-between sm:flex", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("footer", { className: "bg-black text-base text-white fixed bottom-0 w-full hidden", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "max-w-960 m-auto flex-wrap justify-between sm:flex", children: [
     /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("div", { className: "py-8", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("ul", { id: "id", className: "flex px-4", children: [
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("li", { id: "id", className: "mr-2", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react2.Link, { to: "https://twitter.com/", className: "nav-link", children: "Twitter" }) }),
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("li", { id: "menu-item-91", className: "", children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(import_react2.Link, { to: "https://www.linkedin.com/", className: "nav-link", children: "Linkedin" }) })
@@ -263,7 +292,7 @@ function Header(props) {
       /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_react3.Link, { to: "/contact-us", children: "Contact Us" })
     ] })
   ] });
-  return ["routes/projects", "routes/account", "routes/cart", "routes/contact-us", "routes/offset-products", "routes/accounts.$contactId", "routes/accounts_.$contactId.transactions", "routes/accounts_.$contactId.transactions_.$transactionId"].includes(routeId) && (headerClass = "bg-image"), ["routes/qrcodes/products"].includes(routeId) && (headerNav = /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", {})), /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("header", { className: `mb-8 ${headerClass}`, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "min-h-[10vh] px-8 flex items-center justify-between sm:justify-between sm:max-w-screen-lg sm:m-auto", children: [
+  return ["routes/projects", "routes/account", "routes/cart", "routes/offset-products", "routes/accounts.$contactUuid", "routes/accounts_.$contactUuid.transactions", "routes/accounts_.$contactUuid.transactions_.$transactionUuid"].includes(routeId) && (headerClass = "bg-image"), ["routes/qrcodes/products"].includes(routeId) && (headerNav = /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", {})), /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("header", { className: `mb-8 ${headerClass}`, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "min-h-[10vh] px-8 flex items-center justify-between sm:justify-between sm:max-w-screen-lg sm:m-auto", children: [
     /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("div", { className: "w-44", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(import_react3.Link, { to: "/", children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("img", { src: enhalo_green_logo_default, alt: "" }) }) }),
     headerNav
   ] }) });
@@ -273,7 +302,7 @@ function Header(props) {
 var infinity_green_default = "/build/_assets/infinity_green-ZMFQTTRC.png";
 
 // app/styles/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-S6XL4JUK.css";
+var tailwind_default = "/build/_assets/tailwind-ZYOEUWD3.css";
 
 // app/styles/styles.css
 var styles_default = "/build/_assets/styles-G542KLJ7.css";
@@ -286,7 +315,7 @@ var import_jsx_runtime4 = require("react/jsx-runtime"), links = () => [
   ...import_css_bundle.cssBundleHref ? [{ rel: "stylesheet", href: import_css_bundle.cssBundleHref }] : []
 ], loader = async ({ request }) => [];
 function App() {
-  let matches = (0, import_react4.useMatches)(), { id } = matches[matches.length - 1], isIndex = ["routes/_index"].includes(id);
+  let matches = (0, import_react4.useMatches)(), { id } = matches[matches.length - 1], isIndex = ["routes/_index, routes/contact-us"].includes(id);
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("html", { lang: "en", className: "relative overflow-x-hidden", children: [
     /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("meta", { charSet: "utf-8" }),
@@ -332,16 +361,20 @@ var import_node2 = require("@remix-run/node");
 
 // app/models/offsetProduct.ts
 async function list() {
-  return (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  })).json()).map((item) => ({
-    uuid: String(item.productid),
-    name: String(item.name),
-    units: Number(item.offsetunits)
-  }));
+  try {
+    return (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })).json()).map((item) => ({
+      uuid: String(item.productid),
+      name: String(item.name),
+      units: Number(item.offsetunits)
+    }));
+  } catch (error) {
+    return console.error(`Error occured: ${String(error)}`), { error };
+  }
 }
 
 // app/helpers/validateEmailAddress.ts
@@ -366,38 +399,66 @@ async function create(contact, products, productUuid) {
     products,
     productUuid
   };
-  return validateEmailAddress(contact.emailAddress) ? validateNumberOfProducts(products) ? validateUuid(productUuid) ? (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction/?api_key=${api.key}`, {
-    //NEEDS TO BE METHOD POST HERE, BUT THE $ACTION IN FAKE API ISNT WORKING
-    method: "GET",
-    // body: JSON.stringify(transaction),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  })).json()).find((Itransaction) => Itransaction.productId.id == transaction2.productUuid) : (0, import_node2.json)({ error: "Please select a product", errorInput: "", status: 422 }, 422) : (0, import_node2.json)({ error: "Number of products must be greater than 0", errorInput: "", status: 422 }, 422) : (0, import_node2.json)({ error: "Invalid Email Address", errorInput: "", status: 422 }, 422);
+  if (!validateEmailAddress(contact.emailAddress))
+    return (0, import_node2.json)({ error: "Invalid Email Address", errorInput: "", status: 422 }, 422);
+  if (!validateNumberOfProducts(products))
+    return (0, import_node2.json)(
+      {
+        error: "Number of products must be greater than 0",
+        errorInput: "",
+        status: 422
+      },
+      422
+    );
+  if (!validateUuid(productUuid))
+    return (0, import_node2.json)({ error: "Please select a product", errorInput: "", status: 422 }, 422);
+  try {
+    return (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction/?api_key=${api.key}`, {
+      // NEEDS TO BE METHOD POST HERE, BUT THE $ACTION IN FAKE API ISN'T WORKING
+      method: "GET",
+      // body: JSON.stringify(transaction),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })).json()).find((Itransaction) => Itransaction.productId.id == transaction2.productUuid);
+  } catch (error) {
+    return console.error(`Error occured: ${String(error)}`), { error };
+  }
 }
 async function list2(accountUuid) {
-  return (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=qkdb8rPAQglW6bOt56DJ1sDs0Q-zWfbeN-bvK4Py0Ia1AzFucAaJIw==`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  })).json()).map((item) => ({
-    name: `${item.quantity} x ${item.productId.name}`,
-    product: {
-      name: item.productId.name
-    },
-    quantity: item.quantity,
-    uuid: String(item.transactionId)
-  }));
+  try {
+    return (await (await fetch(
+      `${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=qkdb8rPAQglW6bOt56DJ1sDs0Q-zWfbeN-bvK4Py0Ia1AzFucAaJIw==`,
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      }
+    )).json()).map((item) => ({
+      name: `${item.quantity} x ${item.productId.name}`,
+      product: {
+        name: item.productId.name
+      },
+      quantity: item.quantity,
+      uuid: String(item.transactionId)
+    }));
+  } catch (error) {
+    return console.error(`Error occured: ${String(error)}`), { error };
+  }
 }
 async function retrieve(uuid2) {
-  let transaction2 = (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=${api.key}`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  })).json()).find((transaction3) => transaction3.transactionId == uuid2), offsetProducts = await list();
-  return transaction2.product = offsetProducts.find((product) => product.uuid === transaction2.productId.id), transaction2;
+  try {
+    let transaction2 = (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=${api.key}`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })).json()).find((transaction3) => transaction3.transactionId == uuid2), offsetProducts = await list();
+    return transaction2.product = offsetProducts.find((product) => product.uuid === transaction2.productId.id), transaction2;
+  } catch (error) {
+    return console.error(`Error occured: ${String(error)}`), { error };
+  }
 }
 
 // app/images/qrcode.svg
@@ -417,7 +478,7 @@ var import_jsx_runtime5 = require("react/jsx-runtime"), loader2 = async ({ param
       productUuid: transaction2.productId.id,
       sequence: i,
       transactionUuid: transaction2.transactionId,
-      units: transaction2.productId.units
+      units: transaction2.product.units
     });
   return {
     transaction: transaction2,
@@ -434,7 +495,7 @@ function AccountTransaction() {
       " ",
       transaction2.product.name
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "pt-2 flex justify-between", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex justify-between", children: [
       /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { children: [
         /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("p", { children: transaction2.project.name }),
         /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("p", { children: [
@@ -443,7 +504,7 @@ function AccountTransaction() {
           transaction2.quantity
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("a", { href: `/qrcodes?productName=${transaction2.productId.name}&productUuid=${transaction2.productId.id}&quantity=${transaction2.quantity}&transactionUuid=${transaction2.transactionId}&units=${transaction2.product.units}`, download: `/qrcodes?productName=${transaction2.productId.name}&productUuid=${transaction2.productId.productUuid}&quantity=${transaction2.quantity}&transactionUuid=${transaction2.uuid}&units=${transaction2.product.units}`, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("img", { src: qrcodes_default, className: "mb-2" }) }) })
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("a", { href: `/qrcodes?productName=${transaction2.productId.name}&productUuid=${transaction2.productId.id}&quantity=${transaction2.quantity}&transactionUuid=${transaction2.transactionId}&units=${transaction2.product.units}`, download: `/qrcodes?productName=${transaction2.productId.name}&productUuid=${transaction2.productId.id}&quantity=${transaction2.quantity}&transactionUuid=${transaction2.transactionId}&units=${transaction2.product.units}`, children: /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("img", { src: qrcodes_default, className: "mb-2" }) }) })
     ] }),
     /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("section", { children: transactionProducts.map((transactionProduct) => /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "flex justify-between items-center sm:text-2xl", children: [
       /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: transactionProduct.name }),
@@ -466,9 +527,13 @@ __export(accounts_contactUuid_transactions_exports, {
 var import_react7 = require("@remix-run/react");
 
 // app/components/AccountTransaction.tsx
-var import_react6 = require("@remix-run/react"), import_jsx_runtime6 = require("react/jsx-runtime"), AccountTransaction2 = (props) => {
+var import_react6 = require("@remix-run/react");
+var import_jsx_runtime6 = require("react/jsx-runtime"), AccountTransaction2 = (props) => {
   let { contactUuid, name, uuid: uuid2 } = props;
-  return /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react6.Link, { to: `/accounts/${contactUuid}/transactions/${uuid2}`, children: name }) });
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: " flex items-center justify-between h-[108px] w-full", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(import_react6.Link, { to: `/accounts/${contactUuid}/transactions/${uuid2}`, children: name }),
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("img", { src: qrcodes_default, className: "mb-2" })
+  ] });
 }, AccountTransaction_default = AccountTransaction2;
 
 // app/routes/accounts_.$contactUuid.transactions.tsx
@@ -482,8 +547,12 @@ var import_jsx_runtime7 = require("react/jsx-runtime"), loader3 = async ({ param
 function AccountTransactions() {
   let { contactUuid, transactions } = (0, import_react7.useLoaderData)(), content = require_account_transactions();
   return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "px-8 sm:max-w-screen-lg sm:mx-auto", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h1", { className: "mb-8 text-3xl leading-none", children: content.h1 }),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("section", { children: transactions.map((transaction2) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(AccountTransaction_default, { contactUuid, name: transaction2.name, uuid: transaction2.uuid }, transaction2.uuid)) })
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("h1", { className: "text-3xl leading-none", children: content.h1 }),
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "h-[108px]", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { children: content.pLorem[0] }),
+      /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("p", { children: content.pLorem[1] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("section", { children: transactions.map((transaction2) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("div", { className: "flex justify-between items-center sm:text-2xl", children: /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(AccountTransaction_default, { contactUuid, name: transaction2.name, uuid: transaction2.uuid }, transaction2.uuid) })) })
   ] });
 }
 
@@ -519,7 +588,7 @@ async function action({ params, request }) {
 // server-entry-module:@remix-run/dev/server-build
 var route4 = __toESM(require_qrcodes_transactions_uuid());
 
-// app/routes/qrcodes.products.$data.tsx
+// app/routes/qrcodes_.products_.$data.tsx
 var qrcodes_products_data_exports = {};
 __export(qrcodes_products_data_exports, {
   action: () => action2,
@@ -530,19 +599,23 @@ var import_react10 = require("@remix-run/react"), import_react11 = require("@rem
 
 // app/models/transactionProduct.ts
 async function retrieve2(uuid2) {
-  let data = await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  })).json();
-  return console.log(data), data.find((product2) => product2.productid == uuid2);
+  try {
+    let data = await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })).json();
+    return console.log(data), data.find((product2) => product2.productid == uuid2);
+  } catch (error) {
+    return console.error(`Error occured: ${String(error)}`), { error };
+  }
 }
 
 // app/components/Block.tsx
 var import_react8 = require("@remix-run/react"), import_jsx_runtime8 = require("react/jsx-runtime"), Block = (props) => {
   let { allocation, opacity, units } = props, opacityClass = opacity;
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_jsx_runtime8.Fragment, { children: allocation == "green" ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: `bg-block-green w-3u h-3u m-2 opacity-${opacityClass}` }) : allocation == "gold" ? /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_react8.Form, { method: "post", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_jsx_runtime8.Fragment, { children: allocation == "green" ? /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: `bg-block-green w-${units}u h-${units}u m-2 opacity-${opacityClass}` }) : allocation == "gold" ? /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)(import_react8.Form, { method: "post", children: [
     /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { type: "submit", className: `bg-block-gold w-${units}u h-${units}u m-2 opacity-${opacityClass} flex` }),
     /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("input", { id: "blockDetailShow", name: "blockDetailShow", type: "hidden", value: "true" })
   ] }) : /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("div", { className: `bg-block-grey w-${units}u h-${units}u m-2 opacity-${opacityClass}` }) });
@@ -612,16 +685,26 @@ var import_jsx_runtime11 = require("react/jsx-runtime"), ProductVisualisation = 
 // app/images/enhalo_forest.jpg
 var enhalo_forest_default = "/build/_assets/enhalo_forest-RA5WC6SF.jpg";
 
-// app/routes/qrcodes.products.$data.tsx
+// app/routes/qrcodes_.products_.$data.tsx
 var import_jsx_runtime12 = require("react/jsx-runtime"), loader4 = async ({ params }) => {
-  let data = await JSON.parse(atob(params.data)), product = await retrieve2(data.productUuid), transaction2 = await retrieve(data.transactionUuid), name = product.name, quantity = transaction2.quantity, sequence = data.sequence, units = data.units;
-  return {
-    error: transaction2.product.units != product.offsetunits,
-    name,
-    quantity,
-    sequence,
-    units
-  };
+  try {
+    let data = await JSON.parse(atob(params.data)), product = await retrieve2(data.productUuid), transaction2 = await retrieve(data.transactionUuid), name = product.name, quantity = transaction2.quantity, sequence = data.sequence, units = data.units;
+    return {
+      error: transaction2.product.units != product.offsetunits,
+      name,
+      quantity,
+      sequence,
+      units
+    };
+  } catch {
+    return {
+      error: !0,
+      name: "error",
+      quantity: 20,
+      sequence: 5,
+      units: 9
+    };
+  }
 };
 async function action2({ params, request }) {
   return { blockDetail: (await request.formData()).get("blockDetailShow") };
@@ -656,18 +739,22 @@ var import_react13 = require("@remix-run/react"), import_react_paypal_js = requi
 
 // app/models/subProject.ts
 async function list3() {
-  return (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Project?code=$https://carbonregistrytransaction.azurewebsites.net/api/Project?code=nnEJyQ7YYeS6Bo--53PhK1T5KJW3gOL-wHGKxfL3gmcvAzFuPAEKBQ==`, {
-    method: "GET",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    }
-  })).json()).map((item) => ({
-    name: String(item.name),
-    tonCost: {
-      value: Number(item.toncost.value)
-    },
-    uuid: String(item.subprojectid)
-  }));
+  try {
+    return (await (await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Project?code=${api.key}`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })).json()).map((item) => ({
+      name: String(item.name),
+      tonCost: {
+        value: Number(item.toncost.value)
+      },
+      uuid: String(item.subprojectid)
+    }));
+  } catch (error) {
+    return console.error(`Error occured: ${String(error)}`), { error };
+  }
 }
 async function retrieve3(subProjectId) {
   return {
@@ -677,6 +764,17 @@ async function retrieve3(subProjectId) {
     name: "MVP Project",
     subProjectId: "68d9e429-3cae-4e09-ab90-cc40cc54142c"
   };
+  try {
+    let jsonn = await (await fetch(`${api.protocol}://${api.base}${api.port}/subProjects/${subProjectId}?api_key=${api.key}`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })).json();
+    return json;
+  } catch (error) {
+    return console.error(`Error occured: ${String(error)}`), { error };
+  }
 }
 
 // app/routes/cart.$transactionUuid.tsx
@@ -762,6 +860,57 @@ function Cart() {
   ] }) });
 }
 
+// app/routes/contact-us-success.tsx
+var contact_us_success_exports = {};
+__export(contact_us_success_exports, {
+  default: () => ContactConfirmation
+});
+var import_jsx_runtime15 = require("react/jsx-runtime");
+function ContactConfirmation() {
+  let content = require_contact_us_success();
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(import_jsx_runtime15.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { src: enhalo_forest_default, className: "absolute h-[100vh] -z-20 top-0 object-cover sm:w-full " }),
+    /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "text-white px-8 sm:max-w-screen-sm sm:mx-auto", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("h1", { className: "mb-8 text-3xl leading-none ", children: content.h1 }),
+      /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "mb-8 text-3xl leading-none ", children: content.p })
+    ] })
+  ] });
+}
+
+// app/routes/contact-us-route.tsx
+var contact_us_route_exports = {};
+__export(contact_us_route_exports, {
+  action: () => action3
+});
+var import_node5 = require("@remix-run/node"), import_node6 = require("@remix-run/node");
+
+// app/helpers/validateString.ts
+function validateString(string) {
+  return !!/^[\s\S]{1,255}$/.test(string);
+}
+
+// app/routes/contact-us-route.tsx
+async function action3({ params, request }) {
+  let data = await request.formData(), checked = Boolean(data.get("checked")), emailAddress = String(data.get("emailAddress")), firstName = String(data.get("firstName")), helpMessage = String(data.get("helpMessage")), lastName = String(data.get("lastName")), organisation = String(data.get("organisation")), position = String(data.get("position")), contactMessage = {
+    checked,
+    emailAddress,
+    firstName,
+    helpMessage,
+    lastName,
+    organisation,
+    position
+  };
+  switch (request.method) {
+    case "POST":
+      try {
+        return validateEmailAddress(emailAddress) ? validateString(firstName) ? validateString(lastName) ? validateString(organisation) ? validateString(position) ? validateString(helpMessage) ? (0, import_node5.redirect)("/contact-us-success") : (0, import_node6.json)({ helpMessageError: "Invalid Message", errorInput: "", status: 422 }, 422) : (0, import_node6.json)({ positionError: "Invalid Position", errorInput: "", status: 422 }, 422) : (0, import_node6.json)({ organisationError: "Invalid Organisation", errorInput: "", status: 422 }, 422) : (0, import_node6.json)({ lastNameError: "Invalid Last Name", errorInput: "", status: 422 }, 422) : (0, import_node6.json)({ firstNameError: "Invalid First Name", errorInput: "", status: 422 }, 422) : (0, import_node6.json)({ emailError: "Invalid Email Address", errorInput: "", status: 422 }, 422);
+      } catch (error) {
+        return (0, import_node6.json)({ error: error.message, ok: !1 }, 500);
+      }
+  }
+  return (0, import_node6.json)({ message: "Method not allowed", ok: !0 }, 405);
+}
+
 // app/routes/offset-products.tsx
 var offset_products_exports = {};
 __export(offset_products_exports, {
@@ -772,25 +921,25 @@ var import_react15 = require("@remix-run/react");
 
 // app/components/OffsetProductsForm.tsx
 var import_react14 = require("@remix-run/react");
-var import_jsx_runtime15 = require("react/jsx-runtime");
+var import_jsx_runtime16 = require("react/jsx-runtime");
 function OffsetProducts(props) {
   let fetcher = (0, import_react14.useFetcher)(), { contact, content, offsetProducts, subProject } = props, errors = {
     emailAddress: !1,
     numberOfProucts: !1,
     productUuid: !1
   }, optimisticEmailAddress = "", optimisticNumberOfProducts = 0, optimisticOffsetProductUuid = "";
-  return fetcher.formData && (optimisticEmailAddress = String(fetcher.formData.get("emailAddress")), optimisticNumberOfProducts = Number(fetcher.formData.get("numberOfProducts")), optimisticOffsetProductUuid = String(fetcher.formData.get("offSetProductUuid")), errors.emailAddress = validateEmailAddress(optimisticEmailAddress), errors.numberOfProucts = validateNumberOfProducts(optimisticNumberOfProducts)), console.log(subProject), /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(import_jsx_runtime15.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)(
+  return fetcher.formData && (optimisticEmailAddress = String(fetcher.formData.get("emailAddress")), optimisticNumberOfProducts = Number(fetcher.formData.get("numberOfProducts")), optimisticOffsetProductUuid = String(fetcher.formData.get("offSetProductUuid")), errors.emailAddress = validateEmailAddress(optimisticEmailAddress), errors.numberOfProucts = validateNumberOfProducts(optimisticNumberOfProducts)), console.log(subProject), /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(import_jsx_runtime16.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)(
     fetcher.Form,
     {
       action: "/offset-products-transaction",
       className: "w-full flex flex-wrap sm:max-w-screen-lg sm:mx-auto sm:items-end",
       method: "post",
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("input", { name: "accountUuid", type: "hidden", defaultValue: contact.uuid }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("input", { name: "accountUuid", type: "hidden", defaultValue: contact.emailAddress }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "flex sm:w-5/12", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "mb-8 pl-1 sm:mb-0 sm:mr-4", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { className: "{ errors.emailAddress ? 'text-red' }", children: "Email Address" }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("input", { name: "accountUuid", type: "hidden", defaultValue: contact.uuid }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("input", { name: "accountUuid", type: "hidden", defaultValue: contact.emailAddress }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "flex sm:w-5/12", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "mb-8 pl-1 sm:mb-0 sm:mr-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { className: "{ errors.emailAddress ? 'text-red' }", children: "Email Address" }),
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
             "input",
             {
               className: "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 sm:h-14 box-border rounded-xl w-full focus:outline-none",
@@ -801,11 +950,11 @@ function OffsetProducts(props) {
             }
           )
         ] }) }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("p", { className: "text-2xl leading-tight font-light mb-4 sm:w-1/2 sm:mr-2", children: content.p[1] }) }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "flex mb-8 sm:w-5/12 sm:mb-0", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "w-8/12 mr-2 sm:mr-0", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "pl-1 sm:mr-4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { children: "Offset Product" }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-2xl leading-tight font-light mb-4 sm:w-1/2 sm:mr-2", children: content.p[1] }) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "flex mb-8 sm:w-5/12 sm:mb-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "w-8/12 mr-2 sm:mr-0", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "pl-1 sm:mr-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { children: "Offset Product" }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
               "select",
               {
                 className: "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 sm:h-14 box-border rounded-xl w-full focus:outline-none",
@@ -815,14 +964,14 @@ function OffsetProducts(props) {
                 placeholder: "Product",
                 children: offsetProducts.map((product) => {
                   let productCost = subProject.tonCost.value / 1e3 * product.units;
-                  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("option", { value: product.uuid, children: `${product.name} (GBP ${productCost.toFixed(2)})` }, product.uuid);
+                  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("option", { value: product.uuid, children: `${product.name} (GBP ${productCost.toFixed(2)})` }, product.uuid);
                 })
               }
             )
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "w-4/12 ml-2 sm:ml-0", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("div", { className: "pl-1 sm:mr-4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("label", { children: "Quantity" }),
-            /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "w-4/12 ml-2 sm:ml-0", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "pl-1 sm:mr-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("label", { children: "Quantity" }),
+            /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(
               "input",
               {
                 className: (fetcher.state === "submitting", "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 sm:h-14 box-border rounded-xl w-full focus:outline-none"),
@@ -834,15 +983,15 @@ function OffsetProducts(props) {
             )
           ] }) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "w-full text-center sm:hidden", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Button_default, { text: content.cta.next, type: "submit" }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "hidden sm:flex sm:w-2/12 sm:h-14", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(Button_default, { text: content.cta.next, type: "submit" }) })
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "w-full text-center sm:hidden", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Button_default, { text: content.cta.next, type: "submit" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "hidden sm:flex sm:w-2/12 sm:h-14", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(Button_default, { text: content.cta.next, type: "submit" }) })
       ]
     }
   ) });
 }
 
 // app/routes/offset-products.tsx
-var import_jsx_runtime16 = require("react/jsx-runtime"), loader6 = async ({ params, request }) => {
+var import_jsx_runtime17 = require("react/jsx-runtime"), loader6 = async ({ params, request }) => {
   let offsetProducts = await list(), subProject = await retrieve3(params.subProjectId);
   return {
     contact: {
@@ -855,23 +1004,23 @@ var import_jsx_runtime16 = require("react/jsx-runtime"), loader6 = async ({ para
 };
 function OffsetProducts2() {
   let { contact, offsetProducts, subProject } = (0, import_react15.useLoaderData)(), content = require_offset_products();
-  return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "px-8 sm:max-w-screen-lg sm:mx-auto", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h1", { className: "mb-8 text-3xl leading-none ", children: content.h1 }),
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("section", { className: "mb-4", children: /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("p", { className: "text-2xl leading-tight font-light mb-4 sm:w-1/2 sm:mr-2", children: content.p[0] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)(OffsetProducts, { contact, content, subProject, offsetProducts })
+  return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "px-8 sm:max-w-screen-lg sm:mx-auto", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h1", { className: "mb-8 text-3xl leading-none ", children: content.h1 }),
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("section", { className: "mb-4", children: /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "text-2xl leading-tight font-light mb-4 sm:w-1/2 sm:mr-2", children: content.p[0] }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(OffsetProducts, { contact, content, subProject, offsetProducts })
   ] });
 }
 
 // app/routes/account-update.tsx
 var account_update_exports = {};
 __export(account_update_exports, {
-  action: () => action3
+  action: () => action4
 });
-var import_node5 = require("@remix-run/node");
+var import_node7 = require("@remix-run/node");
 
 // app/models/account.model.ts
 async function retrieve4(uuid2, username, password) {
-  if (uuid2 !== null)
+  if (uuid2 !== null) {
     return {
       accountid: 1,
       contact: {
@@ -883,7 +1032,19 @@ async function retrieve4(uuid2, username, password) {
       username: "enhalogreen",
       uuid: "9f7bde77-4bce-4694-960c-60aed6b33000"
     };
-  let json6 = await (await fetch(`${api.protocol}://${api.base}${api.port}/accounts/?username=${username}&password=${password}`, {
+    try {
+      return await (await fetch(`${api.protocol}://${api.base}${api.port}/accounts/${uuid2}`, {
+        method: "GET",
+        body: JSON.stringify(account),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })).json();
+    } catch (error) {
+      return console.error(`Error occured: ${String(error)}`), { error };
+    }
+  }
+  let json7 = await (await fetch(`${api.protocol}://${api.base}${api.port}/accounts/?username=${username}&password=${password}`, {
     method: "GET",
     body: JSON.stringify(account),
     headers: {
@@ -903,10 +1064,21 @@ async function update(emailAddress, uuid2) {
     username: "enhalogreen",
     uuid: "9f7bde77-4bce-4694-960c-60aed6b33000"
   };
+  try {
+    return await (await fetch(`${api.protocol}://${api.base}${api.port}/accounts/${uuid2}?api_key=${api.key}`, {
+      method: "PATCH",
+      body: JSON.stringify(account2),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })).json();
+  } catch (error) {
+    return console.error(`Error occured: ${String(error)}`), { error };
+  }
 }
 
 // app/routes/account-update.tsx
-async function action3({ params, request }) {
+async function action4({ params, request }) {
   let data = await request.formData(), emailAddress = data.get("emailAddress"), edit = data.get("edit"), firstName = data.get("firstName"), lastName = data.get("lastName"), uuid2 = data.get("uuid");
   switch (request.method) {
     case "POST":
@@ -914,10 +1086,10 @@ async function action3({ params, request }) {
         let patch = await update(emailAddress, uuid2);
         return 200;
       } catch (error) {
-        return console.log("error"), (0, import_node5.json)({ message: error.message, ok: !1 }, 500);
+        return console.log("error"), (0, import_node7.json)({ message: error.message, ok: !1 }, 500);
       }
   }
-  return (0, import_node5.json)({ message: "Method not allowed", ok: !0 }, 405);
+  return (0, import_node7.json)({ message: "Method not allowed", ok: !0 }, 405);
 }
 
 // app/routes/fAkePI.$action.tsx
@@ -925,7 +1097,7 @@ var fAkePI_action_exports = {};
 __export(fAkePI_action_exports, {
   loader: () => loader7
 });
-var import_node6 = require("@remix-run/node");
+var import_node8 = require("@remix-run/node");
 async function loader7({ params, request }) {
   let url = new URL(request.url), transactionUuid = url.searchParams.get("transactionUuid") ?? null, productUuid = url.searchParams.get("productUuid") ?? null, response = {
     OffsetProduct: [
@@ -1085,15 +1257,15 @@ async function loader7({ params, request }) {
   switch (request.method) {
     case "GET":
       let responseKey = String(params.action);
-      return params.action === "Transaction" && transactionUuid !== null && (responseKey = `Transaction${transactionUuid}`), (0, import_node6.json)(response[responseKey]);
+      return params.action === "Transaction" && transactionUuid !== null && (responseKey = `Transaction${transactionUuid}`), (0, import_node8.json)(response[responseKey]);
     case "PATCH":
       console.log("post");
       break;
     case "POST":
       let responseKeyPost = String("Transaction");
-      return (0, import_node6.json)(response[responseKeyPost]);
+      return (0, import_node8.json)(response[responseKeyPost]);
   }
-  return (0, import_node6.json)({ message: "Method not allowed", ok: !0 }, 405);
+  return (0, import_node8.json)({ message: "Method not allowed", ok: !0 }, 405);
 }
 
 // app/routes/privacy-policy.tsx
@@ -1101,153 +1273,146 @@ var privacy_policy_exports = {};
 __export(privacy_policy_exports, {
   default: () => PrivacyPolicy
 });
-var import_jsx_runtime17 = require("react/jsx-runtime");
+var import_jsx_runtime18 = require("react/jsx-runtime");
 function PrivacyPolicy() {
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("section", { className: "text-white" });
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("section", { className: "text-white" });
 }
 
 // server-entry-module:@remix-run/dev/server-build
-var route11 = __toESM(require_cart_success()), route12 = __toESM(require_cart_error());
+var route13 = __toESM(require_cart_success()), route14 = __toESM(require_cart_error());
 
 // app/routes/contact-us.tsx
 var contact_us_exports = {};
 __export(contact_us_exports, {
-  action: () => action4,
   default: () => Contact,
   loader: () => loader8
 });
 var import_react17 = require("@remix-run/react");
 
 // app/components/ContactForm.tsx
-var import_react16 = require("@remix-run/react"), import_jsx_runtime18 = require("react/jsx-runtime");
+var import_react16 = require("@remix-run/react");
+var import_jsx_runtime19 = require("react/jsx-runtime");
 function ContactForm(props) {
-  return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)(import_react16.Form, { action: "", method: "post", className: "w-full rounded bg-transparent flex flex-wrap px-8", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "w-47.5 mr-[5%]", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("label", { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("input", { name: "firstName", placeholder: "First name", type: "text", className: `
-                    inline-flex
-                    items-center
-                    justify-center
-                    text-md
-                    h-10
-                    mb-4
-                    xl:h-10
-                    pl-2
-                    box-border
-                    rounded-xl
-                    border-brand-dark-blue
-                    border-1
-                    placeholder
-                    text-zinc-600
-                    w-full
-                    xl:order-1
-                    focus:outline-none` }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "w-47.5", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("label", { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("input", { name: "lastName", placeholder: "Last name", type: "text", className: `
-                    inline-flex
-                    items-center
-                    justify-center
-                    text-md
-                    h-10
-                    mb-4
-                    xl:h-10
-                    pl-2
-                    box-border
-                    rounded-xl
-                    border-brand-dark-blue
-                    border-1
-                    text-zinc-600
-                    w-full
-                    xl:order-1
-                    focus:outline-none` }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("label", { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("input", { name: "organisation", placeholder: "Organisation", type: "text", className: `
-                    inline-flex
-                    items-center
-                    justify-center
-                    text-md
-                    h-10
-                    mb-4
-                    xl:h-10
-                    pl-2
-                    box-border
-                    rounded-xl
-                    border-brand-dark-blue
-                    border-1
-                    text-zinc-600
-                    w-full
-                    xl:order-1
-                    focus:outline-none` }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("label", { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("input", { name: "position", placeholder: "Position", type: "text", className: `
-                    inline-flex
-                    items-center
-                    justify-center
-                    text-md
-                    h-10
-                    mb-4
-                    xl:h-10
-                    pl-2
-                    box-border
-                    rounded-xl
-                    border-brand-dark-blue
-                    border-1
-                    text-zinc-600
-                    w-full
-                    xl:order-1
-                    focus:outline-none` }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("label", { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("input", { name: "emailAddress", placeholder: "Email address", type: "opportunityType", className: `
-                    inline-flex
-                    items-center
-                    justify-center
-                    text-md
-                    h-10
-                    mb-4
-                    xl:h-10
-                    pl-2
-                    box-border
-                    rounded-xl
-                    border-brand-dark-blue
-                    border-1
-                    text-zinc-600
-                    w-full
-                    xl:order-1
-                    focus:outline-none` }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("label", { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("textarea", { name: "message", placeholder: "How can we help you?", className: `
-                    inline-flex
-                    items-center
-                    justify-center
-                    text-md
-                    h-20
-                    mb-4
-                    xl:h-10
-                    pl-2
-                    box-border
-                    rounded-xl
-                    border-brand-dark-blue
-                    border-1
-                    text-zinc-600
-                    w-full
-                    xl:order-1
-                    focus:outline-none` }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: "flex items-center mb-2", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("input", { type: "checkbox", className: "mr-4" }),
-      /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-[14px]", children: "Keep me up to date with developments at" })
-    ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("p", { className: "text-[14px] mb-2", children: "EnhaloGreen" }),
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("button", { className: "bg-blue-500", children: "SUBMIT" }) })
-  ] });
+  let fetcher = (0, import_react16.useFetcher)(), { account: account2, content } = props, optimisticEmailAddress = account2.contact.emailAddress, optimisticFirstName = account2.contact.firstName, optimisticHelpMessage = "", optimisticLastName = account2.contact.lastName, optimisticOrganisation = "", optimisticPosition = "";
+  return fetcher.formData && (optimisticEmailAddress = String(fetcher.formData.get("emailAddress")), optimisticFirstName = String(fetcher.formData.get("firstName")), optimisticHelpMessage = String(fetcher.formData.get("helpMessage")), optimisticLastName = String(fetcher.formData.get("lastName")), optimisticOrganisation = String(fetcher.formData.get("organisation")), optimisticPosition = String(fetcher.formData.get("position"))), /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(import_jsx_runtime19.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+    fetcher.Form,
+    {
+      action: "/contact-us-route",
+      className: "w-full flex flex-wrap sm:mx-auto sm:items-end",
+      method: "post",
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "mb-8 w-full", children: [
+          fetcher.data && fetcher.data.emailError ? /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("label", { className: "text-red-500", children: "Please enter a valid email address" }) : /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("label", { children: "Email Address" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+            "input",
+            {
+              className: fetcher.state === "submitting" ? "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" : "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none text-black",
+              name: "emailAddress",
+              type: "text",
+              defaultValue: optimisticEmailAddress
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "mb-8 w-47.5 mr-[5%]", children: [
+          fetcher.data && fetcher.data.firstNameError ? /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("label", { className: "text-red-500", children: "Please enter a valid first name" }) : /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("label", { children: "First Name" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+            "input",
+            {
+              className: fetcher.state === "submitting" ? "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" : "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none text-black",
+              name: "firstName",
+              type: "text",
+              defaultValue: optimisticFirstName
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "mb-8 w-47.5 ", children: [
+          fetcher.data && fetcher.data.lastNameError ? /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("label", { className: "text-red-500", children: "Please enter a valid last name" }) : /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("label", { children: "Last Name" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+            "input",
+            {
+              className: fetcher.state === "submitting" ? "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" : "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none text-black",
+              name: "lastName",
+              type: "text",
+              defaultValue: optimisticLastName
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "mb-8 w-47.5 mr-[5%]", children: [
+          fetcher.data && fetcher.data.organisationError ? /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("label", { className: "text-red-500", children: "Please enter a valid organisation" }) : /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("label", { children: "Organisation" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+            "input",
+            {
+              className: fetcher.state === "submitting" ? "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" : "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none text-black",
+              name: "organisation",
+              type: "text",
+              defaultValue: optimisticOrganisation
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "mb-8 w-47.5", children: [
+          fetcher.data && fetcher.data.positionError ? /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("label", { className: "text-red-500", children: "Please enter a valid position" }) : /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("label", { children: "Position" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+            "input",
+            {
+              className: fetcher.state === "submitting" ? "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" : "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none text-black",
+              name: "position",
+              type: "text",
+              defaultValue: optimisticPosition
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "mb-8 w-full", children: [
+          fetcher.data && fetcher.data.helpMessageError ? /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("label", { className: "text-red-500", children: "Please enter a valid message" }) : /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("label", { children: "How can we help you?" }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+            "textarea",
+            {
+              className: fetcher.state === "submitting" ? "bg-gray-50/50 h-20 inline-flex items-center justify-center text-md pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" : "bg-gray-50/50 h-20 inline-flex items-center justify-center text-md pl-2 mt-2 box-border rounded-xl w-full focus:outline-none text-black",
+              name: "helpMessage",
+              defaultValue: optimisticHelpMessage
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "flex items-center mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+            "input",
+            {
+              type: "checkbox",
+              className: (fetcher.state === "submitting", "mr-4"),
+              value: "true",
+              defaultValue: "false",
+              name: "checked"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "text-[14px]", children: "Keep me up to date with developments at EnhaloGreen" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "w-full flex justify-center sm:h-14", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "w-1/2", children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(Button_default, { text: content.cta.submit, type: "submit" }) }) })
+      ]
+    }
+  ) });
 }
 
-// app/images/contact_bg.jpg
-var contact_bg_default = "/build/_assets/contact_bg-NWPK7OSP.jpg";
-
 // app/routes/contact-us.tsx
-var import_jsx_runtime19 = require("react/jsx-runtime"), action4 = async ({ params, request }) => ({}), loader8 = async ({ params, request }) => ({});
+var import_jsx_runtime20 = require("react/jsx-runtime"), loader8 = async ({}) => ({
+  account: await retrieve4(
+    "b005e055-5343-ee11-be6d-000d3ad4d529",
+    null,
+    null
+  )
+});
 function Contact() {
-  let actionData = (0, import_react17.useActionData)();
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("section", { className: "text-white", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("img", { src: contact_bg_default, className: "absolute z-[-1] h-full" }),
-    /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "pt-20 px-8 mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h1", { className: "text-3xl mb-6", children: "Let\u2019s build a carbon ecosystem" }),
-      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("p", { className: "text-xl leading-tight", children: "Join us to build a credible, secure and transparent carbon ecosystem. Whether you are planning a project, seeking to verify carbon capture or looking for certified carbon credits, we can help \u2013 and together we can bring trust to carbon markets and help them fulfil their world-saving potential." })
-    ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(ContactForm, {}) })
+  let { account: account2 } = (0, import_react17.useLoaderData)(), content = require_contact_us();
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)(import_jsx_runtime20.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+      "img",
+      {
+        src: enhalo_forest_default,
+        className: "absolute h-[100vh] -z-20 top-0 object-cover sm:w-full "
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "text-white px-8 sm:max-w-screen-sm sm:mx-auto", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h1", { className: "mb-8 text-3xl leading-none ", children: content.h1 }),
+      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(ContactForm, { account: account2, content })
+    ] })
   ] });
 }
 
@@ -1258,24 +1423,24 @@ __export(projects_exports, {
   loader: () => loader9
 });
 var import_react18 = require("@remix-run/react");
-var import_jsx_runtime20 = require("react/jsx-runtime"), loader9 = async ({ request }) => ({
+var import_jsx_runtime21 = require("react/jsx-runtime"), loader9 = async ({}) => ({
   subProjects: await list3()
 });
 function Projects() {
   let { subProjects } = (0, import_react18.useLoaderData)(), content = require_projects(), optimisticProjectId = subProjects[0].uuid;
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "px-8 sm:max-w-screen-lg sm:mx-auto", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h1", { className: "mb-8 text-3xl leading-none ", children: content.h1 }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("section", { className: "mb-4 sm:mb-20", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "pb-4 border-b-2 border-black sm:pb-16", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-2xl leading-tight font-light mb-4 sm:w-3/5", children: content.p[0] }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("select", { className: "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 sm:h-14 box-border rounded-xl w-full focus:outline-none", defaultValue: optimisticProjectId, id: "uuid", name: "uuid", children: subProjects.map((subProject) => /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("option", { value: subProject.uuid, children: subProject.name })) })
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "px-8 sm:max-w-screen-lg sm:mx-auto", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("h1", { className: "mb-8 text-3xl leading-none ", children: content.h1 }),
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("section", { className: "mb-4 sm:mb-20", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "pb-4 border-b-2 border-black sm:pb-16", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-2xl leading-tight font-light mb-4 sm:w-3/5", children: content.p[0] }),
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("select", { className: "inline-flex items-center justify-center text-md h-10 pl-2 mt-2 sm:h-14 box-border rounded-xl w-full focus:outline-none", defaultValue: optimisticProjectId, id: "uuid", name: "uuid", children: subProjects.map((subProject) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("option", { value: subProject.uuid, children: subProject.name })) })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("section", { className: "mb-4 sm:mb-20", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "pb-6 border-b-2 border-black sm:pb-16", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "sm:flex sm:items-center", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-2xl leading-tight font-light mb-4 sm:w-3/5", children: content.p[1] }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "sm:w-2/5 sm:text-right", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(Cta_default, { linkTo: `/offset-products?subProjectId=${optimisticProjectId}`, text: content.cta.offsetYourProducts }) })
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("section", { className: "mb-4 sm:mb-20", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "pb-6 border-b-2 border-black sm:pb-16", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "sm:flex sm:items-center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-2xl leading-tight font-light mb-4 sm:w-3/5", children: content.p[1] }),
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "sm:w-2/5 sm:text-right", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Cta_default, { linkTo: `/offset-products?subProjectId=${optimisticProjectId}`, text: content.cta.offsetYourProducts }) })
     ] }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("section", { className: "sm:max-w-screen-lg sm:mx-auto ", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "pb-6 sm:pb-16", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "sm:flex sm:items-center", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("p", { className: "text-2xl leading-tight font-light mb-4 sm:w-3/5", children: content.p[2] }),
-      /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "sm:w-2/5 sm:text-right", children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(Cta_default, { linkTo: `/offset-products?subProjectId=${optimisticProjectId}`, text: content.cta.offsetYourCarbon }) })
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("section", { className: "sm:max-w-screen-lg sm:mx-auto ", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "pb-6 sm:pb-16", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "sm:flex sm:items-center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("p", { className: "text-2xl leading-tight font-light mb-4 sm:w-3/5", children: content.p[2] }),
+      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "sm:w-2/5 sm:text-right", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Cta_default, { linkTo: `/offset-products?subProjectId=${optimisticProjectId}`, text: content.cta.offsetYourCarbon }) })
     ] }) }) })
   ] });
 }
@@ -1290,23 +1455,23 @@ var import_react20 = require("@remix-run/react");
 
 // app/components/AccountForm.tsx
 var import_react19 = require("@remix-run/react");
-var import_jsx_runtime21 = require("react/jsx-runtime");
+var import_jsx_runtime22 = require("react/jsx-runtime");
 function AccountForm(props) {
-  let { account: account2 } = props, fetcher = (0, import_react19.useFetcher)(), optimisticEmailAddress = account2.contact.emailAddress, optimisticFirstName = account2.contact.firstName, optimisticLastName = account2.contact.lastName, optimisticPhoneNumber = account2.contact.phoneNumber, optimisticEdit = !1;
-  return fetcher.formData && (optimisticEmailAddress = String(fetcher.formData.get("emailAddress")), optimisticFirstName = String(fetcher.formData.get("firstName")), optimisticLastName = String(fetcher.formData.get("lastName")), optimisticPhoneNumber = String(fetcher.formData.get("phoneNumber")), optimisticEdit = Boolean(fetcher.formData.get("edit") == "true" ? "false" : "true")), /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(import_jsx_runtime21.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+  let { account: account2 } = props, fetcher = (0, import_react19.useFetcher)(), optimisticEmailAddress = account2.contact.emailAddress, optimisticFirstName = account2.contact.firstName, optimisticLastName = account2.contact.lastName, optimisticPhoneNumber = account2.contact.phoneNumber, optimisticEdit = !0;
+  return fetcher.formData && (optimisticEmailAddress = String(fetcher.formData.get("emailAddress")), optimisticFirstName = String(fetcher.formData.get("firstName")), optimisticLastName = String(fetcher.formData.get("lastName")), optimisticPhoneNumber = String(fetcher.formData.get("phoneNumber")), optimisticEdit = Boolean(fetcher.formData.get("edit") == "true" ? "false" : "true")), /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(import_jsx_runtime22.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)(
     fetcher.Form,
     {
       action: "/account-update",
-      className: "w-full flex flex-wrap px-8 sm:max-w-screen-lg sm:mx-auto text-light-black ",
+      className: "w-full flex flex-wrap sm:mx-auto sm:items-end text-light-black ",
       method: "post",
       onSubmit: (e) => {
         optimisticEdit == !0 && fetcher.submit(e.currentTarget, { replace: !0 });
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("input", { name: "accountUuid", type: "hidden", defaultValue: account2.uuid }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "mb-8", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("label", { children: "Email Address" }),
-          optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("input", { name: "accountUuid", type: "hidden", defaultValue: account2.uuid }),
+        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "mb-8 w-full", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("label", { children: "Email Address" }),
+          optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
             "input",
             {
               className: fetcher.state === "submitting" ? "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none" : "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none text-black",
@@ -1314,11 +1479,11 @@ function AccountForm(props) {
               type: "text",
               defaultValue: optimisticEmailAddress
             }
-          ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "pt-4 pl-2 mb-2", children: optimisticEmailAddress })
+          ) : /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "pt-4 pl-2 mb-2", children: optimisticEmailAddress })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "w-47.5 mr-[5%] mb-8", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("label", { children: "First name" }),
-          optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "w-47.5 mr-[5%] mb-8", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("label", { children: "First name" }),
+          optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
             "input",
             {
               className: (fetcher.state === "submitting", "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none"),
@@ -1326,11 +1491,11 @@ function AccountForm(props) {
               type: "text",
               defaultValue: optimisticFirstName
             }
-          ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "pt-4 pl-2 mb-2", children: optimisticFirstName })
+          ) : /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "pt-4 pl-2 mb-2", children: optimisticFirstName })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "w-47.5 mb-8", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("label", { children: "Last name" }),
-          optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "w-47.5 mb-8", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("label", { children: "Last name" }),
+          optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
             "input",
             {
               className: (fetcher.state === "submitting", "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none"),
@@ -1338,11 +1503,11 @@ function AccountForm(props) {
               type: "text",
               defaultValue: optimisticLastName
             }
-          ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "pt-4 pl-2 mb-2", children: optimisticLastName })
+          ) : /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "pt-4 pl-2 mb-2", children: optimisticLastName })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "mb-8", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("label", { children: "Phone number" }),
-          optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "mb-8 w-full", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("label", { children: "Phone number" }),
+          optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(
             "input",
             {
               className: (fetcher.state === "submitting", "bg-gray-50/50 inline-flex items-center justify-center text-md h-10 pl-2 mt-2 box-border rounded-xl w-full focus:outline-none"),
@@ -1350,27 +1515,27 @@ function AccountForm(props) {
               type: "text",
               defaultValue: optimisticPhoneNumber
             }
-          ) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "pt-4 pl-2 mb-2", children: optimisticPhoneNumber })
+          ) : /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "pt-4 pl-2 mb-2", children: optimisticPhoneNumber })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "w-full" }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "w-full flex justify-center sm:h-14", children: optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "w-1/2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Button_default, { text: "Submit", type: "submit" }),
-          /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("input", { name: "edit", title: "edit", type: "hidden", value: "false" })
-        ] }) : /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "w-1/2", children: /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(Button_default, { text: "Edit", type: "submit" }) }) })
+        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "w-full" }),
+        /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "w-full flex justify-center sm:h-14", children: optimisticEdit ? /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "w-1/2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(Button_default, { text: "Submit", type: "submit" }),
+          /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("input", { name: "edit", title: "edit", type: "hidden", value: "false" })
+        ] }) : /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "w-1/2", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(Button_default, { text: "Edit", type: "submit" }) }) })
       ]
     }
   ) });
 }
 
 // app/routes/account.tsx
-var import_jsx_runtime22 = require("react/jsx-runtime"), loader10 = async ({ params, request }) => ({
+var import_jsx_runtime23 = require("react/jsx-runtime"), loader10 = async ({ params, request }) => ({
   account: await retrieve4("b005e055-5343-ee11-be6d-000d3ad4d529", null, null)
 });
 function Account() {
   let { account: account2 } = (0, import_react20.useLoaderData)(), content = require_account();
-  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "px-8 sm:max-w-screen-lg sm:mx-auto", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("h1", { className: "mb-8 text-3xl leading-none ", children: content.h1 }),
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(AccountForm, { account: account2 }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "px-8 sm:mx-auto sm:max-w-screen-sm", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h1", { className: "mb-8 text-3xl leading-none ", children: content.h1 }),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(AccountForm, { account: account2 }) })
   ] });
 }
 
@@ -1460,152 +1625,152 @@ var stabiliti_default = "/build/_assets/stabiliti-ONIBOMMK.gif";
 var regeneration_earth_default = "/build/_assets/regeneration_earth-HPNTHLFI.gif";
 
 // app/routes/_index.tsx
-var import_jsx_runtime23 = require("react/jsx-runtime"), loader12 = async ({ params, request }) => [];
+var import_jsx_runtime24 = require("react/jsx-runtime"), loader12 = async ({ params, request }) => [];
 function Index() {
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)(import_jsx_runtime23.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: enhalo_forest_default, className: "absolute h-[100vh] -z-20 top-0 object-cover sm:w-full " }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("section", { className: "text-white px-8 pb-4 h-[90vh] flex flex-wrap sm:max-w-screen-lg sm:mx-auto sm:pr-36", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "pt-20 mb-40 sm:pt-32 sm:mb-28", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h1", { className: "text-3xl mb-6 sm:text-6xl sm:mb-24", children: "Building trust in the carbon ecosystem" }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "text-xl leading-tight mb-4", children: "EnhaloGreen develops and shares digital tools that deliver agility and credibility to carbon initiatives, and build confidence in the carbon ecosystem." }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "text-xl leading-tight mb-4 sm:mb-16", children: "Our complete carbon solution gives users anywhere in the world \u2013 from governments and corporates to landowners, charities and individuals \u2013 transparency, accountability and compliance." })
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: enhalo_forest_default, className: "absolute h-[100vh] -z-20 top-0 object-cover sm:w-full " }),
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("section", { className: "text-white px-8 pb-4 h-[90vh] flex flex-wrap sm:max-w-screen-lg sm:mx-auto sm:pr-36", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "mb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "pt-20 mb-40 sm:pt-32 sm:mb-28", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h1", { className: "text-3xl mb-6 sm:text-6xl sm:mb-24", children: "Building trust in the carbon ecosystem" }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "text-xl leading-tight mb-4", children: "EnhaloGreen develops and shares digital tools that deliver agility and credibility to carbon initiatives, and build confidence in the carbon ecosystem." }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "text-xl leading-tight mb-4 sm:mb-16", children: "Our complete carbon solution gives users anywhere in the world \u2013 from governments and corporates to landowners, charities and individuals \u2013 transparency, accountability and compliance." })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "mb-4 sm:mb-20", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(Cta_default, { linkTo: "/projects", text: "Reduce your footprint now" }) })
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "mb-4 sm:mb-20", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(Cta_default, { linkTo: "/projects", text: "Reduce your footprint now" }) })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("section", { className: "relative z-[-30] bg-white text-intro flex flex-wrap  pt-8 px-8 font-light text-xl leading-tight sm:max-w-screen-lg sm:mx-auto sm:pt-0", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h2", { className: "mb-8 text-2.5xl leading-7 font-medium", children: "EnhaloGreen empowers organisations to commit to carbon offsetting and play their part in addressing climate change." }),
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4", children: "For carbon offsetting to be an effective tool in decarbonisation, carbon markets need infrastructure that is secure, transparent and trusted. And they need it now. Our digital platform enables organisations to robustly measure, verify and track carbon sequestration, and to extract additional value through the commercialisation of carbon credits." })
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("section", { className: "relative z-[-30] bg-white text-intro flex flex-wrap  pt-8 px-8 font-light text-xl leading-tight sm:max-w-screen-lg sm:mx-auto sm:pt-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h2", { className: "mb-8 text-2.5xl leading-7 font-medium", children: "EnhaloGreen empowers organisations to commit to carbon offsetting and play their part in addressing climate change." }),
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4", children: "For carbon offsetting to be an effective tool in decarbonisation, carbon markets need infrastructure that is secure, transparent and trusted. And they need it now. Our digital platform enables organisations to robustly measure, verify and track carbon sequestration, and to extract additional value through the commercialisation of carbon credits." })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("section", { className: "relative z-[-30] bg-white text-intro flex flex-wrap pt-8 px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl", children: "Accelerating verification and certification" }),
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:flex sm:border-b sm:border-grey sm:pb-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:w-3/5 pr-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-xl leading-tight", children: "Friction and red tape are among the greatest obstacles to the adoption and mainstreaming of climate-positive initiatives." }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s digital platform automates and dramatically accelerates key steps in the carbon verification and certification process, giving near real-time analysis to capture and certify carbon for the voluntary market. This reduces the cost of entry for landowners, farmers and project developers, democratising the market and opening the door to smaller projects. We partner with licensed independents to rigorously validate and verify that producers are adhering to the relevant codes, including the UK Carbon Code in the UK." })
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("section", { className: "relative z-[-30] bg-white text-intro flex flex-wrap pt-8 px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl", children: "Accelerating verification and certification" }),
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:flex sm:border-b sm:border-grey sm:pb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:w-3/5 pr-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-xl leading-tight", children: "Friction and red tape are among the greatest obstacles to the adoption and mainstreaming of climate-positive initiatives." }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s digital platform automates and dramatically accelerates key steps in the carbon verification and certification process, giving near real-time analysis to capture and certify carbon for the voluntary market. This reduces the cost of entry for landowners, farmers and project developers, democratising the market and opening the door to smaller projects. We partner with licensed independents to rigorously validate and verify that producers are adhering to the relevant codes, including the UK Carbon Code in the UK." })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "sm:w-2/5", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: intro_accelerating_default }) })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "sm:w-2/5", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: intro_accelerating_default }) })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("section", { className: "text-intro flex flex-wrap px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl", children: "Providing a reliable, secure carbon registry" }),
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:flex sm:border-b sm:border-grey sm:pb-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:w-3/5 pr-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-6 text-xl leading-tight", children: "What is it, where is it and who owns it? Carbon credits can only succeed when the answers to these questions are definitively captured, stored and made accessible." }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s Carbon registry delivers transparency and security, giving stakeholders certainty of the fidelity and provenance of captured carbon." }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "Certified and registered carbon is visible and traceable, providing the assurance that corporates require before purchasing carbon credits or engaging with offsetting programmes and putting their money and their reputations on the line. Our platform supports carbon credit transactions of all sizes, as well as long-term subscriptions, giving users complete control over their offsetting strategies." })
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("section", { className: "text-intro flex flex-wrap px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl", children: "Providing a reliable, secure carbon registry" }),
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:flex sm:border-b sm:border-grey sm:pb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:w-3/5 pr-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-6 text-xl leading-tight", children: "What is it, where is it and who owns it? Carbon credits can only succeed when the answers to these questions are definitively captured, stored and made accessible." }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s Carbon registry delivers transparency and security, giving stakeholders certainty of the fidelity and provenance of captured carbon." }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "Certified and registered carbon is visible and traceable, providing the assurance that corporates require before purchasing carbon credits or engaging with offsetting programmes and putting their money and their reputations on the line. Our platform supports carbon credit transactions of all sizes, as well as long-term subscriptions, giving users complete control over their offsetting strategies." })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "sm:w-2/5", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: intro_providing_default }) })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "sm:w-2/5", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: intro_providing_default }) })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:flex sm:max-w-screen-lg sm:mx-auto sm:mb-12 sm:border-b sm:border-grey sm:pb sm:pb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("section", { className: "text-intro px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto sm:w-1/2 sm:mb-0", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:flex flex flex-wrap sm:pb-4 sm:justify-between", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline whitespace-pre-wrap text-2xl mb-6 font-medium sm:text-2xl", children: "Trading carbon credits in a secure, accessible marketplace" }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "pr-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s online carbon marketplace enables users to see, purchase and retire verified carbon credits with full transparency and traceability." }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "We create project-specific marketplaces for individual carbon sequestration projects, countries and regions as required. Users can offset their carbon footprint against carbon credits in our registry with functionality allowing them to select and review project details, locations and the relevant certification process. Our marketplaces also feature full settlement functionality, ensuring that project developers and landowners receive revenues they have earned through climate-positive activities." })
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:flex sm:max-w-screen-lg sm:mx-auto sm:mb-12 sm:border-b sm:border-grey sm:pb sm:pb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("section", { className: "text-intro px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto sm:w-1/2 sm:mb-0", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:flex flex flex-wrap sm:pb-4 sm:justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline whitespace-pre-wrap text-2xl mb-6 font-medium sm:text-2xl", children: "Trading carbon credits in a secure, accessible marketplace" }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "pr-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s online carbon marketplace enables users to see, purchase and retire verified carbon credits with full transparency and traceability." }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "We create project-specific marketplaces for individual carbon sequestration projects, countries and regions as required. Users can offset their carbon footprint against carbon credits in our registry with functionality allowing them to select and review project details, locations and the relevant certification process. Our marketplaces also feature full settlement functionality, ensuring that project developers and landowners receive revenues they have earned through climate-positive activities." })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: intro_trading_default }) })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: intro_trading_default }) })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("section", { className: "text-intro px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto sm:w-1/2 sm:mb-0", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:flex flex flex-wrap sm:pb-4 sm:justify-between sm:h-full ", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl sm:mb-0", children: "Tracking carbon on the blockchain" }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "pr-2", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen uses CarbonTracker \u2013 software developed with Stabiliti, a sister company and blockchain provider \u2013 to accurately capture carbon origin and location, asset value, and ownership and transfer across complex carbon ecosystems at scale. CarbonTracker guarantees the integrity of the carbon capture process, providing immutability and transparency to market participants." }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: " self-end", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: intro_tracking_default }) })
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("section", { className: "text-intro px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto sm:w-1/2 sm:mb-0", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:flex flex flex-wrap sm:pb-4 sm:justify-between sm:h-full ", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl sm:mb-0", children: "Tracking carbon on the blockchain" }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "pr-2", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen uses CarbonTracker \u2013 software developed with Stabiliti, a sister company and blockchain provider \u2013 to accurately capture carbon origin and location, asset value, and ownership and transfer across complex carbon ecosystems at scale. CarbonTracker guarantees the integrity of the carbon capture process, providing immutability and transparency to market participants." }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: " self-end", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: intro_tracking_default }) })
       ] }) })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("section", { className: "text-intro flex flex-wrap px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl", children: "Carbon code compliance" }),
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:flex sm:max-w-screen-lg sm:mx-auto sm:mb-12 sm:border-b sm:border-grey sm:pb sm:pb-8", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s digital platform delivers rapid and robust certification in line with all reputable carbon codes, including:" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("ul", { className: "list-disc pl-8 mb-8 text-1 sm:mb-0", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("li", { children: "UK Carbon Code" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("li", { children: "UK Woodland Carbon Code" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("li", { children: "UK Peatland Code" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("li", { children: "Soil Carbon Code" }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("li", { children: "Congo Brazzaville Carbon Code" })
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("section", { className: "text-intro flex flex-wrap px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl", children: "Carbon code compliance" }),
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:flex sm:max-w-screen-lg sm:mx-auto sm:mb-12 sm:border-b sm:border-grey sm:pb sm:pb-8", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s digital platform delivers rapid and robust certification in line with all reputable carbon codes, including:" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("ul", { className: "list-disc pl-8 mb-8 text-1 sm:mb-0", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("li", { children: "UK Carbon Code" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("li", { children: "UK Woodland Carbon Code" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("li", { children: "UK Peatland Code" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("li", { children: "Soil Carbon Code" }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("li", { children: "Congo Brazzaville Carbon Code" })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:border-l sm:border-grey pl-8", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "text-9xl mb-4 text-center", children: "75%" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "of SMEs agreed employees care that the business behaves sustainably and reduces its impact on the climate" })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:border-l sm:border-grey pl-8", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "text-9xl mb-4 text-center", children: "75%" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "of SMEs agreed employees care that the business behaves sustainably and reduces its impact on the climate" })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:flex sm:max-w-screen-lg sm:mx-auto sm:mb-12 sm:pb sm:pb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("section", { className: "text-intro flex flex-wrap px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto sm:w-1/2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl", children: "Attributing carbon per product" }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:flex sm:flex-col sm:pb-4 sm:justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "pr-2", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "As emissions reporting requirements become more exacting \u2013 and carbon comes to play a larger role in consumer decision-making \u2013 accounting for carbon at the per-product level will become both more important and more attractive." }),
-            /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s platform supports carbon fractionalisation \u2013 the accurate attribution of offset carbon to a specific product or unit throughout the entire supply chain. Consumers at both the corporate and retail level can see and reliably report the carbon that was sequestered to offset their purchase \u2013 whether that\u2019s a mile of electric cable for a home builder or a can of beer for a student." })
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:flex sm:max-w-screen-lg sm:mx-auto sm:mb-12 sm:pb sm:pb-8", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("section", { className: "text-intro flex flex-wrap px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto sm:w-1/2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl", children: "Attributing carbon per product" }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:flex sm:flex-col sm:pb-4 sm:justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "pr-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "As emissions reporting requirements become more exacting \u2013 and carbon comes to play a larger role in consumer decision-making \u2013 accounting for carbon at the per-product level will become both more important and more attractive." }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s platform supports carbon fractionalisation \u2013 the accurate attribution of offset carbon to a specific product or unit throughout the entire supply chain. Consumers at both the corporate and retail level can see and reliably report the carbon that was sequestered to offset their purchase \u2013 whether that\u2019s a mile of electric cable for a home builder or a can of beer for a student." })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: intro_attributing_default }) })
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: intro_attributing_default }) })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("section", { className: "text-intro flex flex-wrap px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto sm:w-1/2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl", children: "Modelling carbon capture in real time" }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:flex sm:flex-col sm:pb-4 sm:justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "pr-2", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s CarbonTracker software, delivered with Stabiliti, gives users real-time understanding of carbon capture, including the potential for digital-twin desktop views. Combining unique geo-location with complex sampling and forecasting, users can track carbon from end to end \u2013 from traded credits to carbon in the ground, biomass or any other form of sequestration." }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: intro_modelling_default })
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("section", { className: "text-intro flex flex-wrap px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto sm:w-1/2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl", children: "Modelling carbon capture in real time" }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:flex sm:flex-col sm:pb-4 sm:justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "pr-2", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s CarbonTracker software, delivered with Stabiliti, gives users real-time understanding of carbon capture, including the potential for digital-twin desktop views. Combining unique geo-location with complex sampling and forecasting, users can track carbon from end to end \u2013 from traded credits to carbon in the ground, biomass or any other form of sequestration." }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: intro_modelling_default })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("section", { className: " bg-intro-about text-black px-8 font-light text-xl leading-tight mb-8 pb-8 pt-4", id: "about", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:max-w-screen-lg sm:mx-auto", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h3", { className: "underline decoration-intro underline-offset-8 decoration-2 mb-6 text-2xl font-medium sm:text-2xl", children: "About EnhaloGreen" }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-xl leading-tight", children: "EnhaloGreen was born out of a recognition that technology can play a vital enabling role in accelerating the acceptance and mainstreaming of carbon markets. By eliminating the obstacles and delays that have beset the sector to date, EnhaloGreen to supports new entrants and builds confidence in the fidelity of carbon available for sale to organisations looking to credibly offset their emissions." }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "Organisations, individuals and the media will only truly believe in carbon offsetting as a viable climate-change strategy when the markets can demonstrate their integrity and security. With our origins in cyber-security, supporting banks, financial institutions and others, Enhalo is well-placed to deliver the tools necessary to bring these markets to maturity and to encourage new entrants by providing infrastructure that is easy to access, reliable and trusted. So we established EnhaloGreen and set out to partner with organisations across the carbon ecosystem and around the world \u2013 from soil scientists and laboratories to landowners and innovative corporates \u2013 to help realise the potential of carbon offsetting in addressing the urgent issues of climate change and decarbonisation." }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h3", { className: "mb-6 text-2xl leading-tight", children: "Our mission" }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-8 text-1", children: "To develop and share digital tools that support an agile, credible and secure carbon ecosystem, accelerating the normalisation of carbon offsetting and encouraging more participants to enter the carbon markets." }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h3", { className: "mb-6 text-2xl leading-tight", children: "The EnhaloGreen team" })
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("section", { className: " bg-intro-about text-black px-8 font-light text-xl leading-tight mb-8 pb-8 pt-4", id: "about", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:max-w-screen-lg sm:mx-auto", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "underline decoration-intro underline-offset-8 decoration-2 mb-6 text-2xl font-medium sm:text-2xl", children: "About EnhaloGreen" }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-xl leading-tight", children: "EnhaloGreen was born out of a recognition that technology can play a vital enabling role in accelerating the acceptance and mainstreaming of carbon markets. By eliminating the obstacles and delays that have beset the sector to date, EnhaloGreen to supports new entrants and builds confidence in the fidelity of carbon available for sale to organisations looking to credibly offset their emissions." }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "Organisations, individuals and the media will only truly believe in carbon offsetting as a viable climate-change strategy when the markets can demonstrate their integrity and security. With our origins in cyber-security, supporting banks, financial institutions and others, Enhalo is well-placed to deliver the tools necessary to bring these markets to maturity and to encourage new entrants by providing infrastructure that is easy to access, reliable and trusted. So we established EnhaloGreen and set out to partner with organisations across the carbon ecosystem and around the world \u2013 from soil scientists and laboratories to landowners and innovative corporates \u2013 to help realise the potential of carbon offsetting in addressing the urgent issues of climate change and decarbonisation." }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "mb-6 text-2xl leading-tight", children: "Our mission" }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-8 text-1", children: "To develop and share digital tools that support an agile, credible and secure carbon ecosystem, accelerating the normalisation of carbon offsetting and encouraging more participants to enter the carbon markets." }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "mb-6 text-2xl leading-tight", children: "The EnhaloGreen team" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "text-center mb-4", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "flex justify-between flex-wrap", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "w-5/12 sm:w-1/6", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("a", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: ricky_magalhaes_default, className: "mb-2" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "underline mb-1 text-1", children: "Ricky Magalhaes" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "underline mb-12 text-1", children: "Founder and CEO" })
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-center mb-4", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "flex justify-between flex-wrap", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "w-5/12 sm:w-1/6", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("a", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: ricky_magalhaes_default, className: "mb-2" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "underline mb-1 text-1", children: "Ricky Magalhaes" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "underline mb-12 text-1", children: "Founder and CEO" })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "w-5/12 sm:w-1/6", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("a", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: manuel_saenz_default, className: "mb-2 w-full" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "underline mb-1 text-1", children: "Manuel Saenz" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "underline mb-12 text-1", children: "Founder and Director" })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "w-5/12 sm:w-1/6", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("a", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: manuel_saenz_default, className: "mb-2 w-full" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "underline mb-1 text-1", children: "Manuel Saenz" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "underline mb-12 text-1", children: "Founder and Director" })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "w-5/12 sm:w-1/6", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("a", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: paul_atherton_default, className: "mb-2" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "underline mb-1 text-1", children: "Paul Atherton" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "underline mb-12 text-1", children: "Founder and Director" })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "w-5/12 sm:w-1/6", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("a", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: paul_atherton_default, className: "mb-2" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "underline mb-1 text-1", children: "Paul Atherton" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "underline mb-12 text-1", children: "Founder and Director" })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "w-5/12 sm:w-1/6", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("a", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: carl_corbel_default, className: "mb-2" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "underline mb-1 text-1", children: "Carl Corbel" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "underline mb-12 text-1", children: "Director" })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "w-5/12 sm:w-1/6", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("a", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: carl_corbel_default, className: "mb-2" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "underline mb-1 text-1", children: "Carl Corbel" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "underline mb-12 text-1", children: "Director" })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "w-5/12 sm:w-1/6", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("a", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: cristos_valerkou_default, className: "mb-2" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "underline mb-1 text-1", children: "Cristos Valerkou" })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "w-5/12 sm:w-1/6", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("a", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: cristos_valerkou_default, className: "mb-2" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "underline mb-1 text-1", children: "Cristos Valerkou" })
         ] }) })
       ] }) })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("section", { className: "text-intro flex flex-wrap px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl", children: "Our Partners" }),
-      /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:flex sm:flex-wrap", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:w-1/2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: dark_green_carbon_default, className: "mb-8" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "DarkGreen Carbon (DGC) is an end-to-end carbon removal solution focusing on soil carbon. It combines consultancy in regenerative land management practices that accelerate and amplify carbon sequestration with robust measurement and verification and an EnhaloGreen carbon registry and marketplace that allows corporate offsetters to purchase certified carbon credits." })
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("section", { className: "text-intro flex flex-wrap px-8 font-light text-xl leading-tight mb-8 sm:max-w-screen-lg sm:mx-auto", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("h3", { className: "underline decoration-intro-underline underline-offset-8 decoration-2 text-intro-underline text-2xl mb-6 font-medium sm:text-2xl", children: "Our Partners" }),
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:flex sm:flex-wrap", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:w-1/2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: dark_green_carbon_default, className: "mb-8" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "DarkGreen Carbon (DGC) is an end-to-end carbon removal solution focusing on soil carbon. It combines consultancy in regenerative land management practices that accelerate and amplify carbon sequestration with robust measurement and verification and an EnhaloGreen carbon registry and marketplace that allows corporate offsetters to purchase certified carbon credits." })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:w-1/2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: stabiliti_default, className: "mb-8" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "Stabiliti has created a straightforward and low-friction approach to tokenising carbon, extending reach to new markets and creating new revenue opportunities. Carbon is tracked across the ecosystem from source, through the whole lifecycle, including the downstream supply chain, ensuring confidence, accuracy and integrity. Participants in our ecosystem can realise a new level of assurance and attain unprecedented quality guarantees." }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-2 text-1", children: "\u2022 Stabiliti has developed powerful decentralised tracking and tracing in realtime" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "\u2022 Offset management, insight and reporting for business across your organisation with our decentralised platform" })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:w-1/2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: stabiliti_default, className: "mb-8" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "Stabiliti has created a straightforward and low-friction approach to tokenising carbon, extending reach to new markets and creating new revenue opportunities. Carbon is tracked across the ecosystem from source, through the whole lifecycle, including the downstream supply chain, ensuring confidence, accuracy and integrity. Participants in our ecosystem can realise a new level of assurance and attain unprecedented quality guarantees." }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-2 text-1", children: "\u2022 Stabiliti has developed powerful decentralised tracking and tracing in realtime" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "\u2022 Offset management, insight and reporting for business across your organisation with our decentralised platform" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:w-1/2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: dark_black_carbon_default, className: "mb-8" }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s CarbonTracker software, delivered with Stabiliti, gives users real-time understanding of carbon capture, including the potential for digital-twin desktop views. Combining unique geo-location with complex sampling and forecasting, users can track carbon from end to end \u2013 from traded credits to carbon in the ground, biomass or any other form of sequestration." })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:w-1/2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: dark_black_carbon_default, className: "mb-8" }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "EnhaloGreen\u2019s CarbonTracker software, delivered with Stabiliti, gives users real-time understanding of carbon capture, including the potential for digital-twin desktop views. Combining unique geo-location with complex sampling and forecasting, users can track carbon from end to end \u2013 from traded credits to carbon in the ground, biomass or any other form of sequestration." })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "sm:w-1/2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "sm:h-1/2", children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("img", { src: regeneration_earth_default, className: "mb-8" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("p", { className: "mb-4 text-1", children: "Re-generation Earth works with land managers to help them unlock the potential in their land, help them build more financially and environmentally resilient businesses and help them benefit from the new income streams through carbon offset and biodiversity net gain (BNG) sales." })
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sm:w-1/2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "sm:h-1/2", children: /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: regeneration_earth_default, className: "mb-8" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("p", { className: "mb-4 text-1", children: "Re-generation Earth works with land managers to help them unlock the potential in their land, help them build more financially and environmentally resilient businesses and help them benefit from the new income streams through carbon offset and biodiversity net gain (BNG) sales." })
         ] })
       ] })
     ] })
@@ -1635,23 +1800,23 @@ var loader13 = async ({ request }) => {
 };
 
 // server-entry-module:@remix-run/dev/server-build
-var route19 = __toESM(require_login());
+var route21 = __toESM(require_login());
 
 // app/routes/$.tsx
 var __exports = {};
 __export(__exports, {
   default: () => PostRoute
 });
-var import_jsx_runtime24 = require("react/jsx-runtime");
+var import_jsx_runtime25 = require("react/jsx-runtime");
 function PostRoute() {
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(import_jsx_runtime24.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: enhalo_forest_default, className: "absolute h-[100vh] -z-20 top-0 object-cover sm:w-full " }),
-    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "text-white px-8", children: "We are sorry the page you are looking for does not exist" })
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(import_jsx_runtime25.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("img", { src: enhalo_forest_default, className: "absolute h-[100vh] -z-20 top-0 object-cover sm:w-full " }),
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "text-white px-8", children: "We are sorry the page you are looking for does not exist" })
   ] });
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { entry: { module: "/build/entry.client-DVE3ZZYY.js", imports: ["/build/_shared/chunk-6L2EXQIA.js", "/build/_shared/chunk-GDLBX7ER.js", "/build/_shared/chunk-Q3IECNXJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-6BHNCRFO.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-MZDJSLZB.js", imports: ["/build/_shared/chunk-2ELPQVOV.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-3WYQ6JNI.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account": { id: "routes/account", parentId: "root", path: "account", index: void 0, caseSensitive: void 0, module: "/build/routes/account-BO32H25N.js", imports: ["/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account-update": { id: "routes/account-update", parentId: "root", path: "account-update", index: void 0, caseSensitive: void 0, module: "/build/routes/account-update-LMFPDNC6.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/accounts_.$contactUuid.transactions": { id: "routes/accounts_.$contactUuid.transactions", parentId: "root", path: "accounts/:contactUuid/transactions", index: void 0, caseSensitive: void 0, module: "/build/routes/accounts_.$contactUuid.transactions-5Y5Q2BNQ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/accounts_.$contactUuid.transactions_.$transactionUuid": { id: "routes/accounts_.$contactUuid.transactions_.$transactionUuid", parentId: "root", path: "accounts/:contactUuid/transactions/:transactionUuid", index: void 0, caseSensitive: void 0, module: "/build/routes/accounts_.$contactUuid.transactions_.$transactionUuid-DET2NPYZ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.$transactionUuid": { id: "routes/cart.$transactionUuid", parentId: "root", path: "cart/:transactionUuid", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.$transactionUuid-NFSZL4JM.js", imports: ["/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.error": { id: "routes/cart.error", parentId: "root", path: "cart/error", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.error-IWHNPKZ4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.success": { id: "routes/cart.success", parentId: "root", path: "cart/success", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.success-IWW6AU3O.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact-us": { id: "routes/contact-us", parentId: "root", path: "contact-us", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-us-7HIA3QL6.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/fAkePI.$action": { id: "routes/fAkePI.$action", parentId: "root", path: "fAkePI/:action", index: void 0, caseSensitive: void 0, module: "/build/routes/fAkePI.$action-YN5UYWEV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-VFO7F24P.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/offset-products": { id: "routes/offset-products", parentId: "root", path: "offset-products", index: void 0, caseSensitive: void 0, module: "/build/routes/offset-products-AF7GBVXC.js", imports: ["/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/offset-products-transaction": { id: "routes/offset-products-transaction", parentId: "root", path: "offset-products-transaction", index: void 0, caseSensitive: void 0, module: "/build/routes/offset-products-transaction-UVG533GA.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/privacy-policy": { id: "routes/privacy-policy", parentId: "root", path: "privacy-policy", index: void 0, caseSensitive: void 0, module: "/build/routes/privacy-policy-B27733JT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/projects": { id: "routes/projects", parentId: "root", path: "projects", index: void 0, caseSensitive: void 0, module: "/build/routes/projects-YOIDAHUQ.js", imports: ["/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcode": { id: "routes/qrcode", parentId: "root", path: "qrcode", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcode-V75SBLLL.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes": { id: "routes/qrcodes", parentId: "root", path: "qrcodes", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes-E5GQHVW3.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes.products.$data": { id: "routes/qrcodes.products.$data", parentId: "routes/qrcodes", path: "products/:data", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes.products.$data-PHQBYJFE.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes.transactions.$uuid": { id: "routes/qrcodes.transactions.$uuid", parentId: "routes/qrcodes", path: "transactions/:uuid", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes.transactions.$uuid-3NORBZFN.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, version: "3e41e3c1", hmr: void 0, url: "/build/manifest-3E41E3C1.js" };
+var assets_manifest_default = { entry: { module: "/build/entry.client-DVE3ZZYY.js", imports: ["/build/_shared/chunk-6L2EXQIA.js", "/build/_shared/chunk-GDLBX7ER.js", "/build/_shared/chunk-Q3IECNXJ.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-VEDDYJYF.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-MZDJSLZB.js", imports: ["/build/_shared/chunk-2ELPQVOV.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/_index": { id: "routes/_index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/_index-3WYQ6JNI.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account": { id: "routes/account", parentId: "root", path: "account", index: void 0, caseSensitive: void 0, module: "/build/routes/account-TZDTLURL.js", imports: ["/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account-update": { id: "routes/account-update", parentId: "root", path: "account-update", index: void 0, caseSensitive: void 0, module: "/build/routes/account-update-LMFPDNC6.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/accounts_.$contactUuid.transactions": { id: "routes/accounts_.$contactUuid.transactions", parentId: "root", path: "accounts/:contactUuid/transactions", index: void 0, caseSensitive: void 0, module: "/build/routes/accounts_.$contactUuid.transactions-X5Y5HOIW.js", imports: ["/build/_shared/chunk-H4R4Z37S.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/accounts_.$contactUuid.transactions_.$transactionUuid": { id: "routes/accounts_.$contactUuid.transactions_.$transactionUuid", parentId: "root", path: "accounts/:contactUuid/transactions/:transactionUuid", index: void 0, caseSensitive: void 0, module: "/build/routes/accounts_.$contactUuid.transactions_.$transactionUuid-B6OVKAME.js", imports: ["/build/_shared/chunk-H4R4Z37S.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.$transactionUuid": { id: "routes/cart.$transactionUuid", parentId: "root", path: "cart/:transactionUuid", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.$transactionUuid-NFSZL4JM.js", imports: ["/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.error": { id: "routes/cart.error", parentId: "root", path: "cart/error", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.error-IWHNPKZ4.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart.success": { id: "routes/cart.success", parentId: "root", path: "cart/success", index: void 0, caseSensitive: void 0, module: "/build/routes/cart.success-IWW6AU3O.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact-us": { id: "routes/contact-us", parentId: "root", path: "contact-us", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-us-UCW725ZV.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact-us-route": { id: "routes/contact-us-route", parentId: "root", path: "contact-us-route", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-us-route-SY4E3QBP.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/contact-us-success": { id: "routes/contact-us-success", parentId: "root", path: "contact-us-success", index: void 0, caseSensitive: void 0, module: "/build/routes/contact-us-success-AZFOHIGX.js", imports: ["/build/_shared/chunk-2ELPQVOV.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/fAkePI.$action": { id: "routes/fAkePI.$action", parentId: "root", path: "fAkePI/:action", index: void 0, caseSensitive: void 0, module: "/build/routes/fAkePI.$action-YN5UYWEV.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/login": { id: "routes/login", parentId: "root", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/login-VFO7F24P.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/offset-products": { id: "routes/offset-products", parentId: "root", path: "offset-products", index: void 0, caseSensitive: void 0, module: "/build/routes/offset-products-AF7GBVXC.js", imports: ["/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/offset-products-transaction": { id: "routes/offset-products-transaction", parentId: "root", path: "offset-products-transaction", index: void 0, caseSensitive: void 0, module: "/build/routes/offset-products-transaction-UVG533GA.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/privacy-policy": { id: "routes/privacy-policy", parentId: "root", path: "privacy-policy", index: void 0, caseSensitive: void 0, module: "/build/routes/privacy-policy-B27733JT.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/projects": { id: "routes/projects", parentId: "root", path: "projects", index: void 0, caseSensitive: void 0, module: "/build/routes/projects-C4I3COGC.js", imports: ["/build/_shared/chunk-LDPKBUL2.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcode": { id: "routes/qrcode", parentId: "root", path: "qrcode", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcode-V75SBLLL.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes": { id: "routes/qrcodes", parentId: "root", path: "qrcodes", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes-E5GQHVW3.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes.transactions.$uuid": { id: "routes/qrcodes.transactions.$uuid", parentId: "routes/qrcodes", path: "transactions/:uuid", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes.transactions.$uuid-3NORBZFN.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/qrcodes_.products_.$data": { id: "routes/qrcodes_.products_.$data", parentId: "root", path: "qrcodes/products/:data", index: void 0, caseSensitive: void 0, module: "/build/routes/qrcodes_.products_.$data-IOKXTS4U.js", imports: ["/build/_shared/chunk-2ELPQVOV.js", "/build/_shared/chunk-RZUQJXOQ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, version: "dab2b624", hmr: void 0, url: "/build/manifest-DAB2B624.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postcss: !1, unstable_tailwind: !1, v2_errorBoundary: !0, v2_headers: !0, v2_meta: !0, v2_normalizeFormMethod: !0, v2_routeConvention: !0 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -1695,10 +1860,10 @@ var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postc
     caseSensitive: void 0,
     module: route4
   },
-  "routes/qrcodes.products.$data": {
-    id: "routes/qrcodes.products.$data",
-    parentId: "routes/qrcodes",
-    path: "products/:data",
+  "routes/qrcodes_.products_.$data": {
+    id: "routes/qrcodes_.products_.$data",
+    parentId: "root",
+    path: "qrcodes/products/:data",
     index: void 0,
     caseSensitive: void 0,
     module: qrcodes_products_data_exports
@@ -1710,6 +1875,22 @@ var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postc
     index: void 0,
     caseSensitive: void 0,
     module: cart_transactionUuid_exports
+  },
+  "routes/contact-us-success": {
+    id: "routes/contact-us-success",
+    parentId: "root",
+    path: "contact-us-success",
+    index: void 0,
+    caseSensitive: void 0,
+    module: contact_us_success_exports
+  },
+  "routes/contact-us-route": {
+    id: "routes/contact-us-route",
+    parentId: "root",
+    path: "contact-us-route",
+    index: void 0,
+    caseSensitive: void 0,
+    module: contact_us_route_exports
   },
   "routes/offset-products": {
     id: "routes/offset-products",
@@ -1749,7 +1930,7 @@ var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postc
     path: "cart/success",
     index: void 0,
     caseSensitive: void 0,
-    module: route11
+    module: route13
   },
   "routes/cart.error": {
     id: "routes/cart.error",
@@ -1757,7 +1938,7 @@ var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postc
     path: "cart/error",
     index: void 0,
     caseSensitive: void 0,
-    module: route12
+    module: route14
   },
   "routes/contact-us": {
     id: "routes/contact-us",
@@ -1813,7 +1994,7 @@ var assetsBuildDirectory = "public/build", future = { v2_dev: !1, unstable_postc
     path: "login",
     index: void 0,
     caseSensitive: void 0,
-    module: route19
+    module: route21
   },
   "routes/$": {
     id: "routes/$",

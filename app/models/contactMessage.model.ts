@@ -34,16 +34,20 @@ export async function create(contactMessage: ContactMessage) {
 	if (!validateString(contactMessage.helpMessage)) {
 		return json({ error: 'Invalid Message', errorInput: '', status: 422 }, 422);
 	}
+	try {
+		const response = await fetch(`${api.protocol}://${api.base}${api.port}/accounts/?api_key=${api.key}`, {
+			method: 'POST',
+			body: JSON.stringify(contactMessage),
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+		});
+		const data = await response.json();
+		console.log(data);
 
-	const response = await fetch(`${api.protocol}://${api.base}${api.port}/accounts/?api_key=${api.key}`, {
-		method: 'POST',
-		body: JSON.stringify(contactMessage),
-		headers: {
-			'Content-type': 'application/json; charset=UTF-8',
-		},
-	});
-	const data = await response.json();
-	console.log(data);
-
-	return data;
+		return data;
+	} catch (error) {
+		console.error(`Error occured: ${String(error)}`);
+		return { error };
+	}
 }
