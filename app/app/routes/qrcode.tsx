@@ -13,13 +13,13 @@ export const loader = async ({ request }) => {
 	};
 	const data = btoa(JSON.stringify(transactionProduct));
 	const url = `${baseUrl}qrcodes/products/${data}`;
-	console.log(url)
+	console.log(url);
 	const image = await qrcode(url);
 
 	return new Response(image, {
 		status: 200,
 		headers: {
-			"Content-Type": "image/png",
+			'Content-Type': 'image/png',
 		},
 	});
 };

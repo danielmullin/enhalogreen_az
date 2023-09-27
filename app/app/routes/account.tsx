@@ -7,27 +7,24 @@ import contactBg from '../images/contact_bg.jpg';
 import { retrieve } from '~/models/account.model';
 
 export const loader = async ({ params, request }) => {
-  // const account = await retrieve(params.uuid);
-  const account = await retrieve('b005e055-5343-ee11-be6d-000d3ad4d529', null, null);
+	// const account = await retrieve(params.uuid);
+	const account = await retrieve('b005e055-5343-ee11-be6d-000d3ad4d529', null, null);
 
-  return ({
-    account,
-
-  });
+	return {
+		account,
+	};
 };
 
 export default function Account() {
-  const { account } = useLoaderData<typeof loader>();
-  const content  = require('app/content/account.json');
+	const { account } = useLoaderData<typeof loader>();
+	const content = require('app/content/account.json');
 
-  return (
-    <section className="text-white bg-background-teal min-h-screen">
-      <div className='pt-20 px-8 mb-8'>
-        <h1 className="text-3xl mb-6">{content.h1}</h1>
-      </div>
-      <div>
-          <AccountForm account={account}/>
-      </div>
-    </section>
-  );
+	return (
+		<div className="px-8 sm:mx-auto sm:max-w-screen-sm">
+			<h1 className="mb-8 text-3xl leading-none ">{content.h1}</h1>
+			<div>
+				<AccountForm account={account} />
+			</div>
+		</div>
+	);
 }

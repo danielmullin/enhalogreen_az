@@ -6,14 +6,14 @@ export interface ProductVisualisationProps {
 	error: boolean;
 	name: string;
 	quantity: number;
-	sequence: number;
 	total: number;
 	units: number;
 }
 
 const ProductVisualisation = (props: ProductVisualisationProps): React.ReactElement => {
-	const { blockShow, error, name, quantity, sequence, units } = props;
+	const { blockShow, error, name, quantity, units } = props;
 	let opacity = 100;
+	let sequence = 8;
 
 	// (opacity = 2 * (units / 5)), (opacity = 3 * (units / 5)), (opacity = 4 * (units / 5)), (opacity = 5 * (units / 5));
 

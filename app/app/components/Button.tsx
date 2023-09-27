@@ -7,8 +7,10 @@ const Button = (props: ButtonProps): React.ReactElement => {
 	const { text, type } = props;
 
 	return (
-		<button type={type} className='bg-white text-button-green text-xl px-3 py-2 rounded-half w-full'>{text}</button>
-		);
+		<button type={type} className="w-full rounded-half bg-white px-3 py-2 text-xl text-button-green">
+			{text}
+		</button>
+	);
 };
 
 export default Button;
