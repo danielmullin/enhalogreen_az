@@ -53,7 +53,7 @@ export async function create(contact: Contact, quantity: number, productUuid: st
 			carbonavailable: subproject.carbonAvailable,
 			toncost: {
 				value: subproject.tonCost.value,
-			}
+			},
 		},
 		tonnes: Math.ceil((offsetProduct.offsetunits * quantity) / 1000),
 		quantity: quantity,
@@ -70,14 +70,17 @@ export async function create(contact: Contact, quantity: number, productUuid: st
 			},
 		});
 
-	//{
-	//    "contactId": "b005e055-5343-ee11-be6d-000d3ad4d529",
-	 //   "transactionid": "34c8449a-b65e-ee11-8def-000d3ad4d529"
-	//}
+		//comment this out when need to deploy
+		// return 'a9ace233-0149-ee11-be6f-000d3ad4d529';
+
+		//{
+		//    "contactId": "b005e055-5343-ee11-be6d-000d3ad4d529",
+		//   "transactionid": "34c8449a-b65e-ee11-8def-000d3ad4d529"
+		//}
 
 		const data = await response.json();
 		console.log(data);
-		return data.transactionid
+		return data.transactionid;
 	} catch (error) {
 		console.error(`Error occured: ${String(error)}`);
 		return { error };
@@ -123,7 +126,7 @@ export async function retrieve(uuid: string) {
 		const data = await response.json();
 		// console.log(uuid)
 		// console.log(data);
-		const transaction = data.find((transaction) => transaction.transactionId == uuid);
+		const transaction = data.find((item) => item.transactionId == uuid);
 		// console.log(transaction)
 
 		const offsetProducts = await offsetProductList();
@@ -131,7 +134,7 @@ export async function retrieve(uuid: string) {
 		transaction.product = offsetProducts.find((product) => product.uuid === transaction.productId.id);
 		return transaction;
 	} catch (error) {
-		console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=${api.key}`)
+		console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=${api.key}`);
 		console.error(`Error occured: ${String(error)}`);
 		console.log(error);
 		return console.error;

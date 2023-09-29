@@ -1,6 +1,9 @@
 {
-  "h1": "Success!",
-  "p": [
-    "Thank you for your purchase. Please check your e-mail for the order confirmation." 
-  ]
+	"h1": "Payment Received!",
+	"p": [
+		"Thank you for your contribution to a greener world.",
+		"We have sent an email confirming your transaction to example@email.com and with instruction to access your accounts and your products offset certificates.",
+		"If you have any questions please contact us at"
+	],
+	"a": "support@enhalogreen.com"
 }

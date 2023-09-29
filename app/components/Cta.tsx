@@ -1,18 +1,27 @@
-import { Link } from "@remix-run/react";
+import { Link } from '@remix-run/react';
 
 export interface CtaProps {
-  linkTo: string;
-  text: string;
+	linkTo: string;
+	text: string;
+	type: 'primary' | 'secondary';
 }
 
 const Cta = (props: CtaProps): React.ReactElement => {
-  const { linkTo, text } = props;
+	const { linkTo, text, type } = props;
 
-  return (
-    <Link to={linkTo} className='w-full text-center'>
-      <button className='bg-white text-button-green z-10 relative text-xl px-3 py-2 max-w-430 rounded-half w-full sm:py-4'>{text}</button>
-    </Link>
-    );
+	return (
+		<Link to={linkTo} className="w-full text-center">
+			<button
+				className={
+					type === 'primary'
+						? 'relative z-10 w-full max-w-430 rounded-half bg-white px-3 py-2 text-xl text-button-green sm:py-4'
+						: 'inner-border-2 inner-border-white relative z-10 w-full max-w-430 rounded-half px-3 py-2 text-xl sm:py-4'
+				}
+			>
+				{text}
+			</button>
+		</Link>
+	);
 };
 
 export default Cta;

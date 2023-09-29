@@ -1,6 +1,6 @@
-import { Link, useLoaderData, useRouteError, isRouteErrorResponse } from '@remix-run/react';
-import type { V2_MetaFunction } from '@remix-run/node';
-import { Contact } from '~/models/contact.model';
+import { useLoaderData } from '@remix-run/react';
+// import type { V2_MetaFunction } from '@remix-run/node';
+// import { Contact } from '~/models/contact.model';
 import { retrieve } from '~/models/transaction';
 import qrcode from '../images/qrcode.svg';
 import qrcodes from '../images/qrcodes.svg';
@@ -16,15 +16,15 @@ interface TransactionProduct {
 export const loader = async ({ params }) => {
 	const transaction = await retrieve(params.transactionUuid);
 	let transactionProducts: Array<TransactionProduct> = [];
-	for (let i = 1; i < transaction.quantity + 1; i++) {
-		transactionProducts.push({
-			name: transaction.product.name,
-			productUuid: transaction.productId.id,
-			sequence: i,
-			transactionUuid: transaction.transactionId,
-			units: transaction.product.units,
-		});
-	}
+	//for (let i = 1; i < transaction.quantity + 1; i++) {
+	//	transactionProducts.push({
+	//		name: transaction.product.name,
+	//		productUuid: transaction.productId.id,
+	//		sequence: i,
+	//	transactionUuid: transaction.transactionId,
+	//	units: transaction.product.units,
+	//});
+	// }
 
 	return {
 		transaction,

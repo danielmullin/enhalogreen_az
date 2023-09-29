@@ -26,6 +26,7 @@ export default function Header(props: HeaderProps): JSX.Element {
 			'routes/accounts_.$contactUuid.transactions',
 			'routes/accounts_.$contactUuid.transactions_.$transactionUuid',
 			'routes/cart',
+			'routes/cart.success',
 			'routes/cart.$transactionUuid',
 			'routes/offset-products',
 			'routes/privacy-policy',

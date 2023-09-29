@@ -87,11 +87,11 @@ export default function App() {
 						: 'font-Noto Sans relative min-h-screen w-full overflow-x-hidden bg-background-teal text-light-black'
 				}
 			>
-				<img
+				{/* <img
 					src={infinityImage}
 					alt=""
 					className="absolute  left-[-275px] top-[-60px] -z-10 max-h-[130vh] max-w-[700%] overflow-x-hidden opacity-50 sm:left-[100px] sm:top-0 sm:max-h-full sm:max-w-[2000px]"
-				/>
+				/> */}
 				<Header routeId={id} />
 				<Outlet />
 				<Footer />

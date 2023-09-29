@@ -83,17 +83,27 @@ export default function Cart() {
 	const content = require('app/content/cart.json');
 	const { subProject, transaction } = useLoaderData<typeof loader>();
 
-	// console.log(transaction)
-	//So number of (ceil((products x units) / 1000)x tonne cost
-
 	return (
 		<div className="min-h-screen text-light-black">
 			<div className="px-8 sm:mx-auto sm:max-w-screen-lg">
 				<section className="mb-4 sm:mx-auto sm:max-w-screen-lg">
 					<div className="">
-						<h1 className="mb-6 text-3xl leading-none sm:mb-8">{ content.h1 }</h1>
+						<h1 className="mb-6 text-3xl leading-none sm:mb-8">{content.h1}</h1>
 					</div>
 				</section>
+				<div className="mb-4 flex flex-col-reverse justify-between text-xl sm:flex-row">
+					<div>
+						<p>
+							Offset Details: {transaction.quantity} {transaction.product.name}'s at {transaction.product.units} units per{' '}
+							{transaction.product.name}
+						</p>
+						<p>Total carbon offset {transaction.totalCarbon} Tonnes</p>
+					</div>
+					{/* <div className="mb-4 w-1/2 sm:w-1/5">
+						<Cta linkTo={`/offset-products?subProjectId=${subProject.subprojectid}`} text={'Back'} />
+					</div> */}
+					{/* <a href={`/offset-products?subProjectId=${subProject.subprojectid}`} */}
+				</div>
 				<section className="mb-8 rounded-xl bg-white bg-opacity-20 px-8 py-8 text-xl sm:mx-auto sm:max-w-screen-lg">
 					<div className="mb-6 flex">
 						<p className=" w-1/3">{transaction.product.name}</p>
@@ -106,11 +116,16 @@ export default function Cart() {
 					<div className="my-8 border-b-2 border-green-underline"></div>
 					<div className="flex justify-between">
 						<p>Total cost</p>
-						<p>£{ Math.ceil((transaction.quantity * transaction.product.units) / 1000) * subProject.tonCost.value }</p>
+						<p>£{Math.ceil((transaction.quantity * transaction.product.units) / 1000) * subProject.tonCost.value}</p>
 					</div>
 				</section>
-				<section className="mx-auto mb-8 flex w-3/5 justify-center sm:mx-auto sm:max-w-screen-lg">
-					<Cta linkTo="/success" text={'Pay now'} />
+				<section className="mx-auto mb-8 flex w-full justify-around sm:mx-auto sm:w-full sm:max-w-screen-lg sm:flex-row">
+					<div className="mb-4 w-2/5">
+						<Cta linkTo={`/offset-products?subProjectId=${subProject.subprojectid}`} text={'Edit'} type={'secondary'} />
+					</div>
+					<div className="mb-4 w-2/5">
+						<Cta linkTo="/cart/success" text={'Pay now'} type={'primary'} />
+					</div>
 				</section>
 				<section className="sm:mx-auto sm:max-w-screen-md">
 					<PayPalScriptProvider options={{ clientId: 'test', components: 'buttons', currency: 'USD' }}>

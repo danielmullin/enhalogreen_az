@@ -46,7 +46,7 @@ export default function Index() {
 					</div>
 				</div>
 			</section>
-			<section className="relative z-[-30] flex flex-wrap bg-white px-8  pt-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:max-w-screen-lg sm:pt-0">
+			<section className="relative z-[-30] flex flex-wrap bg-white px-8 pt-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:max-w-screen-lg sm:px-0 sm:pt-0">
 				<h2 className="mb-8 text-2.5xl font-medium leading-7">
 					EnhaloGreen empowers organisations to commit to carbon offsetting and play their part in addressing climate change.
 				</h2>
@@ -56,16 +56,16 @@ export default function Index() {
 					sequestration, and to extract additional value through the commercialisation of carbon credits.
 				</p>
 			</section>
-			<section className="relative z-[-30] mb-8 flex flex-wrap bg-white px-8 pt-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:max-w-screen-lg">
+			<section className="relative z-[-30] mb-8 flex flex-wrap bg-white px-8 pt-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:max-w-screen-lg sm:px-0">
 				<h3 className="mb-6 text-2xl font-medium text-intro-underline underline decoration-intro-underline decoration-2 underline-offset-8 sm:text-2xl">
 					Accelerating verification and certification
 				</h3>
-				<div className="sm:flex sm:border-b sm:border-grey sm:pb-4">
-					<div className="pr-2 sm:w-3/5">
+				<div className="sm:flex sm:border-b sm:border-grey sm:pb-8">
+					<div className="mb-4 pr-4 sm:w-1/2">
 						<p className="mb-4 text-xl leading-tight">
 							Friction and red tape are among the greatest obstacles to the adoption and mainstreaming of climate-positive initiatives.
 						</p>
-						<p className="mb-4 text-1">
+						<p className="text-1">
 							EnhaloGreen’s digital platform automates and dramatically accelerates key steps in the carbon verification and
 							certification process, giving near real-time analysis to capture and certify carbon for the voluntary market. This reduces
 							the cost of entry for landowners, farmers and project developers, democratising the market and opening the door to smaller
@@ -73,17 +73,17 @@ export default function Index() {
 							relevant codes, including the UK Carbon Code in the UK.
 						</p>
 					</div>
-					<div className="sm:w-2/5">
+					<div className="sm:w-1/2 sm:pl-8">
 						<img src={accelerating} />
 					</div>
 				</div>
 			</section>
-			<section className="mb-8 flex flex-wrap px-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:max-w-screen-lg">
+			<section className="mb-8 flex flex-wrap px-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:max-w-screen-lg sm:px-0">
 				<h3 className="mb-6 text-2xl font-medium text-intro-underline underline decoration-intro-underline decoration-2 underline-offset-8 sm:text-2xl">
 					Providing a reliable, secure carbon registry
 				</h3>
-				<div className="sm:flex sm:border-b sm:border-grey sm:pb-4">
-					<div className="pr-2 sm:w-3/5">
+				<div className="sm:flex sm:border-b sm:border-grey sm:pb-8">
+					<div className="mb-4 sm:mb-0 sm:w-1/2 sm:pr-8">
 						<p className="mb-6 text-xl leading-tight">
 							What is it, where is it and who owns it? Carbon credits can only succeed when the answers to these questions are
 							definitively captured, stored and made accessible.
@@ -92,26 +92,26 @@ export default function Index() {
 							EnhaloGreen’s Carbon registry delivers transparency and security, giving stakeholders certainty of the fidelity and
 							provenance of captured carbon.
 						</p>
-						<p className="mb-4 text-1">
+						<p className="text-1">
 							Certified and registered carbon is visible and traceable, providing the assurance that corporates require before
 							purchasing carbon credits or engaging with offsetting programmes and putting their money and their reputations on the
 							line. Our platform supports carbon credit transactions of all sizes, as well as long-term subscriptions, giving users
 							complete control over their offsetting strategies.
 						</p>
 					</div>
-					<div className="sm:w-2/5">
+					<div className="sm:w-1/2 sm:pl-8">
 						<img src={providing} />
 					</div>
 				</div>
 			</section>
 			{/* <div className="sm:pb sm:mx-auto sm:mb-12 sm:flex sm:max-w-screen-lg sm:border-b sm:border-grey sm:pb-8"> */}
-			<div className="sm:pb sm:mx-auto sm:mb-12 sm:flex sm:max-w-screen-lg">
-				<section className="mb-8 px-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:mb-0 sm:w-1/2 sm:max-w-screen-lg">
-					<div className="flex flex-wrap sm:flex sm:justify-between sm:pb-4">
+			<div className="sm:mx-auto sm:mb-8 sm:flex sm:max-w-screen-lg sm:border-b sm:border-grey sm:pb-8">
+				<section className="mb-8 px-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:mb-0 sm:w-1/2 sm:max-w-screen-lg sm:pl-0 sm:pr-8">
+					<div className="flex flex-wrap sm:flex sm:justify-between">
 						<h3 className="mb-6 whitespace-pre-wrap text-2xl font-medium text-intro-underline underline decoration-intro-underline decoration-2 underline-offset-8 sm:text-2xl">
 							Trading carbon credits in a secure, accessible marketplace
 						</h3>
-						<div className="pr-2">
+						<div>
 							<p className="mb-4 text-1">
 								EnhaloGreen’s online carbon marketplace enables users to see, purchase and retire verified carbon credits with full
 								transparency and traceability.
@@ -129,12 +129,12 @@ export default function Index() {
 						</div>
 					</div>
 				</section>
-				<section className="mb-8 px-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:mb-0 sm:w-1/2 sm:max-w-screen-lg">
-					<div className="flex flex-wrap sm:flex sm:h-full sm:justify-between sm:pb-4 ">
+				<section className="mb-8 px-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:mb-0 sm:w-1/2 sm:max-w-screen-lg sm:pl-8 sm:pr-0 ">
+					<div className="flex flex-wrap sm:flex sm:h-full sm:justify-between ">
 						<h3 className="mb-6 text-2xl font-medium text-intro-underline underline decoration-intro-underline decoration-2 underline-offset-8 sm:mb-0 sm:text-2xl">
 							Tracking carbon on the blockchain
 						</h3>
-						<div className="pr-2">
+						<div>
 							<p className="mb-4 text-1">
 								EnhaloGreen uses CarbonTracker – software developed with Stabiliti, a sister company and blockchain provider – to
 								accurately capture carbon origin and location, asset value, and ownership and transfer across complex carbon
@@ -148,13 +148,13 @@ export default function Index() {
 					</div>
 				</section>
 			</div>
-			<div className="w-full sm:mx-auto sm:max-w-[calc(1024px-4rem)] sm:border-b sm:border-grey sm:pb-8"></div>
-			<section className="mb-8 flex flex-wrap px-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:max-w-screen-lg">
+			{/* <div className="w-full sm:mx-auto sm:mb-8 sm:max-w-[calc(1024px-4rem)] sm:border-b sm:border-grey"></div> */}
+			<section className="mb-8 flex flex-wrap px-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:max-w-screen-lg sm:px-0">
 				<h3 className="mb-6 text-2xl font-medium text-intro-underline underline decoration-intro-underline decoration-2 underline-offset-8 sm:text-2xl">
 					Carbon code compliance
 				</h3>
-				<div className="sm:pb sm:mx-auto sm:mb-12 sm:flex sm:max-w-screen-lg sm:border-b sm:border-grey sm:pb-8">
-					<div>
+				<div className="sm:pb sm:mx-auto sm:flex sm:max-w-screen-lg sm:border-b sm:border-grey sm:pb-8">
+					<div className="sm:w-1/2 sm:pr-8">
 						<p className="mb-4 text-1">
 							EnhaloGreen’s digital platform delivers rapid and robust certification in line with all reputable carbon codes, including:
 						</p>
@@ -166,7 +166,7 @@ export default function Index() {
 							<li>Congo Brazzaville Carbon Code</li>
 						</ul>
 					</div>
-					<div className="pl-8 sm:border-l sm:border-grey">
+					<div className="sm:w-1/2 sm:border-l sm:border-grey sm:pl-8">
 						<p className="mb-4 text-center text-9xl">75%</p>
 						<p className="mb-4 text-1">
 							of SMEs agreed employees care that the business behaves sustainably and reduces its impact on the climate
@@ -174,13 +174,13 @@ export default function Index() {
 					</div>
 				</div>
 			</section>
-			<div className="sm:pb sm:mx-auto sm:mb-12 sm:flex sm:max-w-screen-lg sm:pb-8">
-				<section className="mb-8 flex flex-wrap px-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:w-1/2 sm:max-w-screen-lg">
+			<div className=" sm:mx-auto sm:flex sm:max-w-screen-lg sm:pb-8">
+				<section className="mb-8 flex flex-wrap px-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:w-1/2 sm:max-w-screen-lg sm:pl-0 sm:pr-8">
 					<h3 className="mb-6 text-2xl font-medium text-intro-underline underline decoration-intro-underline decoration-2 underline-offset-8 sm:text-2xl">
 						Attributing carbon per product
 					</h3>
-					<div className="sm:flex sm:flex-col sm:justify-between sm:pb-4">
-						<div className="pr-2">
+					<div className="sm:flex sm:flex-col sm:justify-between sm:pb-8">
+						<div>
 							<p className="mb-4 text-1">
 								As emissions reporting requirements become more exacting – and carbon comes to play a larger role in consumer
 								decision-making – accounting for carbon at the per-product level will become both more important and more attractive.
@@ -197,12 +197,12 @@ export default function Index() {
 						</div>
 					</div>
 				</section>
-				<section className="mb-8 flex flex-wrap px-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:w-1/2 sm:max-w-screen-lg">
+				<section className="mb-8 flex flex-wrap px-8 text-xl font-light leading-tight text-intro sm:mx-auto sm:w-1/2 sm:max-w-screen-lg sm:pl-8 sm:pr-0">
 					<h3 className="mb-6 text-2xl font-medium text-intro-underline underline decoration-intro-underline decoration-2 underline-offset-8 sm:text-2xl">
 						Modelling carbon capture in real time
 					</h3>
-					<div className="sm:flex sm:flex-col sm:justify-between sm:pb-4">
-						<div className="pr-2">
+					<div className="sm:flex sm:flex-col sm:justify-between sm:pb-8">
+						<div>
 							<p className="mb-4 text-1">
 								EnhaloGreen’s CarbonTracker software, delivered with Stabiliti, gives users real-time understanding of carbon capture,
 								including the potential for digital-twin desktop views. Combining unique geo-location with complex sampling and
@@ -287,7 +287,7 @@ export default function Index() {
 					Our Partners
 				</h3>
 				<div className="sm:flex sm:flex-wrap">
-					<div className="sm:w-1/2">
+					<div className="sm:w-1/2 sm:pr-8">
 						<img src={darkGreenCarbon} className="mb-8" />
 						<p className="mb-4 text-1">
 							DarkGreen Carbon (DGC) is an end-to-end carbon removal solution focusing on soil carbon. It combines consultancy in
@@ -296,7 +296,7 @@ export default function Index() {
 							carbon credits.
 						</p>
 					</div>
-					<div className="sm:w-1/2">
+					<div className="sm:w-1/2 sm:pl-8">
 						<img src={stabiliti} className="mb-8" />
 						<p className="mb-4 text-1">
 							Stabiliti has created a straightforward and low-friction approach to tokenising carbon, extending reach to new markets and
@@ -309,7 +309,7 @@ export default function Index() {
 							• Offset management, insight and reporting for business across your organisation with our decentralised platform
 						</p>
 					</div>
-					<div className="sm:w-1/2">
+					<div className="sm:w-1/2 sm:pr-8">
 						<img src={darkBlackCarbon} className="mb-8" />
 						<p className="mb-4 text-1">
 							EnhaloGreen’s CarbonTracker software, delivered with Stabiliti, gives users real-time understanding of carbon capture,
@@ -318,7 +318,7 @@ export default function Index() {
 							form of sequestration.
 						</p>
 					</div>
-					<div className="sm:w-1/2">
+					<div className="sm:w-1/2 sm:pl-8">
 						<div className="sm:h-1/2">
 							<img src={regenerationEarth} className="mb-8" />
 						</div>
