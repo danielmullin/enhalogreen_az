@@ -2,7 +2,7 @@ import { useActionData } from '@remix-run/react';
 import { useLoaderData } from '@remix-run/react';
 import type { ActionArgs, LoaderArgs } from '@remix-run/node';
 import { retrieve, TransactionProduct } from '~/models/transactionProduct';
-import ProductVisualisation from '~/components/ProductVisualisation';
+import TransactionVisualisation from '~/components/TransactionVisualisation';
 import forest from '../images/enhalo_forest.jpg';
 import { retrieve as retrieveTransaction } from '~/models/transaction';
 
@@ -11,13 +11,9 @@ export const loader = async ({ params }: LoaderArgs) => {
 		const data = await JSON.parse(atob(params.data));
 		const product: TransactionProduct = await retrieve(data.productUuid);
 		const transaction = await retrieveTransaction(data.transactionUuid);
-		// console.log(transaction);
-		// console.log(product);
-		// console.log(data);
 
 		let name: string = product.name;
 		let quantity: number = transaction.quantity;
-		let sequence: number = data.sequence;
 		let units: number = data.units;
 		let error = transaction.product.units == product.offsetunits ? false : true;
 
@@ -25,7 +21,6 @@ export const loader = async ({ params }: LoaderArgs) => {
 			error,
 			name,
 			quantity,
-			sequence,
 			units,
 		};
 	} catch {
@@ -54,7 +49,7 @@ export async function action({ params, request }: ActionArgs) {
 
 export default function Product() {
 	const actionData = useActionData<typeof action>();
-	const { error, name, quantity, sequence, units } = useLoaderData<typeof loader>();
+	const { error, name, quantity, units } = useLoaderData<typeof loader>();
 	let blockShow = false;
 
 	if (actionData !== undefined) {
@@ -73,15 +68,7 @@ export default function Product() {
 			) : null}
 			<img src={forest} className={(error ? 'grayscale' : null) + ' absolute top-0 -z-20 h-[100vh] object-cover sm:w-full'} />
 			<div className={(error ? 'grayscale' : null) + ' sm:mx-auto sm:h-full sm:max-w-screen-lg'}>
-				<ProductVisualisation
-					blockShow={blockShow}
-					error={error}
-					name={name}
-					quantity={quantity}
-					sequence={sequence}
-					total={1000}
-					units={units}
-				/>
+				<TransactionVisualisation blockShow={blockShow} error={error} name={name} quantity={quantity} total={1000} units={units} />
 			</div>
 		</>
 	);

@@ -8,8 +8,6 @@ export interface OffsetProduct {
 }
 
 export async function list() {
-	// console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`)
-	// @todo error handling
 	try {
 		const response = await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`, {
 			method: 'GET',
@@ -27,6 +25,23 @@ export async function list() {
 	} catch (error) {
 		console.error(`Error occured: ${String(error)}`);
 		return { error };
+	}
+}
+
+export async function retrieve(uuid: string) {
+	try {
+		const response = await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/OffsetProduct?code=${api.key}`, {
+			method: 'GET',
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+		});
+		const data = await response.json();
+		return data.find((offsetProduct) => offsetProduct.productid == uuid);
+	} catch (error) {
+		console.error(`Error occured: ${String(error)}`);
+		console.log(error);
+		return console.error;
 	}
 }
 
