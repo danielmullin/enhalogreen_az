@@ -12,7 +12,7 @@ export const loader = async ({ request }) => {
 		productUuid: String(urlParams.searchParams.get('productUuid')),
 	};
 	const data = btoa(JSON.stringify(transactionProduct));
-	const url = `${baseUrl}qrcodes/products/${data}`;
+	const url = `${baseUrl}/qrcodes/products/${data}`;
 	console.log(url);
 	const image = await qrcode(url);
 
