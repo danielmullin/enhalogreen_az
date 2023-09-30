@@ -1,11 +1,35 @@
 import { json, LoaderArgs } from '@remix-run/node';
 
+export async function action({ params, request }: ActionArgs) {
+	const response = {
+		CreateTransaction: {
+			 contactId: 'b005e055-5343-ee11-be6d-000d3ad4d529',
+			 transactionid: 'a9ace233-0149-ee11-be6f-000d3ad4d529'
+		},
+	}
+	
+	switch (request.method) {
+		case 'GET':
+			console.log('get')
+			break;
+		case 'PATCH':
+			console.log('patch');
+			break;
+		case 'POST':
+			console.log('post')
+			let responseKey = String(params.action);
+			return json(response[responseKey]);
+	}
+	return json({ message: 'Method not allowed', ok: true }, 405);
+}
+
 export async function loader({ params, request }: LoaderArgs) {
 	const url = new URL(request.url);
 	const transactionUuid = url.searchParams.get('transactionUuid') ?? null;
 	const productUuid = url.searchParams.get('productUuid') ?? null;
 
 	const response = {
+
 		OffsetProduct: [
 			{
 				productid: '7b434493-fe3f-ee11-bdf3-000d3ad4d529',
@@ -157,20 +181,21 @@ export async function loader({ params, request }: LoaderArgs) {
 		},
 	};
 
+
 	switch (request.method) {
 		case 'GET':
-			let responseKey: string = String(params.action);
+			let responseKey = String(params.action);
 			if (params.action === 'Transaction' && transactionUuid !== null) {
 				responseKey = `Transaction${transactionUuid}`;
 			}
 			return json(response[responseKey]);
+			break;
 		case 'PATCH':
 			console.log('patch');
 			break;
 		case 'POST':
-			console.log('post')				
-			let responseKeyPost: string = String('Transaction');
-			return json(response[responseKeyPost]);
+			console.log('ppost');
+			break;
 	}
 	return json({ message: 'Method not allowed', ok: true }, 405);
 }
