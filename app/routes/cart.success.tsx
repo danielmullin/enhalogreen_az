@@ -1,7 +1,7 @@
-import forest from '../images/enhalo_forest.jpg';
+import forest from "../images/enhalo_forest.jpg";
 
 export default function CartSuccess() {
-	const content = require('app/content/cart-success.json');
+	const content = require("app/content/cart-success.json");
 
 	return (
 		<>
@@ -11,7 +11,7 @@ export default function CartSuccess() {
 				<p className="mb-8 text-xl">{content.p[0]}</p>
 				<p className="mb-8 text-xl">{content.p[1]}</p>
 				<p className="mb-8 text-xl">
-					{content.p[2]}{' '}
+					{content.p[2]}{" "}
 					<a className="text-xl hover:text-blue-800" href="mailto:someone@example.com">
 						{content.a}
 					</a>

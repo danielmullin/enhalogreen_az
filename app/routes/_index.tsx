@@ -19,7 +19,6 @@ import stabiliti from '../images/stabiliti.gif';
 import regenerationEarth from '../images/regeneration_earth.gif';
 
 export const loader = async ({ params, request }) => {
-	// const token = await requireUserToken(request);
 	return [];
 };
 
@@ -42,7 +41,7 @@ export default function Index() {
 						</p>
 					</div>
 					<div className="mb-4 sm:mb-20">
-						<Cta linkTo="/projects" text={'Reduce your footprint now'} />
+						<Cta linkTo="/projects" text={'Reduce your footprint now'} type="primary" />
 					</div>
 				</div>
 			</section>

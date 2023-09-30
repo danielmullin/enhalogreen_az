@@ -1,6 +1,6 @@
-import { useLoaderData } from '@remix-run/react';
-import { list, SubProject } from '../models/subProject';
-import Cta from '../components/Cta';
+import { useLoaderData } from "@remix-run/react";
+import { list, SubProject } from "../models/subProject";
+import Cta from "../components/Cta";
 
 export const loader = async ({}) => {
 	const subProjects = await list();
@@ -12,7 +12,7 @@ export const loader = async ({}) => {
 
 export default function Projects() {
 	const { subProjects } = useLoaderData<typeof loader>();
-	const content = require('app/content/projects.json');
+	const content = require("app/content/projects.json");
 	let optimisticProjectId = subProjects[0].uuid;
 
 	return (
@@ -38,17 +38,21 @@ export default function Projects() {
 					<div className="sm:flex sm:items-center">
 						<p className="mb-4 text-2xl font-light leading-tight sm:w-3/5">{content.p[1]}</p>
 						<div className="sm:w-2/5 sm:text-right">
-							<Cta linkTo={`/offset-products?subProjectId=${optimisticProjectId}`} text={content.cta.offsetYourProducts} />
+							<Cta
+								linkTo={`/offset-products?subProjectId=${optimisticProjectId}`}
+								text={content.cta.offsetYourProducts}
+								type="primary"
+							/>
 						</div>
 					</div>
 				</div>
 			</section>
-			<section className="sm:mx-auto sm:max-w-screen-lg ">
+			<section className="sm:mx-auto sm:max-w-screen-lg">
 				<div className="pb-6 sm:pb-16">
 					<div className="sm:flex sm:items-center">
 						<p className="mb-4 text-2xl font-light leading-tight sm:w-3/5">{content.p[2]}</p>
 						<div className="sm:w-2/5 sm:text-right">
-							<Cta linkTo={`/offset-products?subProjectId=${optimisticProjectId}`} text={content.cta.offsetYourCarbon} />
+							<Cta linkTo={`/offset-products?subProjectId=${optimisticProjectId}`} text={content.cta.offsetYourCarbon} type="primary" />
 						</div>
 					</div>
 				</div>
