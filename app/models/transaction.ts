@@ -62,6 +62,7 @@ export async function create(contact: Contact, quantity: number, productUuid: st
 	console.log('transaction here');
 	console.log(createTransaction);
 	try {
+		console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/CreateTransaction/?code=${api.key}`)
 		const response = await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/CreateTransaction/?code=${api.key}`, {
 			method: 'POST',
 			body: JSON.stringify(createTransaction),
@@ -122,10 +123,10 @@ export async function retrieve(uuid: string) {
 				'Content-type': 'application/json; charset=UTF-8',
 			},
 		});
-		// console.log(response);
+		//console.log(response);
 		const data = await response.json();
 		// console.log(uuid)
-		// console.log(data);
+		 console.log(data);
 		const transaction = data.find((item) => item.transactionId == uuid);
 		// console.log(transaction)
 
