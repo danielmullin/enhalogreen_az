@@ -19,7 +19,7 @@ export default function AccountTransactions() {
 	const content = require('app/content/account-transactions.json');
 
 	return (
-		<div className="px-8 sm:mx-auto sm:max-w-screen-lg">
+		<div className="min-h-70 mt-110 sm:min-h-80 px-8 pt-8 sm:mx-auto sm:max-w-screen-lg">
 			<h1 className="text-3xl leading-none">{content.h1}</h1>
 			<div className="h-[108px]">
 				<p>{content.pLorem[0]}</p>

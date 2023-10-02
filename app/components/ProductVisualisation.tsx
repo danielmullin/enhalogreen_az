@@ -19,7 +19,7 @@ const ProductVisualisation = (props: ProductVisualisationProps): React.ReactElem
 
 	return (
 		<>
-			<div className={'flex flex-wrap px-8'}>
+			<div className={'flex flex-wrap justify-center px-8'}>
 				{Array.from({ length: 1000 / units }, (_, index) =>
 					// index + 1 < sequence && index < 5 ? (
 					//   //less than begin, green

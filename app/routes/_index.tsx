@@ -1,5 +1,6 @@
 //import { redirect } from '@remix-run/node';
 //import { requireUserToken } from '~/session.server';
+import { Meta } from '@remix-run/react';
 import Cta from '../components/Cta';
 import accelerating from '../images/intro_accelerating.jpg';
 import attributing from '../images/intro_attributing.jpg';
@@ -18,6 +19,27 @@ import darkGreenCarbon from '../images/dark_green_carbon.gif';
 import stabiliti from '../images/stabiliti.gif';
 import regenerationEarth from '../images/regeneration_earth.gif';
 
+export function meta() {
+	return [
+		{ title: 'Enhalo Green' },
+		{ property: 'og:title', content: 'Enhalo Green' },
+		{ name: 'description', content: 'Building trust in the carbon ecosystem' },
+		{
+			'script:ld+json': {
+				context: 'https://schema.org',
+				name: 'Enhalo Green',
+				type: 'Organization',
+				url: 'https://enhalogreen.com',
+			},
+		},
+		{
+			tagName: 'link',
+			rel: 'canonical',
+			href: 'https://enhalogreen.com',
+		},
+	];
+}
+
 export const loader = async ({ params, request }) => {
 	return [];
 };
@@ -27,7 +49,7 @@ export default function Index() {
 		<>
 			<img src={forest} className="absolute top-0 -z-20 h-[100vh] object-cover sm:w-full " />
 			{/* <div className="sm:mx-auto sm:max-w-screen-lg"> */}
-			<section className="flex h-[90vh] flex-wrap px-8 pb-4 text-white sm:mx-auto sm:max-w-screen-lg sm:pr-36">
+			<section className="mb-8 flex min-h-[100vh] flex-wrap px-8 pb-4 text-white sm:mx-auto sm:max-w-screen-lg sm:pr-36">
 				<div className="mb-8">
 					<div className="mb-40 pt-20 sm:mb-28 sm:pt-32">
 						<h1 className="mb-6 text-3xl sm:mb-24 sm:text-6xl">Building trust in the carbon ecosystem</h1>
@@ -286,7 +308,7 @@ export default function Index() {
 					Our Partners
 				</h3>
 				<div className="sm:flex sm:flex-wrap">
-					<div className="sm:w-1/2 sm:pr-8">
+					<div className="sm:w-1/4 sm:pr-4">
 						<img src={darkGreenCarbon} className="mb-8" />
 						<p className="mb-4 text-1">
 							DarkGreen Carbon (DGC) is an end-to-end carbon removal solution focusing on soil carbon. It combines consultancy in
@@ -295,7 +317,7 @@ export default function Index() {
 							carbon credits.
 						</p>
 					</div>
-					<div className="sm:w-1/2 sm:pl-8">
+					<div className="sm:w-1/4 sm:px-4">
 						<img src={stabiliti} className="mb-8" />
 						<p className="mb-4 text-1">
 							Stabiliti has created a straightforward and low-friction approach to tokenising carbon, extending reach to new markets and
@@ -308,7 +330,7 @@ export default function Index() {
 							• Offset management, insight and reporting for business across your organisation with our decentralised platform
 						</p>
 					</div>
-					<div className="sm:w-1/2 sm:pr-8">
+					<div className="sm:w-1/4 sm:px-4">
 						<img src={darkBlackCarbon} className="mb-8" />
 						<p className="mb-4 text-1">
 							EnhaloGreen’s CarbonTracker software, delivered with Stabiliti, gives users real-time understanding of carbon capture,
@@ -317,8 +339,8 @@ export default function Index() {
 							form of sequestration.
 						</p>
 					</div>
-					<div className="sm:w-1/2 sm:pl-8">
-						<div className="sm:h-1/2">
+					<div className="sm:w-1/4 sm:pl-4">
+						<div>
 							<img src={regenerationEarth} className="mb-8" />
 						</div>
 						<p className="mb-4 text-1">

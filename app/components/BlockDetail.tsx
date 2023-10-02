@@ -13,7 +13,7 @@ const BlockDetail = (props: BlockDetailProps) => {
 
 	return (
 		<Form>
-			<div className="absolute left-[calc(50vw-5rem)] top-[calc(10vh+2.5rem)] flex h-40 w-40 flex-col justify-between bg-white bg-opacity-70 p-4 text-center sm:w-80">
+			<div className="absolute left-[calc(50vw-5rem)] top-[calc(10vh+2.5rem)] flex h-40 w-40 flex-col justify-between bg-white bg-opacity-70 p-4 text-center sm:left-[calc(50vw-160px)] sm:w-80">
 				<div className="flex justify-between">
 					<p>{name}</p>
 					<p>

@@ -78,20 +78,21 @@ export default function App() {
 				<meta name="msapplication-TileColor" content="#ffffff" />
 				<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
 				<meta name="theme-color" content="#ffffff" />
+				<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
 				<Links />
 			</head>
 			<body
 				className={
 					isIndex
-						? 'text-red font-Noto Sans bg-background-white relative min-h-screen w-full overflow-x-hidden'
-						: 'font-Noto Sans relative min-h-screen w-full overflow-x-hidden bg-background-teal text-light-black'
+						? 'text-red font-Noto-Sans bg-background-white relative min-h-screen w-full overflow-x-hidden'
+						: 'font-Noto-Sans relative min-h-screen w-full overflow-x-hidden bg-background-teal text-light-black'
 				}
 			>
-				{/* <img
+				<img
 					src={infinityImage}
 					alt=""
 					className="absolute  left-[-275px] top-[-60px] -z-10 max-h-[130vh] max-w-[700%] overflow-x-hidden opacity-50 sm:left-[100px] sm:top-0 sm:max-h-full sm:max-w-[2000px]"
-				/> */}
+				/>
 				<Header routeId={id} />
 				<Outlet />
 				<Footer />

@@ -63,25 +63,27 @@ export default function Product() {
 
 	return (
 		<>
-			{error ? (
-				<div className="absolute top-[calc(50vh-5rem)] z-30 flex h-40 w-full items-center justify-center bg-error-red text-white">
-					<span className="flex h-10 w-10 items-center justify-center rounded-full bg-red-500">
-						<span className="text-lg font-bold text-white">X</span>
-					</span>
-					<span>Something went wrong</span>
+			<div className="min-h-70 mt-110 sm:min-h-80 pt-8">
+				{error ? (
+					<div className="absolute top-[calc(50vh-5rem)] z-30 flex h-40 w-full items-center justify-center bg-error-red text-white">
+						<span className="flex h-10 w-10 items-center justify-center rounded-full bg-red-500">
+							<span className="text-lg font-bold text-white">X</span>
+						</span>
+						<span>Something went wrong</span>
+					</div>
+				) : null}
+				<img src={forest} className={(error ? 'grayscale' : null) + ' absolute top-0 -z-20 h-[100vh] object-cover sm:w-full'} />
+				<div className={(error ? 'grayscale' : null) + ' sm:mx-auto sm:h-full sm:max-w-screen-lg'}>
+					<ProductVisualisation
+						blockShow={blockShow}
+						error={error}
+						name={name}
+						quantity={quantity}
+						sequence={sequence}
+						total={1000}
+						units={units}
+					/>
 				</div>
-			) : null}
-			<img src={forest} className={(error ? 'grayscale' : null) + ' absolute top-0 -z-20 h-[100vh] object-cover sm:w-full'} />
-			<div className={(error ? 'grayscale' : null) + ' sm:mx-auto sm:h-full sm:max-w-screen-lg'}>
-				<ProductVisualisation
-					blockShow={blockShow}
-					error={error}
-					name={name}
-					quantity={quantity}
-					sequence={sequence}
-					total={1000}
-					units={units}
-				/>
 			</div>
 		</>
 	);

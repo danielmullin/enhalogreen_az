@@ -21,8 +21,8 @@ export const loader = async ({ params }) => {
 			name: transaction.product.name,
 			productUuid: transaction.productId.id,
 			sequence: i,
-		transactionUuid: transaction.transactionId,
-		units: transaction.product.units,
+			transactionUuid: transaction.transactionId,
+			units: transaction.product.units,
 		});
 	}
 
@@ -35,7 +35,7 @@ export const loader = async ({ params }) => {
 export default function AccountTransaction() {
 	const { transaction, transactionProducts } = useLoaderData<typeof loader>();
 	return (
-		<div className="px-8 sm:mx-auto sm:max-w-screen-lg">
+		<div className="min-h-70 mt-110 sm:min-h-80 px-8 pt-8 sm:mx-auto sm:max-w-screen-lg">
 			<h1 className="text-3xl leading-none">
 				{transaction.project.name} {transaction.quantity} {transaction.product.name}
 			</h1>

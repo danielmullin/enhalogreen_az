@@ -1,6 +1,6 @@
-import { useLoaderData } from "@remix-run/react";
-import { list, SubProject } from "../models/subProject";
-import Cta from "../components/Cta";
+import { useLoaderData } from '@remix-run/react';
+import { list, SubProject } from '../models/subProject';
+import Cta from '../components/Cta';
 
 export const loader = async ({}) => {
 	const subProjects = await list();
@@ -12,11 +12,11 @@ export const loader = async ({}) => {
 
 export default function Projects() {
 	const { subProjects } = useLoaderData<typeof loader>();
-	const content = require("app/content/projects.json");
+	const content = require('app/content/projects.json');
 	let optimisticProjectId = subProjects[0].uuid;
 
 	return (
-		<div className="px-8 sm:mx-auto sm:max-w-screen-lg">
+		<div className="min-h-70 sm:min-h-80 mt-110 px-8 pt-8 sm:mx-auto sm:max-w-screen-lg">
 			<h1 className="mb-8 text-3xl leading-none ">{content.h1}</h1>
 			<section className="mb-4 sm:mb-20">
 				<div className="border-b-2 border-black pb-4 sm:pb-16">

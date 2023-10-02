@@ -84,7 +84,7 @@ export default function Cart() {
 	const { subProject, transaction } = useLoaderData<typeof loader>();
 
 	return (
-		<div className="min-h-screen text-light-black">
+		<div className="min-h-70 sm:min-h-80 mt-110 pt-8 sm:mx-auto sm:max-w-screen-lg">
 			<div className="px-8 sm:mx-auto sm:max-w-screen-lg">
 				<section className="mb-4 sm:mx-auto sm:max-w-screen-lg">
 					<div className="">
