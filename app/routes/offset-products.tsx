@@ -29,7 +29,7 @@ export default function OffsetProducts() {
 	const content = require('app/content/offset-products.json');
 
 	return (
-		<div className="min-h-70 mt-110 sm:min-h-80 px-8 pt-8 sm:mx-auto sm:max-w-screen-lg">
+		<div className="min-h-70 mt-110 sm:min-h-80 mb-4 px-8 pt-8 sm:mx-auto sm:max-w-screen-lg">
 			<h1 className="mb-8 text-3xl leading-none ">{content.h1}</h1>
 			<section className="mb-4">
 				<p className="mb-4 text-2xl font-light leading-tight sm:mr-2 sm:w-1/2">{content.p[0]}</p>

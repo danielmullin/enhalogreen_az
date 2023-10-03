@@ -47,7 +47,7 @@ export default function OffsetProducts(props: OffsetProductsProps): JSX.Element 
 		<>
 			<fetcher.Form
 				action="/offset-products-transaction"
-				className="flex w-full flex-wrap sm:mx-auto sm:max-w-screen-lg sm:items-end"
+				className="mb-4 flex w-full flex-wrap sm:mx-auto sm:max-w-screen-lg sm:items-end"
 				method="post"
 			>
 				<input name="accountUuid" type="hidden" defaultValue={contact.uuid} />
