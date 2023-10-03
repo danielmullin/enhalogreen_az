@@ -128,7 +128,11 @@ export default function Cart() {
 					</div>
 				</section>
 				<section className="sm:mx-auto sm:max-w-screen-md">
-					<PayPalScriptProvider options={{ clientId: 'test', components: 'buttons', currency: 'USD' }}>
+					<PayPalScriptProvider options={{ 
+						clientId: 'test',
+						components: 'buttons', 
+						currency: 'USD',
+					}}>
 						<ButtonWrapper showSpinner={false} />
 					</PayPalScriptProvider>
 				</section>

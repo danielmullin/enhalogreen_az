@@ -20,11 +20,11 @@ export default function CartSuccess() {
 					</div>
 				</section>
 				<section className="mx-auto mb-8 flex w-full justify-around sm:mx-auto sm:w-full sm:max-w-screen-lg sm:flex-row">
-					<div className="mb-4 w-2/5">
+					<div className="mb-4 w-5/12">
 						<Cta linkTo={`/account`} text={'Account'} type={'secondary'} />
 					</div>
-					<div className="mb-4 w-2/5">
-						<Cta linkTo="/accounts/8f25fdff-6705-ee11-8f6d-000d3ad4d529/transactions/" text={'Account Transactions'} type={'primary'} />
+					<div className="mb-4 w-5/12 ">
+						<Cta linkTo="/accounts/8f25fdff-6705-ee11-8f6d-000d3ad4d529/transactions/" text={'Transactions'} type={'primary'} />
 					</div>
 				</section>
 			</div>

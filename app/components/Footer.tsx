@@ -8,7 +8,7 @@ export default function Footer(): JSX.Element {
 					<ul id="id" className="flex px-4">
 						<li id="id" className="mr-2">
 							<Link to="https://twitter.com/" className="nav-link">
-								<a href="#" className="text-gray-500 hover:text-gray-900 dark:text-black dark:hover:text-white">
+								<a href="#" className="text-black ">
 									<svg
 										className="h-10 w-10 rounded-full border bg-white p-1"
 										fill="currentColor"
@@ -22,7 +22,7 @@ export default function Footer(): JSX.Element {
 						</li>
 						<li id="menu-item-91" className="">
 							<Link to="https://www.linkedin.com/" className="nav-link">
-								<a href="#" className="text-gray-500 hover:text-gray-900 dark:text-black dark:hover:text-white">
+								<a href="#" className="text-black ">
 									<svg
 										className="h-10 w-10 rounded-full border bg-white p-1"
 										fill="currentColor"
@@ -39,7 +39,7 @@ export default function Footer(): JSX.Element {
 				<div className="pb-8 sm:py-8">
 					<ul id="menu-terms-links" className="px-4">
 						<li id="menu-item-179" className="className">
-							<Link to="https://enhalogreen.com/privacy-policy/" aria-current="page">
+							<Link to="/privacy-policy/" aria-current="page">
 								Privacy Policy &amp; Terms of Use
 							</Link>
 						</li>

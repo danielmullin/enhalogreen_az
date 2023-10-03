@@ -10,7 +10,7 @@ export default function Header(props: HeaderProps): JSX.Element {
 	const [navbar, setNavbar] = useState(false);
 	const { routeId } = props;
 	// console.log(routeId)
-	let headerClass = 'opacity-80 fixed w-full text-white sm:bg-transparent';
+	let headerClass = 'opacity-90 fixed w-full text-white sm:bg-transparent';
 	let headerNav = (
 		<div>
 			<button onClick={() => setNavbar(!navbar)} className="sm:hidden">
@@ -29,14 +29,16 @@ export default function Header(props: HeaderProps): JSX.Element {
 				)}{' '}
 			</button>
 			{navbar ? (
-				<div className="top-10vh absolute left-0 flex w-full flex-col bg-black bg-opacity-80 px-8 py-4 text-lg">
-					<Link to="/#about" className="mr-8">
+				<div className="absolute left-0 top-[10vh] flex w-full flex-col bg-black bg-opacity-90 px-8 text-lg">
+					<Link to="/#about" className="mb-4 mr-8" onClick={() => setNavbar(!navbar)}>
 						About
 					</Link>
-					<Link to="/contact-us" className="mr-8">
+					<Link to="/contact-us" className="mb-4 mr-8" onClick={() => setNavbar(!navbar)}>
 						Contact Us
 					</Link>
-					<Link to="/account">Account</Link>
+					<Link to="/account" className="mb-4" onClick={() => setNavbar(!navbar)}>
+						Account
+					</Link>
 				</div>
 			) : null}
 			<div className=" hidden text-xl sm:flex">
@@ -64,7 +66,7 @@ export default function Header(props: HeaderProps): JSX.Element {
 			'routes/projects',
 		].includes(routeId)
 	) {
-		headerClass = 'bg-image bg-cover bg-no-repeat fixed w-full bg-opacity-80';
+		headerClass = 'bg-image bg-cover bg-no-repeat fixed w-full bg-opacity-90';
 	}
 	if (['routes/qrcodes/products'].includes(routeId)) {
 		headerNav = <div></div>;
@@ -74,7 +76,7 @@ export default function Header(props: HeaderProps): JSX.Element {
 			<div
 				className={
 					navbar
-						? 'flex min-h-[10vh] items-center justify-between bg-black bg-opacity-80 px-8 sm:m-auto sm:max-w-screen-lg sm:justify-between'
+						? 'flex min-h-[10vh] items-center justify-between bg-black bg-opacity-90 px-8 sm:m-auto sm:max-w-screen-lg sm:justify-between'
 						: 'flex min-h-[10vh] items-center justify-between px-8 sm:m-auto sm:max-w-screen-lg sm:justify-between'
 				}
 			>

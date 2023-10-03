@@ -7,6 +7,7 @@ import infinityImage from './images/infinity_green.png';
 import tailwindStylesheetUrl from '~/styles/tailwind.css';
 import customStylesheetUrl from '~/styles/styles.css';
 import { Route } from 'react-router';
+import { useEffect, useRef, useState, useMemo } from 'react';
 
 export const links: LinksFunction = () => {
 	return [
@@ -49,6 +50,25 @@ export function ErrorBoundary() {
 }
 
 export default function App() {
+	const [isIntersecting, setIsIntersecting] = useState(false);
+	const [count, setCount] = useState('0');
+	const [scrollY, setScrollY] = useState(0);
+	const refs = useRef(null);
+	let left = '0';
+	let leftMobile = '-50';
+
+	useEffect(() => {
+		window.addEventListener('scroll', () => {
+			refs.current.dataset.scroll = window.scrollY;
+			setScrollY(window.scrollY);
+		});
+	});
+
+	let lefts = Math.ceil(scrollY / 10);
+	let leftsMobile = Math.ceil(scrollY / 5) - 50;
+	left = String(lefts);
+	leftMobile = String(leftsMobile);
+
 	const matches = useMatches();
 	const { id } = matches[matches.length - 1];
 	let isIndex = false;
@@ -89,9 +109,11 @@ export default function App() {
 				}
 			>
 				<img
+					ref={refs}
 					src={infinityImage}
 					alt=""
-					className="absolute  left-[-275px] top-[-60px] -z-10 max-h-[130vh] max-w-[700%] overflow-x-hidden opacity-50 sm:left-[100px] sm:top-0 sm:max-h-full sm:max-w-[2000px]"
+					// className={`absolute left-[${leftMobile}%] sm:left-[${left}%] top-[-60px] -z-10 max-h-[130vh] max-w-[700%] overflow-x-hidden opacity-50 sm:top-0 sm:max-h-full sm:max-w-[2000px]`}
+					className={`absolute left-[${leftMobile}%] top-[-60px] -z-10 max-h-[130vh] max-w-[700%] overflow-x-hidden opacity-50 sm:top-0 sm:max-h-full sm:max-w-[2000px]`}
 				/>
 				<Header routeId={id} />
 				<Outlet />

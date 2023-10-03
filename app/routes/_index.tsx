@@ -18,6 +18,7 @@ import darkBlackCarbon from '../images/dark_black_carbon.gif';
 import darkGreenCarbon from '../images/dark_green_carbon.gif';
 import stabiliti from '../images/stabiliti.gif';
 import regenerationEarth from '../images/regeneration_earth.gif';
+import { useEffect, useRef, useState, useMemo } from 'react';
 
 export function meta() {
 	return [
@@ -45,6 +46,48 @@ export const loader = async ({ params, request }) => {
 };
 
 export default function Index() {
+	const [isIntersecting, setIsIntersecting] = useState(false);
+	const [count, setCount] = useState('0');
+	const [scrollY, setScrollY] = useState(0);
+	const ref = useRef(null);
+	const [counterFlag, setCounterFlag] = useState(true);
+
+	useEffect(() => {
+		window.addEventListener('scroll', () => {
+			ref.current.dataset.scroll = window.scrollY;
+			setScrollY(window.scrollY);
+		});
+		const skillsIntersectObserver = new IntersectionObserver(([entry]) => {
+			ref.current.dataset.clients = ref.current.getBoundingClientRect().y;
+			ref.current.dataset.intersecting = entry.isIntersecting;
+			setIsIntersecting(entry.isIntersecting);
+		});
+		skillsIntersectObserver.observe(ref.current);
+		return () => {
+			skillsIntersectObserver.disconnect();
+		};
+	}, []);
+
+	const number = '75',
+		duration = 1,
+		counter = () => {
+			let start = 0;
+			const end = parseInt(number.substring(0, 3));
+			// if (start === end) return;
+			let incrementTime = (duration / end) * 1000;
+
+			let timer = setInterval(() => {
+				start += 1;
+				setCount(String(start) + number.substring(3));
+				if (start === end) clearInterval(timer);
+			}, incrementTime);
+			setCounterFlag(false);
+		};
+
+	if (isIntersecting && counterFlag) {
+		counter();
+	}
+
 	return (
 		<>
 			<img src={forest} className="absolute top-0 -z-20 h-[100vh] object-cover sm:w-full " />
@@ -188,7 +231,9 @@ export default function Index() {
 						</ul>
 					</div>
 					<div className="sm:w-1/2 sm:border-l sm:border-grey sm:pl-8">
-						<p className="mb-4 text-center text-9xl">75%</p>
+						<p ref={ref} className="mb-4 text-center text-9xl font-medium">
+							{count}%
+						</p>
 						<p className="mb-4 text-1">
 							of SMEs agreed employees care that the business behaves sustainably and reduces its impact on the climate
 						</p>
@@ -355,5 +400,3 @@ export default function Index() {
 		</>
 	);
 }
-
-// EOF!

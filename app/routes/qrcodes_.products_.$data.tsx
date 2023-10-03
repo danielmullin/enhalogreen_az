@@ -72,7 +72,7 @@ export default function Product() {
 						<span>Something went wrong</span>
 					</div>
 				) : null}
-				<img src={forest} className={(error ? 'grayscale' : null) + ' absolute top-0 -z-20 h-[100vh] object-cover sm:w-full'} />
+				<img src={forest} className={(error ? 'grayscale' : null) + ' absolute top-0 -z-20 h-full object-cover sm:w-full'} />
 				<div className={(error ? 'grayscale' : null) + ' sm:mx-auto sm:h-full sm:max-w-screen-lg'}>
 					<ProductVisualisation
 						blockShow={blockShow}
