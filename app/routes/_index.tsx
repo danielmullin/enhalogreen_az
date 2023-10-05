@@ -1,6 +1,5 @@
 //import { redirect } from '@remix-run/node';
 //import { requireUserToken } from '~/session.server';
-import { Meta } from '@remix-run/react';
 import Cta from '../components/Cta';
 import accelerating from '../images/intro_accelerating.jpg';
 import attributing from '../images/intro_attributing.jpg';
@@ -18,13 +17,35 @@ import darkBlackCarbon from '../images/dark_black_carbon.gif';
 import darkGreenCarbon from '../images/dark_green_carbon.gif';
 import stabiliti from '../images/stabiliti.gif';
 import regenerationEarth from '../images/regeneration_earth.gif';
-import { useEffect, useRef, useState, useMemo } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export function meta() {
+export function meta({ matches }) {
+	const rootMeta = matches[0].meta;
+	const charset = rootMeta.find((m: { charset: string }) => m.charset);
+	const name = rootMeta.find((m: { name: string }) => m.name);
+	const siteName = rootMeta.find((m: { property: string }) => m.property);
+	const locale = rootMeta.find((m: { property: string }) => m.property === 'og:locale');
+
 	return [
-		{ title: 'Enhalo Green' },
-		{ property: 'og:title', content: 'Enhalo Green' },
+		charset,
+		name,
+		{ title: 'EnhaloGreen - Building trust in the carbon ecosystem' },
 		{ name: 'description', content: 'Building trust in the carbon ecosystem' },
+		{
+			tagName: 'link',
+			rel: 'canonical',
+			href: 'https://enhalogreen.com',
+		},
+		locale,
+		{ property: 'og:type', content: 'website' },
+		{ property: 'og:title', content: 'Enhalo Green' },
+		{
+			property: 'og:description',
+			content:
+				'We develop and share digital tools that deliver agility and credibility to carbon initiatives, and build confidence in the carbon ecosystem.',
+		},
+		{ property: 'og:url', content: 'https://enhalogreen.com/' },
+		siteName,
 		{
 			'script:ld+json': {
 				context: 'https://schema.org',
@@ -32,11 +53,6 @@ export function meta() {
 				type: 'Organization',
 				url: 'https://enhalogreen.com',
 			},
-		},
-		{
-			tagName: 'link',
-			rel: 'canonical',
-			href: 'https://enhalogreen.com',
 		},
 	];
 }

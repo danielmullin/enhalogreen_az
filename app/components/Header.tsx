@@ -1,7 +1,6 @@
 import { Link } from '@remix-run/react';
 import logo from '../images/enhalo_green_logo.png';
-import { useState } from 'react';
-import { Link } from '@remix-run/react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 
 export interface HeaderProps {
 	routeId: string;
@@ -9,8 +8,27 @@ export interface HeaderProps {
 export default function Header(props: HeaderProps): JSX.Element {
 	const [navbar, setNavbar] = useState(false);
 	const { routeId } = props;
+	const [count, setCount] = useState('0');
+	const [scrollY, setScrollY] = useState(0);
+	const ref = useRef(null);
+	let headerBackground = 'bg-transparent';
+	let transition = '';
+
+	useEffect(() => {
+		window.addEventListener('scroll', () => {
+			setScrollY(window.scrollY);
+		});
+	}, []);
+
+	if (scrollY >= 100 && !navbar) {
+		headerBackground = `bg-black`;
+		transition = 'transition duration-1000';
+
+		// counter();
+	}
+
 	// console.log(routeId)
-	let headerClass = 'opacity-90 fixed w-full text-white sm:bg-transparent';
+	let headerClass = `bg-opacity-90 fixed w-full z-50 text-white ${headerBackground} ${transition} `;
 	let headerNav = (
 		<div>
 			<button onClick={() => setNavbar(!navbar)} className="sm:hidden">
@@ -66,7 +84,7 @@ export default function Header(props: HeaderProps): JSX.Element {
 			'routes/projects',
 		].includes(routeId)
 	) {
-		headerClass = 'bg-image bg-cover bg-no-repeat fixed w-full bg-opacity-90';
+		headerClass = 'bg-image bg-cover bg-no-repeat fixed w-full bg-opacity-90 z-50';
 	}
 	if (['routes/qrcodes/products'].includes(routeId)) {
 		headerNav = <div></div>;
@@ -74,6 +92,7 @@ export default function Header(props: HeaderProps): JSX.Element {
 	return (
 		<header className={`${headerClass}`}>
 			<div
+				ref={ref}
 				className={
 					navbar
 						? 'flex min-h-[10vh] items-center justify-between bg-black bg-opacity-90 px-8 sm:m-auto sm:max-w-screen-lg sm:justify-between'
@@ -81,7 +100,7 @@ export default function Header(props: HeaderProps): JSX.Element {
 				}
 			>
 				<div className=" w-48 sm:w-64">
-					<Link to="/">
+					<Link to="/" onClick={() => setNavbar(false)}>
 						<img src={logo} alt="" />
 					</Link>
 				</div>
