@@ -90,7 +90,7 @@ export async function create(contact: Contact, quantity: number, productUuid: st
 
 export async function list(accountUuid: string) {
 	try {
-		const response = await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=qkdb8rPAQglW6bOt56DJ1sDs0Q-zWfbeN-bvK4Py0Ia1AzFucAaJIw==`, {
+		const response = await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=${api.key}`, {
 			method: 'GET',
 			headers: {
 				'Content-type': 'application/json; charset=UTF-8',
@@ -98,7 +98,7 @@ export async function list(accountUuid: string) {
 		});
 		const data = await response.json();
 		// console.log(data);
-		return data.map((item) => ({
+		return data.filter((item) => item.contact.id === accountUuid).map((item) => ({
 			name: `${item.quantity} x ${item.productId.name}`,
 			product: {
 				name: item.productId.name,
