@@ -1,6 +1,7 @@
 import { ActionArgs, ActionFunction, redirect } from '@remix-run/node';
 import { json } from '@remix-run/node';
-import { getUserUuid, requireUserToken } from '~/session.server';
+import { createUserSession, getUserUuid, requireUserToken } from '~/session.server';
+import { retrieve } from '~/models/transaction';
 import { Contact } from '~/models/contact.model';
 import { create } from '~/models/transaction';
 import validateEmailAddress from '~/helpers/validateEmailAddress';
@@ -8,8 +9,9 @@ import validateNumberOfProducts from '~/helpers/validateNumberOfProducts';
 import validateUuid from '~/helpers/validateUuid';
 
 export async function action({ params, request }: ActionArgs) {
-	//const token = await requireUserToken(request);
-	//const userUuid = await getUserUuid (request);
+	const token = await requireUserToken(request);
+	const userUuid = await getUserUuid(request);
+
 	const data: FormData = await request.formData();
 	const contactUuid: string = String(data.get('contactUuid'));
 	const emailAddress: string = String(data.get('emailAddress'));
@@ -34,10 +36,16 @@ export async function action({ params, request }: ActionArgs) {
 				if (!validateUuid(productUuid)) {
 					return json({ productUuidError: 'Please select a product', errorInput: '', status: 422 }, 422);
 				}
-				console.log('creating transaction');
-				let transactionUuid = await create(contact, numberOfProducts, productUuid, projectUuid);
-				// console.log(transaction.transactionId)
-				return redirect(`/cart/${transactionUuid}`);
+				const transactionUuid = await create(contact, numberOfProducts, productUuid, projectUuid),
+					transaction = await retrieve(transactionUuid);
+
+				return createUserSession({
+					request,
+					token: transaction.contact.id,
+					uuid: transaction.contact.id,
+					remember: true,
+					redirectTo: `/cart/${transactionUuid}`,
+				});
 			} catch (error) {
 				return json({ error: error.message, ok: false }, 500);
 			}

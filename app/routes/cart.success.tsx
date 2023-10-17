@@ -1,10 +1,21 @@
+import { LoaderArgs } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+import { getUserUuid, requireUserToken } from '~/session.server';
 import Cta from '~/components/Cta';
 
+export async function loader({ request }: LoaderArgs) {
+	const token = await requireUserToken(request),
+		userUuid = await getUserUuid(request);
+
+	return { userUuid };
+}
+
 export default function CartSuccess() {
+	const { userUuid } = useLoaderData<typeof loader>();
 	const content = require('app/content/cart-success.json');
 
 	return (
-		<div className="min-h-70 mt-110 sm:min-h-80 pt-8 sm:mx-auto sm:max-w-screen-lg">
+		<div className="mt-110 min-h-70 pt-8 sm:mx-auto sm:min-h-80 sm:max-w-screen-lg">
 			<div className="px-8 sm:mx-auto sm:max-w-screen-lg">
 				<section className="mb-4 sm:mx-auto sm:max-w-screen-lg">
 					<div className="">
@@ -21,10 +32,10 @@ export default function CartSuccess() {
 				</section>
 				<section className="mx-auto mb-8 flex w-full justify-around sm:mx-auto sm:w-full sm:max-w-screen-lg sm:flex-row">
 					<div className="mb-4 w-5/12">
-						<Cta linkTo={`/account`} text={'Account'} type={'secondary'} />
+						<Cta linkTo={`/account?accountUuid=${userUuid}`} text={'Account'} type={'secondary'} />
 					</div>
 					<div className="mb-4 w-5/12 ">
-						<Cta linkTo="/accounts/8f25fdff-6705-ee11-8f6d-000d3ad4d529/transactions/" text={'Transactions'} type={'primary'} />
+						<Cta linkTo={`/accounts/${userUuid}/transactions/`} text={'Transactions'} type={'primary'} />
 					</div>
 				</section>
 			</div>

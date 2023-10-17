@@ -9,14 +9,7 @@ const ButtonWrapper = ({ showSpinner }) => {
 	return (
 		<>
 			{showSpinner && isPending && <div className="spinner" />}
-			<PayPalButtons
-				style={style}
-				disabled={false}
-				forceReRender={[style]}
-				fundingSource={undefined}
-				createOrder={createOrder}
-				onApprove={onApprove}
-			/>
+			<PayPalButtons style={style} disabled={false} forceReRender={[style]} fundingSource={undefined} createOrder={createOrder} onApprove={onApprove} />
 		</>
 	);
 };
@@ -64,14 +57,8 @@ function onApprove(data) {
 		});
 }
 export const loader = async ({ params, request }) => {
-	// console.log(params);
-	// console.log('lsdafjlkjdsalkjfdsflAJDLSKKDLSJAJLKFDSLFJKS;ADjk')
 	const transaction = await retrieve(params.transactionUuid);
 	const subProject = await subProjectRetrieve(transaction.project.id);
-
-	// console.log(transaction)
-	// console.log('here')
-	// console.log(subProject)
 
 	return {
 		subProject,
@@ -84,7 +71,7 @@ export default function Cart() {
 	const { subProject, transaction } = useLoaderData<typeof loader>();
 
 	return (
-		<div className="min-h-70 sm:min-h-80 mt-110 pt-8 sm:mx-auto sm:max-w-screen-lg">
+		<div className="mt-110 min-h-70 pt-8 sm:mx-auto sm:min-h-80 sm:max-w-screen-lg">
 			<div className="px-8 sm:mx-auto sm:max-w-screen-lg">
 				<section className="mb-4 sm:mx-auto sm:max-w-screen-lg">
 					<div className="">
@@ -94,8 +81,7 @@ export default function Cart() {
 				<div className="mb-4 flex flex-col-reverse justify-between text-xl sm:flex-row">
 					<div>
 						<p>
-							Offset Details: {transaction.quantity} {transaction.product.name}'s at {transaction.product.units} units per{' '}
-							{transaction.product.name}
+							Offset Details: {transaction.quantity} {transaction.product.name}'s at {transaction.product.units} units per {transaction.product.name}
 						</p>
 						<p>Total carbon offset {transaction.totalCarbon} Tonnes</p>
 					</div>
@@ -128,11 +114,13 @@ export default function Cart() {
 					</div>
 				</section>
 				<section className="sm:mx-auto sm:max-w-screen-md">
-					<PayPalScriptProvider options={{ 
-						clientId: 'test',
-						components: 'buttons', 
-						currency: 'USD',
-					}}>
+					<PayPalScriptProvider
+						options={{
+							clientId: 'test',
+							components: 'buttons',
+							currency: 'USD',
+						}}
+					>
 						<ButtonWrapper showSpinner={false} />
 					</PayPalScriptProvider>
 				</section>

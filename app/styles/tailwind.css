@@ -536,40 +536,6 @@ video {
   --tw-inner-border-color: #e5e7eb;
 }
 
-.container {
-  width: 100%;
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
-}
-
 .visible {
   visibility: visible;
 }
@@ -8630,12 +8596,12 @@ video {
   z-index: 30;
 }
 
-.z-\[-30\] {
-  z-index: -30;
-}
-
 .z-50 {
   z-index: 50;
+}
+
+.z-\[-30\] {
+  z-index: -30;
 }
 
 .m-2 {
@@ -9194,6 +9160,14 @@ video {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.min-h-full {
+  min-height: 100%;
+}
+
+.min-h-80 {
+  min-height: 80vh;
 }
 
 .w-1\/2 {
@@ -9835,10 +9809,6 @@ video {
   padding: 1rem;
 }
 
-.p-0 {
-  padding: 0px;
-}
-
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -9869,11 +9839,6 @@ video {
   padding-bottom: 2rem;
 }
 
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -9894,6 +9859,10 @@ video {
   padding-left: 0.5rem;
 }
 
+.pl-4 {
+  padding-left: 1rem;
+}
+
 .pl-8 {
   padding-left: 2rem;
 }
@@ -9912,14 +9881,6 @@ video {
 
 .pt-8 {
   padding-top: 2rem;
-}
-
-.pt-5 {
-  padding-top: 1.25rem;
-}
-
-.pl-4 {
-  padding-left: 1rem;
 }
 
 .text-center {
@@ -9986,10 +9947,6 @@ video {
 
 .font-medium {
   font-weight: 500;
-}
-
-.font-normal {
-  font-weight: 400;
 }
 
 .font-semibold {
@@ -10104,11 +10061,6 @@ video {
   color: rgb(30 64 175 / var(--tw-text-opacity));
 }
 
-.hover\:text-blue-500:hover {
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
-}
-
 .hover\:text-red-500:hover {
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
@@ -10211,6 +10163,10 @@ video {
 
   .sm\:min-h-80 {
     min-height: 80vh;
+  }
+
+  .sm\:min-h-\[90vh\] {
+    min-height: 90vh;
   }
 
   .sm\:w-1\/2 {

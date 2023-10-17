@@ -1,9 +1,11 @@
 import { useLoaderData } from '@remix-run/react';
-// import type { V2_MetaFunction } from '@remix-run/node';
-// import { Contact } from '~/models/contact.model';
 import { retrieve } from '~/models/transaction';
+import { redirect } from '@remix-run/node';
+import { LoaderArgs } from '@remix-run/node';
+
 import qrcode from '../images/qrcode.svg';
 import qrcodes from '../images/qrcodes.svg';
+import { getUserUuid, requireUserToken } from '~/session.server';
 
 interface TransactionProduct {
 	name: string;
@@ -13,8 +15,17 @@ interface TransactionProduct {
 	units: number;
 }
 
-export const loader = async ({ params }) => {
-	const transaction = await retrieve(params.transactionUuid);
+interface LoaderData {
+	transaction: any;
+	transactionProducts: TransactionProduct[];
+}
+
+export const loader = async ({ params, request }: LoaderArgs) => {
+	const transaction = await retrieve(params.transactionUuid),
+		contactUuid = String(params.contactUuid),
+		userUuid = await getUserUuid(request),
+		token = await requireUserToken(request);
+
 	let transactionProducts: Array<TransactionProduct> = [];
 	for (let i = 1; i < transaction.quantity + 1; i++) {
 		transactionProducts.push({
@@ -26,6 +37,10 @@ export const loader = async ({ params }) => {
 		});
 	}
 
+	if (userUuid !== contactUuid) {
+		return redirect('/');
+	}
+
 	return {
 		transaction,
 		transactionProducts,
@@ -33,9 +48,9 @@ export const loader = async ({ params }) => {
 };
 
 export default function AccountTransaction() {
-	const { transaction, transactionProducts } = useLoaderData<typeof loader>();
+	const { transaction, transactionProducts } = useLoaderData<LoaderData>();
 	return (
-		<div className="min-h-70 mt-110 sm:min-h-80 px-8 pt-8 sm:mx-auto sm:max-w-screen-lg">
+		<div className="mt-110 min-h-70 px-8 pt-8 sm:mx-auto sm:min-h-80 sm:max-w-screen-lg">
 			<h1 className="text-3xl leading-none">
 				{transaction.project.name} {transaction.quantity} {transaction.product.name}
 			</h1>
@@ -56,7 +71,7 @@ export default function AccountTransaction() {
 				</div>
 			</div>
 			<section>
-				{transactionProducts.map((transactionProduct) => {
+				{transactionProducts.map((transactionProduct: TransactionProduct) => {
 					return (
 						<div className="flex items-center justify-between sm:text-2xl">
 							<div>{transactionProduct.name}</div>

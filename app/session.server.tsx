@@ -3,8 +3,9 @@ import invariant from 'tiny-invariant';
 import type { User } from '~/models/user.model';
 import { getUserByToken } from '~/models/user.model';
 invariant(process.env.SESSION_SECRET, 'SESSION_SECRET must be set');
-const USER_SESSION_TOKEN = 'token';
-const USER_SESSION_UUID = 'uuid';
+
+let USER_SESSION_TOKEN = '';
+let USER_SESSION_UUID = '';
 
 export const sessionStorage = createCookieSessionStorage({
 	cookie: {
@@ -17,29 +18,18 @@ export const sessionStorage = createCookieSessionStorage({
 	},
 });
 
-export async function createUserSession({
-	request,
-	token,
-	uuid,
-	remember,
-	redirectTo,
-}: {
-	request: Request;
-	uuid?: string;
-	token?: string;
-	remember: boolean;
-	redirectTo: string;
-}): Promise<Response> {
+export async function createUserSession({ request, token, uuid, remember, redirectTo }: { request: Request; uuid?: string; token?: string; remember: boolean; redirectTo: string }): Promise<Response> {
 	const session = await getSession(request);
 	session.set(USER_SESSION_TOKEN, token);
 	session.set(USER_SESSION_UUID, uuid);
+
+	const commitResult = await sessionStorage.commitSession(session, {
+		maxAge: remember ? 60 * 60 * 24 * 7 : undefined,
+	});
+
 	return redirect(redirectTo, {
 		headers: {
-			'Set-Cookie': await sessionStorage.commitSession(session, {
-				maxAge: remember
-					? 60 * 60 * 24 * 7 // 7 days
-					: undefined,
-			}),
+			'Set-Cookie': commitResult,
 		},
 	});
 }
@@ -67,14 +57,12 @@ export async function getUserToken(request: Request): Promise<User['token'] | un
 		const userToken = session.get(USER_SESSION_TOKEN);
 		return userToken;
 	} catch (e) {
-		//console.log(e);
 		return null;
 	}
 }
 
 export async function getUserUuid(request: Request): Promise<User['uuid'] | undefined> {
 	const session = await getSession(request);
-	//console.log(session);
 	const userUuid = await session.get(USER_SESSION_UUID);
 	return userUuid;
 }
@@ -104,7 +92,7 @@ export async function requireUserToken(request: Request, redirectTo: string = ne
 	const userToken = await getUserToken(request);
 	if (userToken === undefined) {
 		const searchParams = new URLSearchParams([['redirectTo', redirectTo]]);
-		redirect(`/authenticate?${searchParams.toString()}`);
+		redirect(`/`);
 	}
 	return userToken ?? '';
 }

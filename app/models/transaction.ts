@@ -59,10 +59,10 @@ export async function create(contact: Contact, quantity: number, productUuid: st
 		quantity: quantity,
 		amount: subproject.tonCost.value * Math.ceil((offsetProduct.offsetunits * quantity) / 1000),
 	};
-	console.log('transaction here');
-	console.log(createTransaction);
+	// console.log('transaction here');
+	// console.log(createTransaction);
 	try {
-		console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/CreateTransaction/?code=${api.key}`)
+		// console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/CreateTransaction/?code=${api.key}`);
 		const response = await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/CreateTransaction/?code=${api.key}`, {
 			method: 'POST',
 			body: JSON.stringify(createTransaction),
@@ -80,7 +80,7 @@ export async function create(contact: Contact, quantity: number, productUuid: st
 		//}
 
 		const data = await response.json();
-		console.log(data);
+		// console.log(data);
 		return data.transactionid;
 	} catch (error) {
 		console.error(`Error occured: ${String(error)}`);
@@ -90,17 +90,14 @@ export async function create(contact: Contact, quantity: number, productUuid: st
 
 export async function list(accountUuid: string) {
 	try {
-		const response = await fetch(
-			`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=qkdb8rPAQglW6bOt56DJ1sDs0Q-zWfbeN-bvK4Py0Ia1AzFucAaJIw==`,
-			{
-				method: 'GET',
-				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
-				},
-			}
-		);
+		const response = await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=qkdb8rPAQglW6bOt56DJ1sDs0Q-zWfbeN-bvK4Py0Ia1AzFucAaJIw==`, {
+			method: 'GET',
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+		});
 		const data = await response.json();
-		console.log(data);
+		// console.log(data);
 		return data.map((item) => ({
 			name: `${item.quantity} x ${item.productId.name}`,
 			product: {
@@ -123,22 +120,14 @@ export async function retrieve(uuid: string) {
 				'Content-type': 'application/json; charset=UTF-8',
 			},
 		});
-		//console.log(response);
 		const data = await response.json();
-		// console.log(uuid)
-		 console.log(data);
 		const transaction = data.find((item) => item.transactionId == uuid);
-		// console.log(transaction)
-
 		const offsetProducts = await offsetProductList();
-		// console.log(offsetProducts);
 		transaction.product = offsetProducts.find((product) => product.uuid === transaction.productId.id);
 		return transaction;
 	} catch (error) {
-		console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/Transaction?code=${api.key}`);
 		console.error(`Error occured: ${String(error)}`);
-		console.log(error);
-		return console.error;
+		return { error };
 	}
 }
 

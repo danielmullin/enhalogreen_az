@@ -1,12 +1,24 @@
 import { useLoaderData } from '@remix-run/react';
-import type { V2_MetaFunction } from '@remix-run/node';
-import { Contact } from '~/models/contact.model';
-import { list } from '~/models/transaction';
+import { redirect } from '@remix-run/node';
+import { list, Transaction } from '~/models/transaction';
 import AccountTransaction from '~/components/AccountTransaction';
+import { getUserUuid, requireUserToken } from '~/session.server';
 
-export const loader = async ({ params }) => {
-	const contactUuid = params.contactUuid;
-	const transactions = await list(contactUuid); // @todo poassin the user id
+interface LoaderData {
+	contactUuid: any;
+	transactions: Transaction[];
+}
+
+export const loader = async ({ params, request }) => {
+	const token = await requireUserToken(request),
+		contactUuid = String(params.contactUuid),
+		userUuid = await getUserUuid(request);
+
+	if (userUuid !== contactUuid) {
+		return redirect('/');
+	}
+
+	const transactions = await list(contactUuid);
 
 	return {
 		contactUuid,
@@ -15,11 +27,11 @@ export const loader = async ({ params }) => {
 };
 
 export default function AccountTransactions() {
-	const { contactUuid, transactions } = useLoaderData<typeof loader>();
+	const { contactUuid, transactions } = useLoaderData<LoaderData>();
 	const content = require('app/content/account-transactions.json');
 
 	return (
-		<div className="min-h-70 mt-110 sm:min-h-80 px-8 pt-8 sm:mx-auto sm:max-w-screen-lg">
+		<div className="mt-110 min-h-70 px-8 pt-8 sm:mx-auto sm:min-h-80 sm:max-w-screen-lg">
 			<h1 className="text-3xl leading-none">{content.h1}</h1>
 			<div className="h-[108px]">
 				<p>{content.pLorem[0]}</p>
