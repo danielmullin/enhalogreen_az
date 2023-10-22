@@ -10,9 +10,7 @@ export async function action({ request }: ActionArgs) {
 		transactionUuid = await getUserTransactionUuid(request),
 		transaction = await retrieve(transactionUuid);
 		const subProject = await subProjectRetrieve(transaction.project.id);
-	
-//console.log(transaction)
-//console.log(subProject)
+
 	const accessToken = await generateAccessToken(),
 		amountCurrencyCode:string  = 'GBP',
 		amountValue: number = Math.ceil((transaction.quantity * transaction.product.units) / 1000) * subProject.tonCost.value,
@@ -35,16 +33,10 @@ export async function action({ request }: ActionArgs) {
 		},
 		url = `${process.env.PAYPAL_BASE}/v2/checkout/orders`;
 
-
 	const response = await fetch(url, {
 		headers: {
 			'Content-Type': 'application/json',
 			Authorization: `Bearer ${accessToken}`,
-				// Uncomment one of these to force an error for negative testing (in sandbox mode only). Documentation:
-				// https://developer.paypal.com/tools/sandbox/negative-testing/request-headers/
-				// "PayPal-Mock-Response": '{"mock_application_codes": "MISSING_REQUIRED_PARAMETER"}'
-				// "PayPal-Mock-Response": '{"mock_application_codes": "PERMISSION_DENIED"}'
-				// "PayPal-Mock-Response": '{"mock_application_codes": "INTERNAL_SERVER_ERROR"}'
 		},
 	  method: "POST",
 	  body: JSON.stringify(payload),
