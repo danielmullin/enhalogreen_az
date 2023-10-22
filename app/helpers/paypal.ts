@@ -9,11 +9,11 @@ export async function  generateAccessToken(){
 			method: "POST",
 			body: "grant_type=client_credentials",
 			headers: {
-				Authorization: `Basic ${auth}`,
+				"Authorization": `Basic ${auth}`,
 			},
 		});
 		const data = await response.json();
-//console.log(data)
+		console.log(data)
 	return data.access_token;
 	} catch (error) {
 		console.error("Failed to generate Access Token:", error);
