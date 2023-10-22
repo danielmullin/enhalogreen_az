@@ -82,7 +82,6 @@ export default function Cart() {
 
 	
 	const onApprove = async (data)=> {
-		console.log(data)
 		// replace this url with your server
 		return fetch(`${baseUrl}api/paypal/capture-order`, {
 			method: 'POST',
