@@ -79,10 +79,7 @@ export default function Cart() {
 		.then((order) => order.id);
 	}
 
-
-	
 	const onApprove = async (data)=> {
-		// replace this url with your server
 		return fetch(`${baseUrl}api/paypal/capture-order`, {
 			method: 'POST',
 			headers: {
