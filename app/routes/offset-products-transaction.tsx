@@ -42,6 +42,7 @@ export async function action({ params, request }: ActionArgs) {
 				return createUserSession({
 					request,
 					token: transaction.contact.id,
+					transactionUuid: transactionUuid,
 					uuid: transaction.contact.id,
 					remember: true,
 					redirectTo: `/cart/${transactionUuid}`,

@@ -59,8 +59,7 @@ export async function create(contact: Contact, quantity: number, productUuid: st
 		quantity: quantity,
 		amount: subproject.tonCost.value * Math.ceil((offsetProduct.offsetunits * quantity) / 1000),
 	};
-	// console.log('transaction here');
-	// console.log(createTransaction);
+
 	try {
 		// console.log(`${api.protocol}://${api.base}${api.port}/${api.path}/CreateTransaction/?code=${api.key}`);
 		const response = await fetch(`${api.protocol}://${api.base}${api.port}/${api.path}/CreateTransaction/?code=${api.key}`, {

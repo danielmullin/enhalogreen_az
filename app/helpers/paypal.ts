@@ -1,32 +1,3 @@
-
-export async function createOrder ({transaction}) {
-		console.log('here')
-		console.log(transaction);
-		alert()
-	// replace this url with your server
-	//return fetch('https://react-paypal-js-storybook.fly.dev/api/paypal/create-order', {
-	return fetch(`${process.env.PAYPAL_BASE}api/paypal/create-order`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			cart: [
-				{
-					sku: '1blwyeo8',
-					quantity: 2,
-				},
-			],
-		}),
-	})
-		.then((response) => response.json())
-		.then((order) => {
-			// Your code here after create the order
-			console.log('order')
-			return order.id;
-		});
-	}
-
 export async function  generateAccessToken(){
 	try {
 		if (!process.env.PAYPAL_CLIENT_ID || !process.env.PAYPAL_APP_SECRET) {
@@ -48,21 +19,3 @@ export async function  generateAccessToken(){
 		console.error("Failed to generate Access Token:", error);
 	}
 };
-
-
-export async function onApprove(data) {
-	// replace this url with your server
-	return fetch(`${process.env.BASE_URL}/api/paypal/capture-order`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			orderID: data.orderID,
-		}),
-	})
-		.then((response) => response.json())
-		.then((orderData) => {
-			// Your code here after capture the order
-		});
-}

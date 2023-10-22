@@ -1,8 +1,9 @@
 import Cta from '../components/Cta';
 import { useLoaderData } from '@remix-run/react';
-import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
+import { PayPalScriptProvider, PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';  
 import { retrieve } from '~/models/transaction';
 import { retrieve as subProjectRetrieve } from '../models/subProject';
+import { redirect } from '@remix-run/node';
 
 const ButtonWrapper = ({ showSpinner }) => {
 	const [{ isPending }] = usePayPalScriptReducer();
@@ -14,61 +15,90 @@ const ButtonWrapper = ({ showSpinner }) => {
 	);
 };
 
-const style = { layout: 'vertical' };
-
-function createOrder() {
-	// replace this url with your server
-	return fetch('https://react-paypal-js-storybook.fly.dev/api/paypal/create-order', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		// use the "body" param to optionally pass additional order information
-		// like product ids and quantities
-		body: JSON.stringify({
-			cart: [
-				{
-					sku: '1blwyeo8',
-					quantity: 2,
-				},
-			],
-		}),
-	})
-		.then((response) => response.json())
-		.then((order) => {
-			// Your code here after create the order
-			return order.id;
-		});
-}
-function onApprove(data) {
-	// replace this url with your server
-	return fetch('https://react-paypal-js-storybook.fly.dev/api/paypal/capture-order', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify({
-			orderID: data.orderID,
-		}),
-	})
-		.then((response) => response.json())
-		.then((orderData) => {
-			// Your code here after capture the order
-		});
-}
 export const loader = async ({ params, request }) => {
-	const transaction = await retrieve(params.transactionUuid);
-	const subProject = await subProjectRetrieve(transaction.project.id);
+
+	const paypalClientId = process.env.PAYPAL_CLIENT_ID,
+		transaction = await retrieve(params.transactionUuid),
+		subProject = await subProjectRetrieve(transaction.project.id);
 
 	return {
+		baseUrl: process.env.BASE_URL,
+		paypalClientId,
 		subProject,
 		transaction,
 	};
 };
 
 export default function Cart() {
+	
 	const content = require('app/content/cart.json');
-	const { subProject, transaction } = useLoaderData<typeof loader>();
+	const { baseUrl, paypalClientId, subProject, transaction } = useLoaderData<typeof loader>();
+	const style = { layout: 'vertical' };
+	const initialOptions = {
+    'client-id': paypalClientId,
+    currency: 'GBP',
+    intent: 'capture',
+    //'data-client-token': 'abc123xyz==',
+	};
+
+	const ButtonWrapper = ({ showSpinner }) => {
+		const [{ isPending }] = usePayPalScriptReducer();
+		return (
+			<>
+				{showSpinner && isPending && <div className="spinner" />}
+				<PayPalButtons
+					style={style}
+					disabled={false}
+					forceReRender={[style]}
+					fundingSource={undefined}
+					createOrder={createOrder}
+					onApprove={onApprove}
+				/>
+			</>
+		);
+	};
+
+	const createOrder = async () => {
+		const data = JSON.stringify({
+			cart: [{
+				sku: "YOUR_PRODUCT_STOCK_KEEPING_UNIT",
+				quantity: 1,
+			}
+			]
+		});
+
+		return await fetch(`${baseUrl}api/paypal/create-order`, {
+				body: data,
+				method: "POST",
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				
+			})
+			.then((response) => response.json())
+		.then((order) => order.id);
+	}
+
+
+	
+	const onApprove = async (data)=> {
+		console.log(data)
+		// replace this url with your server
+		return fetch(`${baseUrl}api/paypal/capture-order`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				orderID: data.orderID,
+			}),
+		})
+		.then((response) => response.json())
+		.then((orderData) => {
+			console.log(orderData);
+			window.location.href = '/cart/success';
+		});
+	}
 
 	return (
 		<div className="mt-110 min-h-70 pt-8 sm:mx-auto sm:min-h-80 sm:max-w-screen-lg">
@@ -114,13 +144,7 @@ export default function Cart() {
 					</div>
 				</section>
 				<section className="sm:mx-auto sm:max-w-screen-md">
-					<PayPalScriptProvider
-						options={{
-							clientId: 'test',
-							components: 'buttons',
-							currency: 'USD',
-						}}
-					>
+					<PayPalScriptProvider options={initialOptions}>
 						<ButtonWrapper showSpinner={false} />
 					</PayPalScriptProvider>
 				</section>

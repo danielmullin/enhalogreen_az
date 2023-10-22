@@ -4,8 +4,9 @@ import type { User } from '~/models/user.model';
 import { getUserByToken } from '~/models/user.model';
 invariant(process.env.SESSION_SECRET, 'SESSION_SECRET must be set');
 
-let USER_SESSION_TOKEN = '';
-let USER_SESSION_UUID = '';
+let USER_SESSION_TOKEN = 'user_session_token';
+let USER_SESSION_TRANSACTION_UUID = 'user_session_transaction_uuid';
+let USER_SESSION_UUID = 'user_session_uuid';
 
 export const sessionStorage = createCookieSessionStorage({
 	cookie: {
@@ -18,9 +19,10 @@ export const sessionStorage = createCookieSessionStorage({
 	},
 });
 
-export async function createUserSession({ request, token, uuid, remember, redirectTo }: { request: Request; uuid?: string; token?: string; remember: boolean; redirectTo: string }): Promise<Response> {
+export async function createUserSession({ request, transactionUuid, token, uuid, remember, redirectTo }: { request: Request; transactionUuid?: string; uuid?: string; token?: string; remember: boolean; redirectTo: string }): Promise<Response> {
 	const session = await getSession(request);
 	session.set(USER_SESSION_TOKEN, token);
+	session.set(USER_SESSION_TRANSACTION_UUID, transactionUuid);
 	session.set(USER_SESSION_UUID, uuid);
 
 	const commitResult = await sessionStorage.commitSession(session, {
@@ -59,6 +61,28 @@ export async function getUserToken(request: Request): Promise<User['token'] | un
 	} catch (e) {
 		return null;
 	}
+}
+
+export async function getUserTransactionUuid(request: Request): Promise<User['token'] | undefined> {
+	try {
+		const session = await getSession(request);
+		const userToken = session.get(USER_SESSION_TRANSACTION_UUID);
+		return userToken;
+	} catch (e) {
+		return null;
+	}
+}
+
+export async function setUserTransactionUuid(request: Request, transactionUuid: string, redirectTo: string): Promise<Response> {
+	const session = await getSession(request);
+	session.set(USER_SESSION_TRANSACTION_UUID, transactionUuid);
+	return redirect(redirectTo, {
+		headers: {
+			'Set-Cookie': await sessionStorage.commitSession(session, {
+				maxAge: 60 * 60 * 24 * 7,
+			}),
+		},
+	});
 }
 
 export async function getUserUuid(request: Request): Promise<User['uuid'] | undefined> {
