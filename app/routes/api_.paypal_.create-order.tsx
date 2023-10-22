@@ -35,14 +35,13 @@ export async function action({ request }: ActionArgs) {
 
 	const response = await fetch(url, {
 		headers: {
-			'Content-Type': 'application/json',
-			Authorization: `Bearer ${accessToken}`,
+			"Content-Type": "application/json",
+			"Authorization": `Bearer ${accessToken}`,
 		},
-	  method: "POST",
-	  body: JSON.stringify(payload),
+		method: "POST",
+		body: JSON.stringify(payload),
 	});
-	  
+
 	const data = await response.json();
-console.log(data);
 	return json(data, 200);
 }
