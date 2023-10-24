@@ -10,7 +10,7 @@ export async function action({ request }: ActionArgs) {
 		transactionUuid = await getUserTransactionUuid(request),
 		transaction = await retrieve(transactionUuid);
 		const subProject = await subProjectRetrieve(transaction.project.id);
-
+console.log('here')
 	const accessToken = await generateAccessToken(),
 		amountCurrencyCode:string  = 'GBP',
 		amountValue: number = Math.ceil((transaction.quantity * transaction.product.units) / 1000) * subProject.tonCost.value,
