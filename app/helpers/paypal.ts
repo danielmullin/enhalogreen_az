@@ -9,8 +9,8 @@ export async function  generateAccessToken(){
 			method: 'POST',
 			body: 'grant_type=client_credentials',
 			headers: {
-				'Authorization': `Basic, ${auth} `
-				//'Authorization': 'Basic,qQVh5UmpiVklEX3RySnAzc291MjZQN3NTTGI4U2drZVNmWHpGa1RpbmFoLWJtZzhKLVo3WFkyX21NU1NtNXlQbmpUQWRETFZPcWFOaU16Rk46RUdwY00xYWlPc182b3ZEYjJCYVd1MHJHdFM1eTg4NE5ZMTJ1UDJ6NENRZFU0NWVja1ZXN1ZwWU82Nk5VUENTRS1hb2ljWmx0ZkRYTV81SDU=
+				//'Authorization': `Basic, ${auth} `
+				'Authorization': 'Basic, QVh5UmpiVklEX3RySnAzc291MjZQN3NTTGI4U2drZVNmWHpGa1RpbmFoLWJtZzhKLVo3WFkyX21NU1NtNXlQbmpUQWRETFZPcWFOaU16Rk46RUdwY00xYWlPc182b3ZEYjJCYVd1MHJHdFM1eTg4NE5ZMTJ1UDJ6NENRZFU0NWVja1ZXN1ZwWU82Nk5VUENTRS1hb2ljWmx0ZkRYTV81SDU='
 			},
 		});
 		const data = await response.json();
