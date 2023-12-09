@@ -26,15 +26,15 @@ export default function AccountForm(props: AccountFormProps): JSX.Element {
 	return (
 		<>
 			<fetcher.Form
-				action="/account-update"
-				className="flex w-full flex-wrap text-light-black sm:mx-auto sm:items-end "
-				method="post"
+				action='/account-update'
+				className='flex w-full flex-wrap text-light-black sm:mx-auto sm:items-end '
+				method='post'
 				onSubmit={(e) => {
 					if (optimisticEdit == true) fetcher.submit(e.currentTarget, { replace: true });
 				}}
 			>
-				<input name="accountUuid" type="hidden" defaultValue={account.uuid} />
-				<div className="mb-8 w-full">
+				<input name='accountUuid' type='hidden' defaultValue={account.uuid} />
+				<div className='mb-8 w-full'>
 					<label>Email Address</label>
 					{optimisticEdit ? (
 						<input
@@ -43,15 +43,15 @@ export default function AccountForm(props: AccountFormProps): JSX.Element {
 									? 'text-md mt-2 box-border inline-flex h-10 w-full items-center justify-center rounded-xl bg-gray-50/50 pl-2 focus:outline-none'
 									: 'text-md mt-2 box-border inline-flex h-10 w-full items-center justify-center rounded-xl bg-gray-50/50 pl-2 text-black focus:outline-none'
 							}
-							name="emailAddress"
-							type="text"
+							name='emailAddress'
+							type='text'
 							defaultValue={optimisticEmailAddress}
 						/>
 					) : (
-						<div className="mb-2 pl-2 pt-4">{optimisticEmailAddress}</div>
+						<div className='mb-2 pl-2 pt-4'>{optimisticEmailAddress}</div>
 					)}
 				</div>
-				<div className="mb-8 mr-[5%] w-47.5">
+				<div className='mb-8 mr-[5%] w-47.5'>
 					<label>First name</label>
 					{optimisticEdit ? (
 						<input
@@ -60,15 +60,15 @@ export default function AccountForm(props: AccountFormProps): JSX.Element {
 									? 'text-md mt-2 box-border inline-flex h-10 w-full items-center justify-center rounded-xl bg-gray-50/50 pl-2 focus:outline-none'
 									: 'text-md mt-2 box-border inline-flex h-10 w-full items-center justify-center rounded-xl bg-gray-50/50 pl-2 focus:outline-none'
 							}
-							name="firstName"
-							type="text"
+							name='firstName'
+							type='text'
 							defaultValue={optimisticFirstName}
 						/>
 					) : (
-						<div className="mb-2 pl-2 pt-4">{optimisticFirstName}</div>
+						<div className='mb-2 pl-2 pt-4'>{optimisticFirstName}</div>
 					)}
 				</div>
-				<div className="mb-8 w-47.5">
+				<div className='mb-8 w-47.5'>
 					<label>Last name</label>
 					{optimisticEdit ? (
 						<input
@@ -77,15 +77,15 @@ export default function AccountForm(props: AccountFormProps): JSX.Element {
 									? 'text-md mt-2 box-border inline-flex h-10 w-full items-center justify-center rounded-xl bg-gray-50/50 pl-2 focus:outline-none'
 									: 'text-md mt-2 box-border inline-flex h-10 w-full items-center justify-center rounded-xl bg-gray-50/50 pl-2 focus:outline-none'
 							}
-							name="lastName"
-							type="text"
+							name='lastName'
+							type='text'
 							defaultValue={optimisticLastName}
 						/>
 					) : (
-						<div className="mb-2 pl-2 pt-4">{optimisticLastName}</div>
+						<div className='mb-2 pl-2 pt-4'>{optimisticLastName}</div>
 					)}
 				</div>
-				<div className="mb-8 w-full">
+				<div className='mb-8 w-full'>
 					<label>Phone number</label>
 					{optimisticEdit ? (
 						<input
@@ -94,24 +94,24 @@ export default function AccountForm(props: AccountFormProps): JSX.Element {
 									? 'text-md mt-2 box-border inline-flex h-10 w-full items-center justify-center rounded-xl bg-gray-50/50 pl-2 focus:outline-none'
 									: 'text-md mt-2 box-border inline-flex h-10 w-full items-center justify-center rounded-xl bg-gray-50/50 pl-2 focus:outline-none'
 							}
-							name="phoneNumber"
-							type="text"
+							name='phoneNumber'
+							type='text'
 							defaultValue={optimisticPhoneNumber}
 						/>
 					) : (
-						<div className="mb-2 pl-2 pt-4">{optimisticPhoneNumber}</div>
+						<div className='mb-2 pl-2 pt-4'>{optimisticPhoneNumber}</div>
 					)}
 				</div>
-				<div className="w-full"></div>
-				<div className="flex w-full justify-center sm:h-14">
+				<div className='w-full'></div>
+				<div className='flex w-full justify-center sm:h-14'>
 					{optimisticEdit ? (
-						<div className="w-1/2">
-							<Button text="Submit" type="submit" />
-							<input name="edit" title="edit" type="hidden" value="false" />
+						<div className='w-1/2'>
+							<Button text='Submit' type='submit' submitting={fetcher.state === 'submitting'} />
+							<input name='edit' title='edit' type='hidden' value='false' />
 						</div>
 					) : (
-						<div className="w-1/2">
-							<Button text="Edit" type="submit" />
+						<div className='w-1/2'>
+							<Button text='Edit' type='submit' submitting={fetcher.state === 'submitting'} />
 						</div>
 					)}
 				</div>

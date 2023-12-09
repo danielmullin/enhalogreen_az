@@ -9,10 +9,10 @@ export interface CtaProps {
 
 const Cta = (props: CtaProps): React.ReactElement => {
 	const { linkTo, text, type } = props;
-	const [ctaState, setCtaState] = useState({ disabled: false, grayscale: 'bg-white' });
+	const [ctaState, setCtaState] = useState({ disabled: false, opacity: '' });
 
 	const handleCtaClick = () => {
-		setCtaState({ disabled: true, grayscale: 'grayscale bg-gray-100' });
+		setCtaState({ disabled: true, opacity: 'opacity-50' });
 	};
 
 	return (
@@ -22,8 +22,8 @@ const Cta = (props: CtaProps): React.ReactElement => {
 				onClick={handleCtaClick}
 				className={
 					type === 'primary'
-						? `relative z-10 w-full max-w-430 rounded-half px-3 py-2 text-xl text-button-green sm:py-4 ${ctaState.grayscale}`
-						: `relative z-10 w-full max-w-430 rounded-half px-3 py-2 text-xl inner-border-2 inner-border-white sm:py-4 ${ctaState.grayscale}`
+						? `relative z-10 w-full max-w-430 rounded-half bg-white px-3 py-2 text-xl text-button-green sm:py-4 ${ctaState.opacity}`
+						: `relative z-10 w-full max-w-430 rounded-half px-3 py-2 text-xl inner-border-2 inner-border-white sm:py-4 ${ctaState.opacity}`
 				}
 			>
 				{text}
